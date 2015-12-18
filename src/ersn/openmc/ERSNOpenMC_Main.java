@@ -406,7 +406,7 @@ plottingTxt.setContentType("text/xhtml");
 
         btn_lattice.setBackground(new java.awt.Color(0, 0, 154));
         btn_lattice.setForeground(new java.awt.Color(255, 255, 204));
-        btn_lattice.setText("lattice");
+        btn_lattice.setText("rectangular lattice");
         btn_lattice.setToolTipText("");
         btn_lattice.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_lattice.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -451,7 +451,7 @@ plottingTxt.setContentType("text/xhtml");
 
         btn_hex_lattice.setBackground(new java.awt.Color(0, 0, 154));
         btn_hex_lattice.setForeground(new java.awt.Color(255, 255, 204));
-        btn_hex_lattice.setText("hex_lattice");
+        btn_hex_lattice.setText("hexagonal lattice");
         btn_hex_lattice.setToolTipText("");
         btn_hex_lattice.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_hex_lattice.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -2754,9 +2754,7 @@ System.out.print(project_full_path);
     }//GEN-LAST:event_btn_defaults_xsActionPerformed
 
     private void btn_latticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_latticeActionPerformed
-        geometryTxt.replaceSelection("<lattice id=\"\">\n" 
-            +"   <type>   </type> \n" 
-            +"   <dimension>  </dimension> \n" 
+        geometryTxt.replaceSelection("<lattice id=\" \" dimension=\" \" outer=\" \">\n" 
             +"   <lower_left>   </lower_left> \n" 
             +"   <pitch>  </pitch> \n" 
             +"   <universes>  \n\n"
