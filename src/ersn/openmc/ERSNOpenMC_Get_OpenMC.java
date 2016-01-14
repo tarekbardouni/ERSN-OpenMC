@@ -38,27 +38,28 @@ import javax.swing.JOptionPane;
  */
 public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
 
-    String str_cmake = " cmake ",
+    String  str_cmake = " cmake ",
             str_gfortran = " gfortran ",
+            str_gfortran49 = " ",
             str_git = " git ",
+            str_eog = " eog ",
+            str_mutt = " ",
             str_mpich2 = " ",
             str_openmpi = " ",
+            str_openmp_status = "NOT_USED",
+            str_debug_status = "NOT_USED",
             str_matplotlib = " ",
             str_vtk = " ",
             str_paraview = " ",
             str_numpy = " ",
             str_scipy = " ",
             str_gedit = " ",
-            str_ipython,
-            str_mutt = "mutt ",
-            PETSC_FLAG = "NOT-USED",
-            HD5_FLAG = "NOT-USED",
-            PARALLEL_HD5_FLAG = "NOT-USED";
+            str_ipython = " ";
     Boolean parallel_mode = false;
     String bashdir_openmc = "";
     String bashdir_hdf5 = "",
-            bashdir_petsc = "",
-            str_python_5py = "";
+           str_python_5py = "";
+    private Object _mutt_;
 
     /**
      * Creates new form get_libraries
@@ -67,9 +68,10 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         initComponents();
         getContentPane().setBackground(new Color(0, 0, 128));
         buttonGroup1.add(_SEQ_MODE);
-        buttonGroup1.add(SHARE_MODE);
+        buttonGroup1.add(DISTRIB_OpenMPI_MODE);
         buttonGroup1.add(DISTRIB_MODE);
- HD5_FLAG = "NOT-USED";
+        buttonGroup1.add(_OPENMP_MODE);
+        str_openmp_status = "NOT-USED";
     }
 
     /**
@@ -105,11 +107,11 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         _scipy_ = new javax.swing.JCheckBox();
         _ipython_ = new javax.swing.JCheckBox();
         _hdf5_ = new javax.swing.JCheckBox();
-        _petsc_ = new javax.swing.JCheckBox();
         _petsc_1 = new javax.swing.JCheckBox();
         _petsc_2 = new javax.swing.JCheckBox();
         btn_close2 = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        _mutt1_ = new javax.swing.JCheckBox();
+        _gfortran49_ = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
         btn_get_openmc = new javax.swing.JButton();
         lbl_dir = new javax.swing.JLabel();
@@ -117,14 +119,15 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         install_dir = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         _SEQ_MODE = new javax.swing.JRadioButton();
-        SHARE_MODE = new javax.swing.JRadioButton();
+        DISTRIB_OpenMPI_MODE = new javax.swing.JRadioButton();
         DISTRIB_MODE = new javax.swing.JRadioButton();
-        jCheckBox_hdf5 = new javax.swing.JCheckBox();
+        jCheckBox_openmp = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
-        jSeparator6 = new javax.swing.JSeparator();
         btn_close1 = new javax.swing.JButton();
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator8 = new javax.swing.JSeparator();
+        jCheckBox_Debug = new javax.swing.JCheckBox();
+        _OPENMP_MODE = new javax.swing.JRadioButton();
         jSeparator3 = new javax.swing.JSeparator();
 
         setTitle("ERSN-OpenMC_get_OpenMC");
@@ -140,7 +143,7 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         jPanel1.setBackground(java.awt.SystemColor.activeCaption);
         jPanel1.setMinimumSize(new java.awt.Dimension(1500, 300));
         jPanel1.setPreferredSize(new java.awt.Dimension(1500, 258));
-        jPanel1.setLayout(new java.awt.GridBagLayout());
+        jPanel1.setLayout(null);
 
         btn_get_prerequisites.setFont(new java.awt.Font("Ubuntu", 0, 13)); // NOI18N
         btn_get_prerequisites.setForeground(java.awt.Color.black);
@@ -155,113 +158,85 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
                 btn_get_prerequisitesActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 12;
-        gridBagConstraints.ipadx = 50;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 600, 18, 0);
-        jPanel1.add(btn_get_prerequisites, gridBagConstraints);
+        jPanel1.add(btn_get_prerequisites);
+        btn_get_prerequisites.setBounds(520, 260, 141, 28);
 
         _gfortran_.setBackground(java.awt.SystemColor.activeCaption);
+        _gfortran_.setFont(new java.awt.Font("Ubuntu Light", 0, 12)); // NOI18N
         _gfortran_.setForeground(java.awt.Color.yellow);
         _gfortran_.setSelected(true);
-        _gfortran_.setText("gfortran: the GNU Fortran compile.");
+        _gfortran_.setText("gfortran: the GNU Fortran compiler.");
         _gfortran_.setEnabled(false);
         _gfortran_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 _gfortran_ActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 400;
-        gridBagConstraints.ipady = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        jPanel1.add(_gfortran_, gridBagConstraints);
+        jPanel1.add(_gfortran_);
+        _gfortran_.setBounds(0, 40, 410, 20);
 
         _cmake_.setBackground(java.awt.SystemColor.activeCaption);
+        _cmake_.setFont(new java.awt.Font("Ubuntu Light", 0, 12)); // NOI18N
         _cmake_.setForeground(java.awt.Color.yellow);
         _cmake_.setSelected(true);
         _cmake_.setText("cmake:  a cross-platform and open-source build system.");
         _cmake_.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 350;
-        gridBagConstraints.ipady = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        jPanel1.add(_cmake_, gridBagConstraints);
+        jPanel1.add(_cmake_);
+        _cmake_.setBounds(0, 20, 390, 20);
 
         _mpich2_.setBackground(java.awt.SystemColor.activeCaption);
+        _mpich2_.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         _mpich2_.setForeground(java.awt.Color.yellow);
-        _mpich2_.setText("mpich2: a standard for message-passing for distributed-memory.");
+        _mpich2_.setText("MPICH: a standard for Message-Passing Interface (distributed-memory).");
+        _mpich2_.setEnabled(false);
         _mpich2_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 _mpich2_ActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.ipadx = 250;
-        gridBagConstraints.ipady = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        jPanel1.add(_mpich2_, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 354;
-        gridBagConstraints.ipady = -6;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 42, 0, 0);
-        jPanel1.add(jSeparator1, gridBagConstraints);
+        jPanel1.add(_mpich2_);
+        _mpich2_.setBounds(0, 210, 490, 25);
+        jPanel1.add(jSeparator1);
+        jSeparator1.setBounds(0, 0, 0, 0);
 
         _openmpi_.setBackground(java.awt.SystemColor.activeCaption);
+        _openmpi_.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         _openmpi_.setForeground(java.awt.Color.yellow);
-        _openmpi_.setText("OpenMP:  an API that supports MP for shared memory.");
+        _openmpi_.setText("OPENMPI: Open Source High Performance Computing shared memory (distributed-memory).");
+        _openmpi_.setEnabled(false);
         _openmpi_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 _openmpi_ActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.ipadx = 350;
-        gridBagConstraints.ipady = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        jPanel1.add(_openmpi_, gridBagConstraints);
+        jPanel1.add(_openmpi_);
+        _openmpi_.setBounds(0, 190, 550, 25);
 
         _git_.setBackground(java.awt.SystemColor.activeCaption);
+        _git_.setFont(new java.awt.Font("Ubuntu Light", 0, 12)); // NOI18N
         _git_.setForeground(java.awt.Color.yellow);
         _git_.setSelected(true);
         _git_.setText("git : a distributed revision control system.");
         _git_.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.ipadx = 450;
-        gridBagConstraints.ipady = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        jPanel1.add(_git_, gridBagConstraints);
+        jPanel1.add(_git_);
+        _git_.setBounds(0, 60, 440, 20);
 
         _eog_.setBackground(java.awt.SystemColor.activeCaption);
+        _eog_.setFont(new java.awt.Font("Ubuntu Light", 0, 12)); // NOI18N
         _eog_.setForeground(java.awt.Color.yellow);
         _eog_.setSelected(true);
         _eog_.setText("eog: Eye of Gnome, a graphics viewer program.");
         _eog_.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.ipadx = 350;
-        gridBagConstraints.ipady = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        jPanel1.add(_eog_, gridBagConstraints);
+        _eog_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                _eog_ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(_eog_);
+        _eog_.setBounds(0, 80, 510, 20);
 
         _matplotlib_.setBackground(java.awt.SystemColor.activeCaption);
+        _matplotlib_.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         _matplotlib_.setForeground(new java.awt.Color(255, 255, 0));
         _matplotlib_.setText("matplotlib : a python 2D plotting library.");
         _matplotlib_.addActionListener(new java.awt.event.ActionListener() {
@@ -269,17 +244,11 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
                 _matplotlib_ActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.ipadx = 200;
-        gridBagConstraints.ipady = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(2, 48, 0, 0);
-        jPanel1.add(_matplotlib_, gridBagConstraints);
+        jPanel1.add(_matplotlib_);
+        _matplotlib_.setBounds(590, 130, 471, 25);
 
         _vtk_.setBackground(java.awt.SystemColor.activeCaption);
+        _vtk_.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         _vtk_.setForeground(new java.awt.Color(255, 255, 0));
         _vtk_.setText("VTK : The Visualization Toolkit.");
         _vtk_.addActionListener(new java.awt.event.ActionListener() {
@@ -287,25 +256,13 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
                 _vtk_ActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.ipadx = 200;
-        gridBagConstraints.ipady = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 48, 0, 0);
-        jPanel1.add(_vtk_, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.ipadx = 1380;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 0, 0, 4);
-        jPanel1.add(jSeparator2, gridBagConstraints);
+        jPanel1.add(_vtk_);
+        _vtk_.setBounds(590, 160, 410, 25);
+        jPanel1.add(jSeparator2);
+        jSeparator2.setBounds(0, 240, 1480, 6);
 
         _paraview_.setBackground(java.awt.SystemColor.activeCaption);
+        _paraview_.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         _paraview_.setForeground(new java.awt.Color(255, 255, 0));
         _paraview_.setText("ParaView : an open-source data analysis and visualization application.");
         _paraview_.addActionListener(new java.awt.event.ActionListener() {
@@ -313,17 +270,11 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
                 _paraview_ActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 9;
-        gridBagConstraints.ipadx = 200;
-        gridBagConstraints.ipady = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 48, 0, 0);
-        jPanel1.add(_paraview_, gridBagConstraints);
+        jPanel1.add(_paraview_);
+        _paraview_.setBounds(590, 10, 642, 25);
 
         _numpy_.setBackground(java.awt.SystemColor.activeCaption);
+        _numpy_.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         _numpy_.setForeground(new java.awt.Color(255, 255, 0));
         _numpy_.setText("NumPy : the fundamental package for scientific computing with Python.");
         _numpy_.addActionListener(new java.awt.event.ActionListener() {
@@ -331,17 +282,11 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
                 _numpy_ActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.ipadx = 250;
-        gridBagConstraints.ipady = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 48, 0, 0);
-        jPanel1.add(_numpy_, gridBagConstraints);
+        jPanel1.add(_numpy_);
+        _numpy_.setBounds(590, 40, 710, 25);
 
         _scipy_.setBackground(java.awt.SystemColor.activeCaption);
+        _scipy_.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         _scipy_.setForeground(new java.awt.Color(255, 255, 0));
         _scipy_.setText("SciPy: a package of tools for science and engineering for Python.");
         _scipy_.addActionListener(new java.awt.event.ActionListener() {
@@ -349,17 +294,11 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
                 _scipy_ActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.ipadx = 200;
-        gridBagConstraints.ipady = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 48, 0, 0);
-        jPanel1.add(_scipy_, gridBagConstraints);
+        jPanel1.add(_scipy_);
+        _scipy_.setBounds(590, 70, 618, 25);
 
         _ipython_.setBackground(java.awt.SystemColor.activeCaption);
+        _ipython_.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         _ipython_.setForeground(new java.awt.Color(255, 255, 0));
         _ipython_.setText("IPython: interactive computing in Python.");
         _ipython_.addActionListener(new java.awt.event.ActionListener() {
@@ -367,85 +306,43 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
                 _ipython_ActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.ipadx = 200;
-        gridBagConstraints.ipady = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 48, 0, 0);
-        jPanel1.add(_ipython_, gridBagConstraints);
+        jPanel1.add(_ipython_);
+        _ipython_.setBounds(590, 100, 477, 25);
 
         _hdf5_.setBackground(java.awt.SystemColor.activeCaption);
+        _hdf5_.setFont(new java.awt.Font("Ubuntu Light", 0, 12)); // NOI18N
         _hdf5_.setForeground(java.awt.Color.yellow);
+        _hdf5_.setSelected(true);
         _hdf5_.setText("hdf5: a file format for storing and managing data.");
+        _hdf5_.setEnabled(false);
         _hdf5_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 _hdf5_ActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
-        gridBagConstraints.ipadx = 350;
-        gridBagConstraints.ipady = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        jPanel1.add(_hdf5_, gridBagConstraints);
-
-        _petsc_.setBackground(java.awt.SystemColor.activeCaption);
-        _petsc_.setForeground(new java.awt.Color(255, 255, 0));
-        _petsc_.setText("PetSc: a suite of data structures and routines for scientific apps.");
-        _petsc_.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                _petsc_ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.ipadx = 200;
-        gridBagConstraints.ipady = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 48, 0, 0);
-        jPanel1.add(_petsc_, gridBagConstraints);
+        jPanel1.add(_hdf5_);
+        _hdf5_.setBounds(0, 100, 390, 20);
 
         _petsc_1.setBackground(java.awt.SystemColor.activeCaption);
+        _petsc_1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         _petsc_1.setForeground(new java.awt.Color(255, 255, 0));
-        _petsc_1.setText("hpy5: a Pythonic interface to the HDF5 binary data format.");
+        _petsc_1.setText("h5py: a Pythonic interface to the HDF5 binary data format.");
         _petsc_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 _petsc_1ActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.ipadx = 200;
-        gridBagConstraints.ipady = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 48, 0, 0);
-        jPanel1.add(_petsc_1, gridBagConstraints);
+        jPanel1.add(_petsc_1);
+        _petsc_1.setBounds(590, 190, 581, 25);
 
         _petsc_2.setBackground(java.awt.SystemColor.activeCaption);
+        _petsc_2.setFont(new java.awt.Font("Ubuntu Light", 0, 12)); // NOI18N
         _petsc_2.setForeground(java.awt.Color.yellow);
         _petsc_2.setSelected(true);
         _petsc_2.setText("gedit : Text Editor.");
         _petsc_2.setEnabled(false);
-        _petsc_2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                _petsc_2ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.ipadx = 450;
-        gridBagConstraints.ipady = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        jPanel1.add(_petsc_2, gridBagConstraints);
+        jPanel1.add(_petsc_2);
+        _petsc_2.setBounds(0, 120, 470, 20);
 
         btn_close2.setFont(new java.awt.Font("Ubuntu", 0, 13)); // NOI18N
         btn_close2.setForeground(java.awt.Color.black);
@@ -458,24 +355,32 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
                 btn_close2ActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 12;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.insets = new java.awt.Insets(2, 1, 0, 0);
-        jPanel1.add(btn_close2, gridBagConstraints);
+        jPanel1.add(btn_close2);
+        btn_close2.setBounds(910, 260, 165, 28);
 
-        jCheckBox1.setBackground(java.awt.SystemColor.activeCaption);
-        jCheckBox1.setForeground(java.awt.Color.yellow);
-        jCheckBox1.setSelected(true);
-        jCheckBox1.setText("mutt: email sender");
-        jCheckBox1.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.ipadx = 450;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        jPanel1.add(jCheckBox1, gridBagConstraints);
+        _mutt1_.setBackground(java.awt.SystemColor.activeCaption);
+        _mutt1_.setFont(new java.awt.Font("Ubuntu Light", 0, 12)); // NOI18N
+        _mutt1_.setForeground(java.awt.Color.yellow);
+        _mutt1_.setText("mutt: email sender");
+        _mutt1_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                _mutt1_ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(_mutt1_);
+        _mutt1_.setBounds(0, 140, 460, 20);
+
+        _gfortran49_.setBackground(java.awt.SystemColor.activeCaption);
+        _gfortran49_.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        _gfortran49_.setForeground(java.awt.Color.yellow);
+        _gfortran49_.setText("GFORTRAN 4.9: the GNU Fortran compiler, version 4.9.");
+        _gfortran49_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                _gfortran49_ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(_gfortran49_);
+        _gfortran49_.setBounds(0, 170, 400, 25);
 
         jTabbedPane1.addTab("Prerequisites", jPanel1);
 
@@ -501,8 +406,15 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
             }
         });
 
+        install_dir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                install_dirActionPerformed(evt);
+            }
+        });
+
         _SEQ_MODE.setBackground(java.awt.SystemColor.activeCaption);
         _SEQ_MODE.setForeground(java.awt.Color.yellow);
+        _SEQ_MODE.setSelected(true);
         _SEQ_MODE.setText("Sequential mode");
         _SEQ_MODE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -510,41 +422,45 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
             }
         });
 
-        SHARE_MODE.setBackground(java.awt.SystemColor.activeCaption);
-        SHARE_MODE.setForeground(java.awt.Color.yellow);
-        SHARE_MODE.setText("Shared memory  OMP mode");
-        SHARE_MODE.addActionListener(new java.awt.event.ActionListener() {
+        DISTRIB_OpenMPI_MODE.setBackground(java.awt.SystemColor.activeCaption);
+        DISTRIB_OpenMPI_MODE.setForeground(java.awt.Color.yellow);
+        DISTRIB_OpenMPI_MODE.setText("Distributed memory OPENMPI mode");
+        DISTRIB_OpenMPI_MODE.setEnabled(false);
+        DISTRIB_OpenMPI_MODE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SHARE_MODEActionPerformed(evt);
+                DISTRIB_OpenMPI_MODEActionPerformed(evt);
             }
         });
 
         DISTRIB_MODE.setBackground(java.awt.SystemColor.activeCaption);
         DISTRIB_MODE.setForeground(java.awt.Color.yellow);
-        DISTRIB_MODE.setText("Distributed memory MPI mode");
+        DISTRIB_MODE.setText("Distributed memory MPICH mode");
+        DISTRIB_MODE.setEnabled(false);
         DISTRIB_MODE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DISTRIB_MODEActionPerformed(evt);
             }
         });
 
-        jCheckBox_hdf5.setBackground(java.awt.SystemColor.activeCaption);
-        jCheckBox_hdf5.setForeground(java.awt.Color.yellow);
-        jCheckBox_hdf5.setText("check if compling with HDF5");
-        jCheckBox_hdf5.addMouseListener(new java.awt.event.MouseAdapter() {
+        jCheckBox_openmp.setBackground(java.awt.SystemColor.activeCaption);
+        jCheckBox_openmp.setForeground(java.awt.Color.yellow);
+        jCheckBox_openmp.setText("Shared Memory can be used in hybrid mode OPENMP-MPI");
+        jCheckBox_openmp.setEnabled(false);
+        jCheckBox_openmp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCheckBox_hdf5MouseClicked(evt);
+                jCheckBox_openmpMouseClicked(evt);
             }
         });
-        jCheckBox_hdf5.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBox_openmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox_hdf5ActionPerformed(evt);
+                jCheckBox_openmpActionPerformed(evt);
             }
         });
 
         jLabel1.setBackground(java.awt.SystemColor.info);
-        jLabel1.setForeground(java.awt.Color.yellow);
-        jLabel1.setText("The OpenMC Monte Carlo code will be compiled with one of the following mode (at least check one option):");
+        jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
+        jLabel1.setForeground(java.awt.Color.white);
+        jLabel1.setText("The OpenMC Monte Carlo code will be compiled with one of the following four mode :");
 
         btn_close1.setBackground(new java.awt.Color(215, 208, 208));
         btn_close1.setForeground(java.awt.Color.black);
@@ -555,14 +471,60 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
             }
         });
 
+        jCheckBox_Debug.setBackground(java.awt.SystemColor.activeCaption);
+        jCheckBox_Debug.setForeground(java.awt.Color.yellow);
+        jCheckBox_Debug.setText("Debug mode");
+        jCheckBox_Debug.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCheckBox_DebugMouseClicked(evt);
+            }
+        });
+        jCheckBox_Debug.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox_DebugActionPerformed(evt);
+            }
+        });
+
+        _OPENMP_MODE.setBackground(java.awt.SystemColor.activeCaption);
+        _OPENMP_MODE.setForeground(java.awt.Color.yellow);
+        _OPENMP_MODE.setText("Enable shared-memory parallelism with OpenMP");
+        _OPENMP_MODE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                _OPENMP_MODEActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 1089, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 1086, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(682, 682, 682)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 1192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(351, 351, 351)
+                        .addComponent(btn_get_openmc, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(316, 316, 316)
+                        .addComponent(btn_close1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jCheckBox_openmp)
+                        .addGap(191, 191, 191)
+                        .addComponent(jCheckBox_Debug))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DISTRIB_MODE)
+                            .addComponent(DISTRIB_OpenMPI_MODE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(lbl_dir)
@@ -571,26 +533,9 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
                                 .addGap(30, 30, 30)
                                 .addComponent(btn_dir, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(_SEQ_MODE)
-                            .addComponent(jLabel1)
-                            .addComponent(DISTRIB_MODE)
-                            .addComponent(SHARE_MODE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(403, 403, 403)
-                        .addComponent(btn_get_openmc, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(370, 370, 370)
-                        .addComponent(btn_close1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(_OPENMP_MODE)
+                            .addComponent(jLabel1))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jCheckBox_hdf5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 1192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 1089, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 1086, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 1086, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -598,35 +543,36 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
+                        .addComponent(btn_dir)
+                        .addGap(31, 31, 31))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(install_dir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_dir)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(lbl_dir)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lbl_dir))
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(_SEQ_MODE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(_OPENMP_MODE)
                 .addGap(4, 4, 4)
-                .addComponent(SHARE_MODE)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(DISTRIB_OpenMPI_MODE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(DISTRIB_MODE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox_hdf5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox_openmp)
+                    .addComponent(jCheckBox_Debug))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_get_openmc)
-                    .addComponent(btn_close1))
-                .addGap(48, 48, 48))
+                    .addComponent(btn_close1)))
         );
 
         jTabbedPane1.addTab("OpenMC", jPanel2);
@@ -645,8 +591,10 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
 
     private void btn_get_openmcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_get_openmcActionPerformed
         System.out.print("ERSN-OPENMC/CONSOLE:-------INSTALLING  OPENMC MONTE CARLO CODE.");
-        try {            Process pb = Runtime.getRuntime().exec("xterm  -j  -sb -sl 2000 -title ERSN-OpenMC_Console -e " + bashdir_openmc + " " + install_dir.getText() + " " + HD5_FLAG + " " + PETSC_FLAG);
-         pb.waitFor();
+        try {            
+            Process pb = Runtime.getRuntime().exec("xterm  -j  -sb -sl 2000 -title ERSN-OpenMC_Console -e " 
+            + bashdir_openmc + " " + install_dir.getText() + " " + str_debug_status + " " + str_openmp_status );
+            pb.waitFor();
             JOptionPane.showMessageDialog(this, "The OpenMC Monte Carlo code has been installed");
 
         } catch (IOException | InterruptedException ex) {
@@ -660,47 +608,32 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_get_openmcActionPerformed
     public void get_prerequisites() {
         try {
-            bashdir_hdf5 = getJarContainingFolder(ERSNOpenMC_Main.class) + "/scripts/get_hdf5.sh";
-            if (PARALLEL_HD5_FLAG.equals("USED")) {
-                bashdir_hdf5 = getJarContainingFolder(ERSNOpenMC_Main.class) + "/scripts/get_hdf5_parallel.sh";
-                System.out.print("ERSN-OPENMC/CONSOLE:-------INSTALLING HDF5 LIBRARY IN PARALLEL MODE.");
-
-            }
-            bashdir_petsc = getJarContainingFolder(ERSNOpenMC_Main.class) + "/scripts/get_petsc.sh";
-
+            bashdir_hdf5 = getJarContainingFolder(ERSNOpenMC_Main.class) + "/scripts/get_hdf5.sh";                     
         } catch (Exception ex) {
             System.out.print(ex);
         }
 
         try {
 
-            Process pb = Runtime.getRuntime().exec("xterm  -title ERSN-OpenMC_Console -e sudo apt-get install " + str_cmake + str_gfortran + str_git + str_mpich2 + str_openmpi + str_matplotlib + str_vtk + str_paraview + str_scipy + str_numpy + str_python_5py + str_gedit);
+            Process pb = Runtime.getRuntime().exec("xterm  -title ERSN-OpenMC_Console -e sudo apt-get install " 
+             + str_cmake + str_gfortran + str_git + str_eog + str_mutt + str_gedit
+             + str_gfortran49 + str_mpich2 + str_openmpi
+             + str_matplotlib + str_vtk + str_paraview + str_scipy + str_numpy + str_ipython + str_python_5py );
             pb.waitFor();
-            JOptionPane.showMessageDialog(this, "The following packages : " + str_cmake + str_gfortran + str_git + str_mpich2 + str_openmpi + str_mutt + str_matplotlib + str_vtk + str_paraview + str_scipy + str_numpy + str_python_5py + " have been installed successfully  ! ");
+            JOptionPane.showMessageDialog(this, "The checked packages have been installed successfully or already exist ! ");
 
-            if (_hdf5_.isSelected()) {
+
+            
                 File f = new File("/opt/hdf5");
                 if (f.exists() && f.isDirectory()) {
                     System.out.println(" The HDF5 package is already installed in your OS");
                 } else {
-                    Process pb2 = Runtime.getRuntime().exec("xterm -title ERSN-OpenMC_Console -e  " + bashdir_hdf5);
-                    pb2.waitFor();
+                    Process pb3 = Runtime.getRuntime().exec("xterm -title ERSN-OpenMC_Console -e  " + bashdir_hdf5);
+                    pb3.waitFor();
                     JOptionPane.showMessageDialog(this, "The HDF5 package packages has been  installed successfully ");
 
                 }
-            }
-
-            if (_petsc_.isSelected()) {
-                File f = new File("/opt/petsc-3.4.4");
-                if (f.exists() && f.isDirectory()) {
-                    System.out.println(" The PetSc package is already installed in your OS");
-                } else {
-                    Process pb3 = Runtime.getRuntime().exec("xterm  -title ERSN-OpenMC_Console -e  " + bashdir_petsc);
-                    pb3.waitFor();
-                    JOptionPane.showMessageDialog(this, "The PETSC package has been  installed successfully");
-
-                }
-            }
+            
 
         } catch (IOException | InterruptedException ex) {
             System.out.print(ex);
@@ -719,7 +652,7 @@ public void get_ERSMOpenMC_Config(String openmc_path,String openmc_target, Strin
         }
 }
     public void save_openmcdir_file(String openmc_path) {
-get_ERSMOpenMC_Config(openmc_path, "/openmc/bin/openmc",  "/config/openmc.dir");
+get_ERSMOpenMC_Config(openmc_path, "/openmc/build/bin/openmc",  "/config/openmc.dir");
     
     }
 
@@ -759,8 +692,6 @@ get_ERSMOpenMC_Config(openmc_path,"/openmc/data/nndc/cross_sections.xml",   "/co
 
         if (_mpich2_.isSelected() == true) {
             str_mpich2 = " mpich2 libmpich2-dev ";
-            PARALLEL_HD5_FLAG = "USED";
-
             parallel_mode = true;
 
         } else {
@@ -768,20 +699,6 @@ get_ERSMOpenMC_Config(openmc_path,"/openmc/data/nndc/cross_sections.xml",   "/co
             parallel_mode = false;
         }
     }//GEN-LAST:event__mpich2_ActionPerformed
-
-    private void _openmpi_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__openmpi_ActionPerformed
-
-        if (_openmpi_.isSelected() == true) {
-            str_openmpi = " libopenmpi-dev openmpi-bin libhdf5-openmpi-dev ";
-            parallel_mode = true;
-            PARALLEL_HD5_FLAG = "USED";
-
-        } else {
-            str_openmpi = "  ";
-            parallel_mode = false;
-        }
-
-    }//GEN-LAST:event__openmpi_ActionPerformed
 
     private void _matplotlib_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__matplotlib_ActionPerformed
 
@@ -834,99 +751,57 @@ get_ERSMOpenMC_Config(openmc_path,"/openmc/data/nndc/cross_sections.xml",   "/co
     private void _ipython_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__ipython_ActionPerformed
         if (_ipython_.isSelected() == true) {
             str_ipython = " ipython ";
-        } else {
+        } 
+        else 
+        {
 str_ipython="  " ;    }//GEN-LAST:event__ipython_ActionPerformed
+    
     }
-    private void _petsc_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__petsc_ActionPerformed
-
-        if (_petsc_.isSelected() == true) {
-            PETSC_FLAG = "USED";
-        } else {
-            PETSC_FLAG = "NOT-USED";
-        }
-
-    }//GEN-LAST:event__petsc_ActionPerformed
-
-    private void _hdf5_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__hdf5_ActionPerformed
-
-        if (_hdf5_.isSelected() == true) {
-            HD5_FLAG = "USED";
-            if (parallel_mode == true) {
-            }
-        } else {
-            HD5_FLAG = "NOT-USED";
-            parallel_mode = false;
-        }
-
-    }//GEN-LAST:event__hdf5_ActionPerformed
-
-    private void _gfortran_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__gfortran_ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event__gfortran_ActionPerformed
-
     private void _SEQ_MODEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__SEQ_MODEActionPerformed
         try {
             bashdir_openmc = getJarContainingFolder(ERSNOpenMC_Main.class) + "/scripts/get_openmc.sh";  //load bash file for sequentiel application.
         } catch (Exception ex) {
             System.out.print(ex);
         }
-
     }//GEN-LAST:event__SEQ_MODEActionPerformed
 
-    private void SHARE_MODEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SHARE_MODEActionPerformed
-
+    private void DISTRIB_OpenMPI_MODEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DISTRIB_OpenMPI_MODEActionPerformed
         try {
-
             bashdir_openmc = getJarContainingFolder(ERSNOpenMC_Main.class) + "/scripts/get_openmc-with-openmpi.sh"; // load bash file for shared memory application.
-
         } catch (Exception ex) {
             System.out.print(ex);
         }
-    }//GEN-LAST:event_SHARE_MODEActionPerformed
-
+    }//GEN-LAST:event_DISTRIB_OpenMPI_MODEActionPerformed
+    
     private void DISTRIB_MODEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DISTRIB_MODEActionPerformed
         try {
-
             bashdir_openmc = getJarContainingFolder(ERSNOpenMC_Main.class) + "/scripts/get_openmc-with-mpich2.sh";  // load bash file for distributed memory application.
-
         } catch (Exception ex) {
             System.out.print(ex);
         }
-
     }//GEN-LAST:event_DISTRIB_MODEActionPerformed
 
     private void _petsc_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__petsc_1ActionPerformed
         str_python_5py = " python-h5py ";
     }//GEN-LAST:event__petsc_1ActionPerformed
 
-    private void _petsc_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__petsc_2ActionPerformed
-        str_gedit = " gedit ";
-
-    }//GEN-LAST:event__petsc_2ActionPerformed
-
-    private void jCheckBox_hdf5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox_hdf5ActionPerformed
-
-        if (jCheckBox_hdf5.isSelected() == true) {
-            HD5_FLAG = "USED";
+    private void jCheckBox_openmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox_openmpActionPerformed
+        if (jCheckBox_openmp.isSelected() == true) {
+            str_openmp_status = "USED";
+        }      
+        if (jCheckBox_openmp.isSelected() == false) {
+            str_openmp_status = "NOT-USED";
         }
-        
-        
-        if (jCheckBox_hdf5.isSelected() == false) {
-            HD5_FLAG = "NOT-USED";
-        }
-        System.out.print("ERSN-OPENMC/CONSOLE:-------IHD5_FLAG: " + HD5_FLAG);
-
-
-    }//GEN-LAST:event_jCheckBox_hdf5ActionPerformed
+        System.out.print("ERSN-OPENMC/CONSOLE " + str_openmp_status);
+    }//GEN-LAST:event_jCheckBox_openmpActionPerformed
 
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
-        System.out.print("ERSN-OPENMC/CONSOLE:-------IHD5_FLAG: " + HD5_FLAG);
-
+        System.out.print("ERSN-OPENMC/CONSOLE:-------OPENMP mode: " + str_openmp_status);
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
-    private void jCheckBox_hdf5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox_hdf5MouseClicked
-        HD5_FLAG = "USED";
-    }//GEN-LAST:event_jCheckBox_hdf5MouseClicked
+    private void jCheckBox_openmpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox_openmpMouseClicked
+     //   str_openmp_status = "USED";
+    }//GEN-LAST:event_jCheckBox_openmpMouseClicked
 
     private void btn_close1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_close1ActionPerformed
          this.show(false);
@@ -935,6 +810,74 @@ str_ipython="  " ;    }//GEN-LAST:event__ipython_ActionPerformed
     private void btn_close2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_close2ActionPerformed
         this.show(false);
     }//GEN-LAST:event_btn_close2ActionPerformed
+
+    private void _openmpi_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__openmpi_ActionPerformed
+        if (_openmpi_.isSelected() == true) {
+            str_openmpi = " libopenmpi-dev openmpi-bin ";
+            parallel_mode = true;
+        } else {
+            str_openmpi = "  ";
+            parallel_mode = false;
+        }
+    }//GEN-LAST:event__openmpi_ActionPerformed
+
+    private void _gfortran49_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__gfortran49_ActionPerformed
+        if (_gfortran49_.isSelected() == true) {
+            str_gfortran49 = " gfortran-4.9 ";
+
+        } else {
+            str_gfortran49 = "  ";
+        }
+    }//GEN-LAST:event__gfortran49_ActionPerformed
+
+    private void _gfortran_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__gfortran_ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event__gfortran_ActionPerformed
+
+    private void _eog_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__eog_ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event__eog_ActionPerformed
+
+    private void _hdf5_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__hdf5_ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event__hdf5_ActionPerformed
+
+    private void jCheckBox_DebugMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox_DebugMouseClicked
+         str_debug_status = "USED";
+    }//GEN-LAST:event_jCheckBox_DebugMouseClicked
+
+    private void jCheckBox_DebugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox_DebugActionPerformed
+        if (jCheckBox_Debug.isSelected() == true) {
+            str_debug_status = "USED";
+        }       
+        if (jCheckBox_Debug.isSelected() == false) {
+            str_debug_status = "NOT-USED";
+        }
+        System.out.print("ERSN-OPENMC/CONSOLE :-------DEBUG mode:" + str_debug_status);
+
+    }//GEN-LAST:event_jCheckBox_DebugActionPerformed
+
+    private void install_dirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_install_dirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_install_dirActionPerformed
+
+    private void _mutt1_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__mutt1_ActionPerformed
+            if (_mutt1_.isSelected() == true) {
+            str_mutt = " mutt ";
+
+        } else {
+            str_mutt = "  ";
+        }
+    }//GEN-LAST:event__mutt1_ActionPerformed
+
+    private void _OPENMP_MODEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__OPENMP_MODEActionPerformed
+            try {
+            bashdir_openmc = getJarContainingFolder(ERSNOpenMC_Main.class) + "/scripts/get_openmc-with-openmp.sh";  //load bash file for sequentiel application.
+        } catch (Exception ex) {
+            System.out.print(ex);
+        }
+
+    }//GEN-LAST:event__OPENMP_MODEActionPerformed
  
     /**
      * @param args the command line arguments
@@ -968,20 +911,22 @@ str_ipython="  " ;    }//GEN-LAST:event__ipython_ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton DISTRIB_MODE;
-    private javax.swing.JRadioButton SHARE_MODE;
+    private javax.swing.JRadioButton DISTRIB_OpenMPI_MODE;
+    private javax.swing.JRadioButton _OPENMP_MODE;
     private javax.swing.JRadioButton _SEQ_MODE;
     private javax.swing.JCheckBox _cmake_;
     private javax.swing.JCheckBox _eog_;
+    private javax.swing.JCheckBox _gfortran49_;
     private javax.swing.JCheckBox _gfortran_;
     private javax.swing.JCheckBox _git_;
     private javax.swing.JCheckBox _hdf5_;
     private javax.swing.JCheckBox _ipython_;
     private javax.swing.JCheckBox _matplotlib_;
     private javax.swing.JCheckBox _mpich2_;
+    private javax.swing.JCheckBox _mutt1_;
     private javax.swing.JCheckBox _numpy_;
     private javax.swing.JCheckBox _openmpi_;
     private javax.swing.JCheckBox _paraview_;
-    private javax.swing.JCheckBox _petsc_;
     private javax.swing.JCheckBox _petsc_1;
     private javax.swing.JCheckBox _petsc_2;
     private javax.swing.JCheckBox _scipy_;
@@ -997,8 +942,8 @@ str_ipython="  " ;    }//GEN-LAST:event__ipython_ActionPerformed
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.ButtonGroup buttonGroup5;
     private javax.swing.JTextField install_dir;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox_hdf5;
+    private javax.swing.JCheckBox jCheckBox_Debug;
+    private javax.swing.JCheckBox jCheckBox_openmp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -1006,7 +951,6 @@ str_ipython="  " ;    }//GEN-LAST:event__ipython_ActionPerformed
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JTabbedPane jTabbedPane1;
