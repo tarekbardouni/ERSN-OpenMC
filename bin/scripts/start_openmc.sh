@@ -1,8 +1,7 @@
 
 #!/bin/bash
 #------------------------------------------------------------------------------
-export PATH=$PATH:/opt/hdf5/bin
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/hdf5/lib
+export HDF5_ROOT=/opt/hdf5
 export CROSS_SECTIONS=$1
 #------------------------------------------------------------------------------
 openmcexecutable=$2

@@ -4257,7 +4257,7 @@ guidance (Guidecmfd,"The <write_matrices> element is used to write the sparse ma
             System.out.print(ex);
         }
         try {                
-            String openmc_relaxng_dir=openmcdir.replace("bin/openmc","src/relaxng/");
+            String openmc_relaxng_dir=openmcdir.replace("/build/bin/openmc","/src/relaxng/");
             System.out.println(openmc_relaxng_dir);
             String open_xml_validation_bin=scripts_dir+"/openmc-validate-xml"; 
             Runtime.getRuntime().exec("xterm -e "+bashdir_xml_validation+" "+project_full_path+ " "+open_xml_validation_bin+" "+openmc_relaxng_dir);      
