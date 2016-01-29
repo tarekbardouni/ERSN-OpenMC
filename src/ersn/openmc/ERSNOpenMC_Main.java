@@ -2701,24 +2701,28 @@ Process p_openmc_xml_validation = Runtime.getRuntime().exec("xterm -iconic -titl
     private void btn_cellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cellActionPerformed
       geometryTxt.replaceSelection(
           "<cell id=\"\" >\n"
-        + "   <material>  </material> \n"
-        + "   <surfaces>  </surfaces>        \n"
+        + "   <material>  </material>        \n"
+        + "   <region>  </region>            \n"
         + "   <universe>  </universe>        \n"
         + "   <fill>  </fill>                \n"
         + "   <rotation>  </rotation>        \n"
         + "   <translation>  </translation>  \n"
-        + "   <region>  </region>            \n"   
         + "</cell>\n"); 
     }//GEN-LAST:event_btn_cellActionPerformed
 
     private void btn_tallyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tallyActionPerformed
 //int caretPosition = talliesTxt.getCaretPosition(); 
-talliesTxt.replaceSelection("<tally id=\"\" >\n  <name >  </name>\n"
-        + "  <filter type=\"\" bins=\"\"/>  \n"
-        + "  <scores >  </scores>\n  <nuclides> </nuclides>\n"
-        + "  <trigger> \n    <type> </type>\n    <threshold> </threshold>\n"  
-        + "    <scores> </scrores>\n" 
-        + "  </trigger>\n</tally>\n"); 
+talliesTxt.replaceSelection(
+          "<tally id=\"\" >\n  <name >  </name>\n"
+        + "  <filter type=\"\" bins=\"\"/>\n"
+        + "  <scores >  </scores>\n"
+        + "  <nuclides> </nuclides>\n"
+        + "  <trigger>\n"
+        + "      <type> </type>\n"
+        + "      <threshold> </threshold>\n"  
+        + "      <scores> </scrores>\n" 
+        + "  </trigger>\n"
+        + "</tally>\n"); 
 //talliesTxt.setCaretPosition(Math.min(caretPosition, talliesTxt.getText().length()));             
     }//GEN-LAST:event_btn_tallyActionPerformed
 
@@ -2754,7 +2758,8 @@ System.out.print(project_full_path);
     }//GEN-LAST:event_btn_defaults_xsActionPerformed
 
     private void btn_latticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_latticeActionPerformed
-        geometryTxt.replaceSelection("<lattice id=\" \" dimension=\" \" outer=\" \">\n" 
+        geometryTxt.replaceSelection(
+             "<lattice id=\" \" dimension=\" \" outer=\" \">\n" 
             +"   <lower_left>   </lower_left> \n" 
             +"   <pitch>  </pitch> \n" 
             +"   <universes>  \n\n"
@@ -2763,13 +2768,14 @@ System.out.print(project_full_path);
     }//GEN-LAST:event_btn_latticeActionPerformed
 
     private void btn_meshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_meshActionPerformed
-        talliesTxt.replaceSelection("<mesh id=\"\">\n" +
-"  <type>   </type> \n" +
-"  <dimension>  </dimension> \n" +
-"  <upper_right>   </upper_right> \n" +
-"  <lower_left>   </lower_left> \n" +
-"  <width>  </width> \n" +
-"</mesh>\n");    
+        talliesTxt.replaceSelection(
+                "<mesh id=\"\">\n" +
+                "  <type>   </type> \n" +
+                "  <dimension>  </dimension> \n" +
+                "  <upper_right>   </upper_right> \n" +
+                "  <lower_left>   </lower_left> \n" +
+                "  <width>  </width> \n" +
+                "</mesh>\n");    
     }//GEN-LAST:event_btn_meshActionPerformed
 
     private void btn_assume_separateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_assume_separateActionPerformed
@@ -2777,26 +2783,27 @@ System.out.print(project_full_path);
         talliesTxt.replaceSelection("<assume_separate> false </assume_separate>\n");    }
         
     private void btn_plot_sliceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_plot_sliceActionPerformed
-        plottingTxt.replaceSelection("<plot id=\"\" color=\"\"  type=\"slice\" basis=\"\" background=\"\">\n" +
-"  <mask> </mask>\n" +
-"  <origin> </origin>\n" +
-"  <width> </width>\n" +
-  "  <col_spec id=\"\" rgb=\"\"><col_spec>\n" +
-"  <pixels>  </pixels>\n" +
-"</plot>\n" 
+        plottingTxt.replaceSelection(
+                "<plot id=\"\" color=\"\"  type=\"slice\" basis=\"\" background=\"\">\n" +
+                "  <origin> </origin>\n" +
+                "  <pixels>  </pixels>\n" +
+                "  <width> </width>\n" +
+                "  <col_spec id=\"\" rgb=\"\"><col_spec>\n" +
+                "  <mask> </mask>\n" +
+                "</plot>\n" 
 );                                             
     }//GEN-LAST:event_btn_plot_sliceActionPerformed
 
     private void btn_plot_voxelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_plot_voxelActionPerformed
         plottingTxt.replaceSelection(
-"\n" +
-"<plot id=\"\" color=\"\"  type=\"voxel\" basis=\"\" background=\"\">\n" +
-"  <mask> </mask>\n" +
-"  <origin> </origin>\n" +
-"  <width> </width>\n" +
-"  <col_spec id=\"\" rgb=\"\"><col_spec>\n" +
-"  <pixels>  </pixels>\n" +
-"</plot>\n"
+                "\n" +
+                "<plot id=\"\" color=\"\"  type=\"voxel\" basis=\"\" background=\"\">\n" +
+                "  <origin> </origin>\n" +
+                "  <pixels>  </pixels>\n" +
+                "  <width> </width>\n" +
+                "  <col_spec id=\"\" rgb=\"\"><col_spec>\n" +
+                "  <mask> </mask>\n" +
+                "</plot>\n"
 );            }//GEN-LAST:event_btn_plot_voxelActionPerformed
 
     private void btn_beginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_beginActionPerformed
@@ -2824,17 +2831,18 @@ System.out.print(project_full_path);
     }//GEN-LAST:event_btn_stolActionPerformed
 
     private void btn_mesh_cmfdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mesh_cmfdActionPerformed
-        cmfdTxt.replaceSelection("<mesh>\n" +
-"  <dimension>  </dimension>\n" +
-"  <upper_right>   </upper_right>\n" +
-"  <lower_left>   </lower_left>\n" +
-"  <energy>   </energy>\n" +
-"  <albedo>   </albedo>\n" +
-"  <width>  </width>\n" +       
-"  <map>  </map>\n" +
-"  <universes>\n\n" +
-"  </universes>\n" +
-"</mesh>\n");                                            
+        cmfdTxt.replaceSelection(
+                "<mesh>\n" +
+                "  <dimension>  </dimension>\n" +
+                "  <upper_right>   </upper_right>\n" +
+                "  <lower_left>   </lower_left>\n" +
+                "  <energy>   </energy>\n" +
+                "  <albedo>   </albedo>\n" +
+                "  <width>  </width>\n" +       
+                "  <map>  </map>\n" +
+                "  <universes>\n\n" +
+                "  </universes>\n" +
+                "</mesh>\n");                                            
     }//GEN-LAST:event_btn_mesh_cmfdActionPerformed
 
     private void btn_normActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_normActionPerformed
@@ -2940,23 +2948,18 @@ guidance (Guidecmfd,"The <display> element sets one additional CMFD output colum
 "“dominance” - prints the estimated dominance ratio from the CMFD iterations. This will only work for power iteration eigensolver.\n" +
 "“entropy” - prints the entropy of the CMFD predicted fission source. Can only be used if OpenMC entropy is active as well.\n" +
 " “source” - prints the RMS [%] between the OpenMC fission source and CMFD fission source. \nDefault: None");
- 
-
     }//GEN-LAST:event_btn_displayMouseEntered
 
     private void btn_feedbackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_feedbackMouseEntered
-      btn_feedback.setBackground(BUTTON_BACKGROUD_COLOR__SELECTED_STATE);
-
+        btn_feedback.setBackground(BUTTON_BACKGROUD_COLOR__SELECTED_STATE);
         guidance (Guidecmfd,"The <feedback> element controls whether or not the CMFD diffusion result is used to adjust the weight of fission source neutrons on the next OpenMC batch. It can be turned on with “true” and off with “false”.Default: false");
-
     }//GEN-LAST:event_btn_feedbackMouseEntered
 
     private void btn_gauss_seidel_toleranceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_gauss_seidel_toleranceMouseEntered
-      btn_gauss_seidel_tolerance.setBackground(BUTTON_BACKGROUD_COLOR__SELECTED_STATE);
-
+        btn_gauss_seidel_tolerance.setBackground(BUTTON_BACKGROUD_COLOR__SELECTED_STATE);
         guidance (Guidecmfd,"The <gauss_seidel_tolerance> element specifies two parameters. The first is the absolute inner tolerance for Gauss-Seidel iterations when performing CMFD and the second is the relative inner tolerance for Gauss-Seidel iterations for CMFD calculations.\n" +
-"\n" +
-"Default: 1.e-10 1.e-5");
+        "\n" +
+        "Default: 1.e-10 1.e-5");
     }//GEN-LAST:event_btn_gauss_seidel_toleranceMouseEntered
 
     private void btn_ktolMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ktolMouseEntered
@@ -3126,7 +3129,7 @@ if (cmfdTxt.getText().isEmpty()==false) {save_xml_file("cmfd.xml",project_full_p
 
         guidance (guide_geometry,"Each <surface> element can have the following attributes or sub-elements:\n" +
 "id: A unique integer that can be used to identify the surface. Default: None \n" +
-"type: The type of the surfaces. This can be x-plane, y-plane, z-plane, plane, x-cylinder, y-cylinder, z-cylinder, or sphere. Default: None\n" +
+"type: The type of the surfaces. This can be “x-plane”, “y-plane”, “z-plane”, “plane”, “x-cylinder”, “y-cylinder”, “z-cylinder”, “sphere”, “x-cone”, “y-cone”, “z-cone”, or “quadric”. Default: None\n" +
 "coeffs: The corresponding coefficients for the given type of surface. See below for a list a what coefficients to specify for a given surface. Default: None\n" +
 "boundary: The boundary condition for the surface. This can be “transmission”, “vacuum”, or “reflective. Default: “transmission”");             
     }//GEN-LAST:event_btn_surfaceMouseEntered
@@ -3138,7 +3141,7 @@ if (cmfdTxt.getText().isEmpty()==false) {save_xml_file("cmfd.xml",project_full_p
 "id: A unique integer that can be used to identify the surface. Default: None\n" +
 "universe: The id of the universe that this cell is contained in. Default: 0\n" +
 "fill: The id of the universe that fills this cell.\n material: The id of the material that this cell contains. If the cell should contain no material, this can also be set to “void”. Default: None\n" +
-"surfaces: A list of the ids for surfaces that bound this cell, e.g. if the cell is on the negative side of surface 3 and the positive side of surface 5, the bounding surfaces would be given as “-3 5”. Note: surfaces will be replaced by region in openmc release 0.7.1.  Default: None\n" +
+"region: A list of the ids for surfaces that bound this cell, e.g. if the cell is on the negative side of surface 3 and the positive side of surface 5, the bounding surfaces would be given as “-3 5”. Note: surfaces have been replaced by region in openmc release 0.7.1.  Default: None\n" +
 "rotation: If the cell is filled with a universe, this element specifies the angles in degrees about the x, y, and z axes that the filled universe should be rotated. Should be given as three real numbers. Rotation can be omitted if no rotation is applyed. Default: None\n" +
 "translation: If the cell is filled with a universe, this element specifies a vector that is used to translate (shift) the universe. Should be given as three real numbers. Translation can be omitted if no translation is applyed. Default: None");  
     }//GEN-LAST:event_btn_cellMouseEntered
@@ -3153,7 +3156,18 @@ guidance (guide_geometry,"The <lattice> can be used to represent repeating struc
 "Default: None \n lower_left: The coordinates of the lower-left corner of the lattice. If the lattice is two-dimensional, only the x- and y-coordinates are specified. Default: None\n" +
 "width: The width of the lattice cell in the x- and y- (and z-) directions. Default: None\n" +
 "outside: The unique integer identifier of a material that is to be used to fill all space outside of the lattice. This element is optional. Default: The region outside the defined lattice is treated as void.\n" +
-"universes: A list of the universe numbers that fill each cell of the lattice. Default: None");
+"universes: A list of the universe numbers that fill each cell of the lattice. Default: None\n" +
+"Here is an example of a properly defined 2d rectangular lattice:\n" +
+"   <lattice id=\"10\" dimension=\"3 3\" outer=\"1\">\n" +
+"    <lower_left> -1.5 -1.5 </lower_left>\n" +
+"    <pitch> 1.0 1.0 </pitch>\n" +
+"    <universes>\n" +
+"      2 2 2\n" +
+"      2 1 2\n" +
+"      2 2 2\n" +
+"    </universes>\n" +
+"   </lattice>"        
+        );
     }//GEN-LAST:event_btn_latticeMouseEntered
 
     private void menu_item_get_openmcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_get_openmcActionPerformed
@@ -3183,16 +3197,27 @@ guidance (guide_geometry,"The <lattice> can be used to represent repeating struc
         guidance (guide_tallies,"The <tally> element accepts the following sub-elements:\n\n" 
 + "name:     This is an optional sub-element specifying the name of this tally to be used for output purposes. This string is limited to 52 characters for formatting purposes.\n" 
 + "filter:   Specify a filter that restricts contributions to the tally to particles within certain regions of phase space.\n The filter element has the following attributes/sub-elements:\n"
-+ "        type:   The type of the filter. Accepted options are “cell”, “cellborn”, “material”, “universe”, “energy”, “energyout”, “mesh”, and “distribcell”. \n"
++ "        type:   The type of the filter. Accepted options are “cell”, “cellborn”, “material”, “universe”, “energy”, “energyout”, “mesh”, “distribcell”, “mu”, “polar”, “azimutal”, and “delayedgroup”. \n"
 + "        bins:   For each filter type, the corresponding bins entry corresponds to identifiers and/or values of the above type entries.  \n\n"
++ "                example: <filter type=\"energy\" bins=\"0.0 1.0 20.0\" />   \n"
++ "                         <filter type=\"energy\" bins=\"0.0 1.0 20.0\" />   \n"
++ "                         <filter type=\"energyout\" bins=\"0.0 1.0 20.0\" />   \n"
++ "                         <filter type=\"mu\" bins=\"-1.0 -0.6 -0.2 0.2 0.6 1.0\" /> \n"
++ "                      or <filter type=\"mu\" bins=\"5\" />\n" 
++ "                         <filter type=\"polar\" bins=\"0.0 0.6283 1.2566 1.8850 2.5132 3.1416\"/> \n"
++ "                      or <filter type=\"polar\" bins=\"5\" /> \n"
++ "                         <filter type=\"azimuthal\" bins=\"0.0 3.1416 6.2832\" /> \n"
++ "                      or <filter type=\"azimuthal\" bins=\"2\" />\n"
++ "                         <filter type=\"delayedgroup\" bins=\"1 2 3 4 5 6\" /> to tally to all 6 delayed groups in the ENDF/B-VII.1 library  \n"
++ "   \n"
 + "nuclides: If specified, the scores listed will be for particular nuclides, not the summation of reactions from all nuclides. \n"
 + "          The format for nuclides should be [Atomic symbol]-[Mass number], e.g. “U-235”. The reaction rate for all nuclides can \n"
 + "          be obtained with “total”. Use: <nuclides>U-235 Pu-239 total</nuclides>  \n\n "
 + "estimator: The estimator element is used to force the use of either analog or tracklength tally estimation.  \n\n"
 + "scores:   A space-separated list of the desired responses to be accumulated. \n"
-+ "          Accepted options are : “flux”, “total”, “scatter”, “absorption”, “fission”, “nu-fission”, “kappa-fission”, “nu-scatter”, \n"
++ "          Accepted options are : “flux”, “total”, “scatter”, “absorption”, “fission”, “nu-fission”, “delayed-nu-fission”, “kappa-fission”, “nu-scatter”, \n"
 + "          “scatter-N”, “scatter-PN”, “scatter-YN”, “nu-scatter-N”, “nu-scatter-PN”, “nu-scatter-YN”, “flux-YN”, “total-YN”, \n"
-+ "          “current”, and “events”. \n\n "
++ "          “current”, “inverse-velocity” and “events”. \n\n "
 + "trigger:  Precision trigger applied to all filter bins and nuclides for this tally. It must specify the trigger’s type, \n"
 + "          threshold and scores to which it will be applied. It has the following attributes/sub-elements:\n" 
 + "        type:      The type of the trigger. Accepted options are “variance”, “std_dev”, and “rel_err”.\n"
@@ -3435,7 +3460,7 @@ guidance (Guidecmfd,"The CMFD mesh is a structured Cartesian mesh. This element 
     private void btn_meshMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_meshMouseEntered
 
       btn_mesh.setBackground(BUTTON_BACKGROUD_COLOR__SELECTED_STATE);
-guidance (guide_tallies,"If a structured mesh is desired as a filter for a tally, it must be specified in a separate element with the tag name <mesh>. This element has the following attributes/sub-elements: \n type: The type of structured mesh. Valid options include “rectangular” and “hexagonal”. \n dimension:The number of mesh cells in each direction.\n lower_left:The lower-left corner of the structured mesh. If only two coordinates are given, it is assumed that the mesh is an x-y mesh.\n upper_right:The upper-right corner of the structured mesh. If only two coordinates are given, it is assumed that the mesh is an x-y mesh.\n width:The width of mesh cells in each direction.");
+guidance (guide_tallies,"If a structured mesh is desired as a filter for a tally, it must be specified in a separate element with the tag name <mesh>. This element has the following attributes/sub-elements: \n type: The type of structured mesh. Valid options include “rectangular” and “hexagonal”. \n dimension:The number of mesh cells in each direction.\n lower_left:The lower-left corner of the structured mesh. If only two coordinates are given, it is assumed that the mesh is an x-y mesh.\n upper_right:The upper-right corner of the structured mesh. If only two coordinates are given, it is assumed that the mesh is an x-y mesh.\n width:The width of mesh cells in each direction.\n One of <upper_right> or <width> must be specified, but not both (even if they are consistent with one another).");
     }//GEN-LAST:event_btn_meshMouseEntered
 
     private void btn_assume_separateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_assume_separateMouseEntered
@@ -4126,7 +4151,24 @@ guidance (guide_geometry,"The <hex_lattice> can be used to represent repeating s
 "universes:	\n" +
 "A list of the universe numbers that fill each cell of the lattice.\n" +
 "\n" +
-"Default: None");
+"Default: None.  \n" +
+"Here is an example of a properly defined 2d hexagonal lattice:\n"+
+"<hex_lattice id=\"10\" n_rings=\"3\" outer=\"1\">\n"+
+"    <center> 0.0 0.0 </center>\n"+
+"    <pitch> 1.0 </pitch>\n"+
+"    <universes>\n"+
+"              202\n"+
+"           202   202\n"+
+"        202   202   202\n"+
+"           202   202\n"+
+"        202   101   202\n"+
+"           202   202\n"+
+"        202   202   202\n"+
+"           202   202\n"+
+"              202\n"+
+"    </universes>\n"+
+"</hex_lattice>\n"
+        );
                  
         
     }//GEN-LAST:event_btn_hex_latticeMouseEntered
