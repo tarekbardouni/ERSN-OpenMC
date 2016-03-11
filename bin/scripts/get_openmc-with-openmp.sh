@@ -5,18 +5,22 @@ DEBUG_STATUS=$2
 OPENMP_STATUS=$3
 echo "            ****** Directory     : " $INSTALL_DIR
 echo "            ****** DEBUG_STATUS  : " $DEBUG_STATUS
-echo "            ****** openmp_STATUS : " $OPENMP_STATUS
-
+echo "            ****** OPENMP_STATUS : " $OPENMP_STATUS
 
 export FC=gfortran-4.9
 export HDF5_ROOT=/opt/hdf5
 
 if [ $DEBUG_STATUS=="USED" ]; then
-	DEBUG_OPTION='-Ddebug=on'
+	export DEBUG_OPTION='-Ddebug=on'
 else
-        DEBUG_OPTION=' '
+        export DEBUG_OPTION=' '
 fi
 
+if [ $OPENMP_STATUS=="USED" ]; then
+	export OPENMP_OPTION='-Dopenmp=on'
+else
+        export OPENMP_OPTION=' '
+fi
 #
 cd  $INSTALL_DIR
 #
@@ -30,12 +34,11 @@ mkdir build && cd build
 make clean
 #
 find -iname '*cmake*' -not -name CMakeLists.txt -exec rm -rf {} \+
-
-cmake $DEBUG_OPTION ..
+cmake $OPENMP_OPTION $DEBUG_OPTION ..
 #
 make 
 sudo make install 
-sudo make install -e prefix=$INSTALL_DIR/openmc
+#make install -e prefix=$INSTALL_DIR/openmc
 
 echo "              *************************************************  "
 echo "                 OpenMC sequential version has been installed    "
