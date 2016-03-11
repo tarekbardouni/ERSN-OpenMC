@@ -4,7 +4,7 @@ openmc_project_dir=$1
 openmc_xml_validation_dir=$2
 openmc_relaxng_dir=$3
 
-# delete OpenMC XML file until it is empty
+# delete OpenMC XML file until it is not empty
 cmfd_file=$openmc_project_dir"/cmfd.xml"
 plot_file=$openmc_project_dir"/plots.xml"
 tallies_file=$openmc_project_dir"/tallies.xml"

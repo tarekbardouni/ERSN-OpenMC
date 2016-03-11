@@ -1,36 +1,20 @@
 #!/bin/bash
 
-PETSC_OPTION=""
 INSTALL_DIR=$1
-HDF5_STATUS=$2
-PETSC_STATUS=$3
+DEBUG_STATUS=$2
+OPENMP_STATUS=$3
+echo "            ****** Directory     : " $INSTALL_DIR
+echo "            ****** DEBUG_STATUS  : " $DEBUG_STATUS
+echo "            ****** openmp_STATUS : " $OPENMP_STATUS
 
-echo $HDF5_STATUS
 
-if [ $HDF5_STATUS=="USED" ]; then
-    export PATH=/opt/hdf5/bin:$PATH
-    echo " HDF5_STATUS: USED"
-    export LD_LIBRARY_PATH=/opt/hdf5/lib:$LD_LIBRARY_PATH
-    HDF5=$(which h5fc)
-    if [ "$HDF5" != "/opt/hdf5/bin/h5fc" ]; then
-        export FC="gfortran"
-        echo " h5fc not found, gfortran is used "
-    else
-        export FC="h5fc"
-        echo " h5fc found "
-    fi
+export FC=gfortran-4.9
+export HDF5_ROOT=/opt/hdf5
+
+if [ $DEBUG_STATUS=="USED" ]; then
+	DEBUG_OPTION='-Ddebug=on'
 else
-    echo " HDF5_STATUS: NOT-USED"
-fi
-
-
-if [ $PETSC_STATUS=="USED" ]; then
-    echo " PETSC_STATUS: USED"
-    export PETSC_DIR=/opt/petsc-3.4.4
-    PETSC_OPTION="-Dpetsc=on"
-else
-    echo " PETSC_STATUS: NOT-USED"
-    PETSC_OPTION=""
+        DEBUG_OPTION=' '
 fi
 
 #
@@ -42,13 +26,15 @@ cd openmc
 #
 git checkout master
 #
+mkdir build && cd build
 make clean
 #
 find -iname '*cmake*' -not -name CMakeLists.txt -exec rm -rf {} \+
 
-cmake  -Ddebug=on  PETSC_OPTION .
+cmake $DEBUG_OPTION ..
 #
 make 
+sudo make install 
 sudo make install -e prefix=$INSTALL_DIR/openmc
 
 echo "              *************************************************  "

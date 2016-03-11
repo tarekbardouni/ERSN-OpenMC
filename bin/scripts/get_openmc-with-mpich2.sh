@@ -1,24 +1,30 @@
 #!/bin/bash
-petsc=""
-HDF5_STATUS=$2
-PETSC_STATUS=$3
 
-if [ $HDF5_STATUS=="USED" ]; then
-      export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/hdf5/lib
-      export FC=h5pfc
+INSTALL_DIR=$1
+DEBUG_STATUS=$2
+OPENMP_STATUS=$3
+echo "            ****** Directory     : " $INSTALL_DIR
+echo "            ****** DEBUG_STATUS  : " $DEBUG_STATUS
+echo "            ****** openmp_STATUS : " $OPENMP_STATUS
+
+export FC=mpif90
+export CC=mpicc
+export HDF5_ROOT=/opt/hdf5
+
+if [ $DEBUG_STATUS=="USED" ]; then
+	DEBUG_OPTION='-Ddebug=on'
 else
-      export FC=mpif90
+        DEBUG_OPTION=' '
 fi
 
-
-if [ $PETSC_STATUS=="USED" ]; then
-      export  PETSC_DIR= /opt/petsc-3.4.4
-      export PETSC_ARCH=linux-gnu-intel
-      PETSC_OPTION="-Dpetsc=on"
+if [ $OPENMP_STATUS=="USED" ]; then
+	OPENMP_OPTION='-Dopenmp=on'
 else
-      echo " PETSC NOT USED"     
+        OPENMP_OPTION=' '
 fi
-cd  $install_dir
+
+#
+cd  $INSTALL_DIR
 #
 git clone https://github.com/mit-crpg/openmc.git
 #
@@ -26,19 +32,20 @@ cd openmc
 #
 git checkout master
 #
+mkdir build && cd build
 make clean
 #
 find -iname '*cmake*' -not -name CMakeLists.txt -exec rm -rf {} \+
 
-cmake -Ddebug=on $PETSC_OPTION .
+cmake $DEBUG_OPTION $OPENMP_OPTION ..
 #
-make
-#
-sudo make install -e prefix=$install_dir/openmc
+make 
+sudo make install 
+sudo make install -e prefix=$INSTALL_DIR/openmc
 
-echo "    ***********************************************************************************"
-echo "            Parallel version (MPICH2) of OpenMC has been installed succesfully"
-echo "    ***********************************************************************************"
+echo "              *************************************************  "
+echo "                 OpenMC sequential version has been installed    "
+echo "              *************************************************  "
 
 echo " "
 printf "Press 'CTRL+C' to exit : "
@@ -47,4 +54,5 @@ while :
 do
     sleep 10000 
 done
+
 
