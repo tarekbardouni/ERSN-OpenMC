@@ -342,7 +342,6 @@ plottingTxt.setContentType("text/xhtml");
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         _3d_mesh_plot = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem_binary_track_to_pvtp = new javax.swing.JMenuItem();
@@ -2490,15 +2489,6 @@ plottingTxt.setContentType("text/xhtml");
         });
         jMenu6.add(_3d_mesh_plot);
 
-        jMenuItem12.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK));
-        jMenuItem12.setText("Tally histogram");
-        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem12ActionPerformed(evt);
-            }
-        });
-        jMenu6.add(jMenuItem12);
-
         Menu_tools.add(jMenu6);
 
         jMenu7.setText("File conversion");
@@ -2797,7 +2787,7 @@ System.out.print(project_full_path);
     private void btn_plot_voxelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_plot_voxelActionPerformed
         plottingTxt.replaceSelection(
                 "\n" +
-                "<plot id=\"\" color=\"\"  type=\"voxel\" basis=\"\" background=\"\">\n" +
+                "<plot id=\"\" color=\"\"  type=\"voxel\" background=\"\">\n" +
                 "  <origin> </origin>\n" +
                 "  <pixels>  </pixels>\n" +
                 "  <width> </width>\n" +
@@ -4330,23 +4320,6 @@ guidance (Guidecmfd,"The <write_matrices> element is used to write the sparse ma
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 }
 */
-
-    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-        java.io.File dir = new File(project_full_path);
-        JFileChooser fc = new JFileChooser(dir);
-        fc.setCurrentDirectory(dir);
-        fc.setAcceptAllFileFilterUsed(false);
-        fc.setDialogTitle("select statepoint file");
-    //    Tools tools = new Tools();
-        Tools.Description="statepoint";
-        fc.setFileFilter(new Filenamefilter());
-        int result = fc.showOpenDialog(null);
-        if (result == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fc.getSelectedFile();
-            statepoint_file=selectedFile.toString();
-            tally_histogram_py(statepoint_file);
-}     
-    }//GEN-LAST:event_jMenuItem12ActionPerformed
     
 
     public void get_openmcdir(){
@@ -4509,7 +4482,6 @@ guidance (Guidecmfd,"The <write_matrices> element is used to write the sparse ma
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
