@@ -91,7 +91,7 @@ public class ERSNOpenMC_About extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 48)); // NOI18N
         jLabel2.setForeground(java.awt.Color.orange);
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("ERSN-OPENMC v1.3");
+        jLabel2.setText("ERSN-OPENMC v1.4");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
