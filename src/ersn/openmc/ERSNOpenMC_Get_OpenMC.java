@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2015 Jaafar EL Bakkali.
+ * Copyright 2015-2017 Jaafar EL Bakkali & Tarek El Bardouni.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,13 +34,12 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Jaafar EL Bakkali
+ * @author Jaafar EL Bakkali & Tarek El Bardouni
  */
 public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
 
     String  str_cmake = " cmake ",
             str_gfortran = " gfortran ",
-            str_gfortran49 = " ",
             str_git = " git ",
             str_eog = " eog ",
             str_mutt = " ",
@@ -58,7 +57,8 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
     Boolean parallel_mode = false;
     String bashdir_openmc = "";
     String bashdir_hdf5 = "",
-           str_python_5py = "";
+           str_python_5py = "",
+           str_python_pandas = "";
     private Object _mutt_;
 
     /**
@@ -107,11 +107,11 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         _scipy_ = new javax.swing.JCheckBox();
         _ipython_ = new javax.swing.JCheckBox();
         _hdf5_ = new javax.swing.JCheckBox();
-        _petsc_1 = new javax.swing.JCheckBox();
+        pandas = new javax.swing.JCheckBox();
         _petsc_2 = new javax.swing.JCheckBox();
         btn_close2 = new javax.swing.JButton();
         _mutt1_ = new javax.swing.JCheckBox();
-        _gfortran49_ = new javax.swing.JCheckBox();
+        h5py1 = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
         btn_get_openmc = new javax.swing.JButton();
         lbl_dir = new javax.swing.JLabel();
@@ -188,7 +188,6 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         _mpich2_.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         _mpich2_.setForeground(java.awt.Color.yellow);
         _mpich2_.setText("MPICH: a standard for Message-Passing Interface (distributed-memory).");
-        _mpich2_.setEnabled(false);
         _mpich2_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 _mpich2_ActionPerformed(evt);
@@ -203,7 +202,6 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         _openmpi_.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         _openmpi_.setForeground(java.awt.Color.yellow);
         _openmpi_.setText("OPENMPI: Open Source High Performance Computing shared memory (distributed-memory).");
-        _openmpi_.setEnabled(false);
         _openmpi_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 _openmpi_ActionPerformed(evt);
@@ -259,7 +257,7 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         jPanel1.add(_vtk_);
         _vtk_.setBounds(590, 160, 410, 25);
         jPanel1.add(jSeparator2);
-        jSeparator2.setBounds(0, 240, 1480, 6);
+        jSeparator2.setBounds(0, 250, 1480, 10);
 
         _paraview_.setBackground(java.awt.SystemColor.activeCaption);
         _paraview_.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
@@ -323,17 +321,17 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         jPanel1.add(_hdf5_);
         _hdf5_.setBounds(0, 100, 390, 20);
 
-        _petsc_1.setBackground(java.awt.SystemColor.activeCaption);
-        _petsc_1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
-        _petsc_1.setForeground(new java.awt.Color(255, 255, 0));
-        _petsc_1.setText("h5py: a Pythonic interface to the HDF5 binary data format.");
-        _petsc_1.addActionListener(new java.awt.event.ActionListener() {
+        pandas.setBackground(java.awt.SystemColor.activeCaption);
+        pandas.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        pandas.setForeground(new java.awt.Color(255, 255, 0));
+        pandas.setText("pandas: Python Data Analysis Library");
+        pandas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                _petsc_1ActionPerformed(evt);
+                pandasActionPerformed(evt);
             }
         });
-        jPanel1.add(_petsc_1);
-        _petsc_1.setBounds(590, 190, 581, 25);
+        jPanel1.add(pandas);
+        pandas.setBounds(590, 220, 581, 25);
 
         _petsc_2.setBackground(java.awt.SystemColor.activeCaption);
         _petsc_2.setFont(new java.awt.Font("Ubuntu Light", 0, 12)); // NOI18N
@@ -370,17 +368,17 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         jPanel1.add(_mutt1_);
         _mutt1_.setBounds(0, 140, 460, 20);
 
-        _gfortran49_.setBackground(java.awt.SystemColor.activeCaption);
-        _gfortran49_.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
-        _gfortran49_.setForeground(java.awt.Color.yellow);
-        _gfortran49_.setText("GFORTRAN 4.9: the GNU Fortran compiler, version 4.9.");
-        _gfortran49_.addActionListener(new java.awt.event.ActionListener() {
+        h5py1.setBackground(java.awt.SystemColor.activeCaption);
+        h5py1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        h5py1.setForeground(new java.awt.Color(255, 255, 0));
+        h5py1.setText("h5py: a Pythonic interface to the HDF5 binary data format.");
+        h5py1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                _gfortran49_ActionPerformed(evt);
+                h5py1ActionPerformed(evt);
             }
         });
-        jPanel1.add(_gfortran49_);
-        _gfortran49_.setBounds(0, 170, 400, 25);
+        jPanel1.add(h5py1);
+        h5py1.setBounds(590, 190, 581, 25);
 
         jTabbedPane1.addTab("Prerequisites", jPanel1);
 
@@ -414,7 +412,6 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
 
         _SEQ_MODE.setBackground(java.awt.SystemColor.activeCaption);
         _SEQ_MODE.setForeground(java.awt.Color.yellow);
-        _SEQ_MODE.setSelected(true);
         _SEQ_MODE.setText("Sequential mode");
         _SEQ_MODE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -425,7 +422,6 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         DISTRIB_OpenMPI_MODE.setBackground(java.awt.SystemColor.activeCaption);
         DISTRIB_OpenMPI_MODE.setForeground(java.awt.Color.yellow);
         DISTRIB_OpenMPI_MODE.setText("Distributed memory OPENMPI mode");
-        DISTRIB_OpenMPI_MODE.setEnabled(false);
         DISTRIB_OpenMPI_MODE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DISTRIB_OpenMPI_MODEActionPerformed(evt);
@@ -435,7 +431,6 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         DISTRIB_MODE.setBackground(java.awt.SystemColor.activeCaption);
         DISTRIB_MODE.setForeground(java.awt.Color.yellow);
         DISTRIB_MODE.setText("Distributed memory MPICH mode");
-        DISTRIB_MODE.setEnabled(false);
         DISTRIB_MODE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DISTRIB_MODEActionPerformed(evt);
@@ -487,6 +482,7 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
 
         _OPENMP_MODE.setBackground(java.awt.SystemColor.activeCaption);
         _OPENMP_MODE.setForeground(java.awt.Color.yellow);
+        _OPENMP_MODE.setSelected(true);
         _OPENMP_MODE.setText("Enable shared-memory parallelism with OpenMP");
         _OPENMP_MODE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -617,8 +613,8 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
 
             Process pb = Runtime.getRuntime().exec("xterm  -title ERSN-OpenMC_Console -e sudo apt-get install " 
              + str_cmake + str_gfortran + str_git + str_eog + str_mutt + str_gedit
-             + str_gfortran49 + str_mpich2 + str_openmpi
-             + str_matplotlib + str_vtk + str_paraview + str_scipy + str_numpy + str_ipython + str_python_5py );
+             + str_mpich2 + str_openmpi
+             + str_matplotlib + str_vtk + str_paraview + str_scipy + str_numpy + str_ipython + str_python_5py + str_python_pandas);
             pb.waitFor();
             JOptionPane.showMessageDialog(this, "The checked packages have been installed successfully or already exist ! ");
 
@@ -691,7 +687,7 @@ get_ERSMOpenMC_Config(openmc_path,"/openmc/data/nndc/cross_sections.xml",   "/co
     private void _mpich2_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__mpich2_ActionPerformed
 
         if (_mpich2_.isSelected() == true) {
-            str_mpich2 = " mpich2 libmpich2-dev ";
+            str_mpich2 = " mpich libmpich-dev ";
             parallel_mode = true;
 
         } else {
@@ -758,6 +754,7 @@ str_ipython="  " ;    }//GEN-LAST:event__ipython_ActionPerformed
     
     }
     private void _SEQ_MODEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__SEQ_MODEActionPerformed
+        jCheckBox_openmp.setEnabled(false);
         try {
             bashdir_openmc = getJarContainingFolder(ERSNOpenMC_Main.class) + "/scripts/get_openmc.sh";  //load bash file for sequentiel application.
         } catch (Exception ex) {
@@ -766,6 +763,7 @@ str_ipython="  " ;    }//GEN-LAST:event__ipython_ActionPerformed
     }//GEN-LAST:event__SEQ_MODEActionPerformed
 
     private void DISTRIB_OpenMPI_MODEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DISTRIB_OpenMPI_MODEActionPerformed
+        jCheckBox_openmp.setEnabled(true);
         try {
             bashdir_openmc = getJarContainingFolder(ERSNOpenMC_Main.class) + "/scripts/get_openmc-with-openmpi.sh"; // load bash file for shared memory application.
         } catch (Exception ex) {
@@ -774,6 +772,7 @@ str_ipython="  " ;    }//GEN-LAST:event__ipython_ActionPerformed
     }//GEN-LAST:event_DISTRIB_OpenMPI_MODEActionPerformed
     
     private void DISTRIB_MODEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DISTRIB_MODEActionPerformed
+        jCheckBox_openmp.setEnabled(true);
         try {
             bashdir_openmc = getJarContainingFolder(ERSNOpenMC_Main.class) + "/scripts/get_openmc-with-mpich2.sh";  // load bash file for distributed memory application.
         } catch (Exception ex) {
@@ -781,9 +780,9 @@ str_ipython="  " ;    }//GEN-LAST:event__ipython_ActionPerformed
         }
     }//GEN-LAST:event_DISTRIB_MODEActionPerformed
 
-    private void _petsc_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__petsc_1ActionPerformed
-        str_python_5py = " python-h5py ";
-    }//GEN-LAST:event__petsc_1ActionPerformed
+    private void pandasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pandasActionPerformed
+        str_python_pandas = " python-pandas ";
+    }//GEN-LAST:event_pandasActionPerformed
 
     private void jCheckBox_openmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox_openmpActionPerformed
         if (jCheckBox_openmp.isSelected() == true) {
@@ -813,22 +812,13 @@ str_ipython="  " ;    }//GEN-LAST:event__ipython_ActionPerformed
 
     private void _openmpi_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__openmpi_ActionPerformed
         if (_openmpi_.isSelected() == true) {
-            str_openmpi = " libopenmpi-dev openmpi-bin ";
+            str_openmpi = " openmpi-bin libopenmpi1.6 libopenmpi-dev";
             parallel_mode = true;
         } else {
             str_openmpi = "  ";
             parallel_mode = false;
         }
     }//GEN-LAST:event__openmpi_ActionPerformed
-
-    private void _gfortran49_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__gfortran49_ActionPerformed
-        if (_gfortran49_.isSelected() == true) {
-            str_gfortran49 = " gfortran-4.9 ";
-
-        } else {
-            str_gfortran49 = "  ";
-        }
-    }//GEN-LAST:event__gfortran49_ActionPerformed
 
     private void _gfortran_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__gfortran_ActionPerformed
         // TODO add your handling code here:
@@ -871,6 +861,7 @@ str_ipython="  " ;    }//GEN-LAST:event__ipython_ActionPerformed
     }//GEN-LAST:event__mutt1_ActionPerformed
 
     private void _OPENMP_MODEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__OPENMP_MODEActionPerformed
+        jCheckBox_openmp.setEnabled(false);
             try {
             bashdir_openmc = getJarContainingFolder(ERSNOpenMC_Main.class) + "/scripts/get_openmc-with-openmp.sh";  //load bash file for sequentiel application.
         } catch (Exception ex) {
@@ -878,6 +869,10 @@ str_ipython="  " ;    }//GEN-LAST:event__ipython_ActionPerformed
         }
 
     }//GEN-LAST:event__OPENMP_MODEActionPerformed
+
+    private void h5py1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_h5py1ActionPerformed
+        str_python_5py = " python-h5py ";
+    }//GEN-LAST:event_h5py1ActionPerformed
  
     /**
      * @param args the command line arguments
@@ -916,7 +911,6 @@ str_ipython="  " ;    }//GEN-LAST:event__ipython_ActionPerformed
     private javax.swing.JRadioButton _SEQ_MODE;
     private javax.swing.JCheckBox _cmake_;
     private javax.swing.JCheckBox _eog_;
-    private javax.swing.JCheckBox _gfortran49_;
     private javax.swing.JCheckBox _gfortran_;
     private javax.swing.JCheckBox _git_;
     private javax.swing.JCheckBox _hdf5_;
@@ -927,7 +921,6 @@ str_ipython="  " ;    }//GEN-LAST:event__ipython_ActionPerformed
     private javax.swing.JCheckBox _numpy_;
     private javax.swing.JCheckBox _openmpi_;
     private javax.swing.JCheckBox _paraview_;
-    private javax.swing.JCheckBox _petsc_1;
     private javax.swing.JCheckBox _petsc_2;
     private javax.swing.JCheckBox _scipy_;
     private javax.swing.JCheckBox _vtk_;
@@ -941,6 +934,7 @@ str_ipython="  " ;    }//GEN-LAST:event__ipython_ActionPerformed
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.ButtonGroup buttonGroup5;
+    private javax.swing.JCheckBox h5py1;
     private javax.swing.JTextField install_dir;
     private javax.swing.JCheckBox jCheckBox_Debug;
     private javax.swing.JCheckBox jCheckBox_openmp;
@@ -955,5 +949,6 @@ str_ipython="  " ;    }//GEN-LAST:event__ipython_ActionPerformed
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lbl_dir;
+    private javax.swing.JCheckBox pandas;
     // End of variables declaration//GEN-END:variables
 }
