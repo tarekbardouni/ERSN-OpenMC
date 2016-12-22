@@ -88,10 +88,10 @@ public class ERSNOpenMC_About extends javax.swing.JFrame {
         getContentPane().add(btn_close, gridBagConstraints);
 
         jLabel2.setBackground(java.awt.SystemColor.activeCaption);
-        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 48)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
         jLabel2.setForeground(java.awt.Color.orange);
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("ERSN-OPENMC v1.4");
+        jLabel2.setText("ERSN-OPENMC v1.5");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -153,7 +153,7 @@ public class ERSNOpenMC_About extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Ubuntu Light", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(246, 255, 41));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel7.setText("Download url:   https://github.com/EL-Bakkali-Jaafar/ERSN-OpenMC/releases");
+        jLabel7.setText("Download url:   https://github.com/tarekbardouni/ERSN-OpenMC/releases");
         jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -165,7 +165,7 @@ public class ERSNOpenMC_About extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Century Schoolbook L", 1, 10)); // NOI18N
         jLabel8.setForeground(java.awt.SystemColor.info);
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Copyleft 2015 J.EL Bakkali MIT License");
+        jLabel8.setText("Copyleft 2015-2017, J. El Bakkali & T. El Bardouni,  MIT License");
         jLabel8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;

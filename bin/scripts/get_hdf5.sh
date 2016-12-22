@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-export FC=gfortran-4.9
+export FC=gfortran
 
 wget ftp://ftp.hdfgroup.org/HDF5/current/src/hdf5-*.tar.gz
 #
