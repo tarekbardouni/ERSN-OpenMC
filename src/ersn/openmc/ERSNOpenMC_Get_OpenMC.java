@@ -40,6 +40,7 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
 
     String  str_cmake = " cmake ",
             str_gfortran = " gfortran ",
+            
             str_git = " git ",
             str_eog = " eog ",
             str_mutt = " ",
@@ -66,12 +67,11 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
      */
     public ERSNOpenMC_Get_OpenMC() {
         initComponents();
-        getContentPane().setBackground(new Color(0, 0, 128));
+    //    getContentPane().setBackground(new Color(0, 0, 128));
         buttonGroup1.add(_SEQ_MODE);
         buttonGroup1.add(DISTRIB_OpenMPI_MODE);
         buttonGroup1.add(DISTRIB_MODE);
         buttonGroup1.add(_OPENMP_MODE);
-        str_openmp_status = "NOT-USED";
     }
 
     /**
@@ -112,6 +112,7 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         btn_close2 = new javax.swing.JButton();
         _mutt1_ = new javax.swing.JCheckBox();
         h5py1 = new javax.swing.JCheckBox();
+        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btn_get_openmc = new javax.swing.JButton();
         lbl_dir = new javax.swing.JLabel();
@@ -128,6 +129,7 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         jSeparator8 = new javax.swing.JSeparator();
         jCheckBox_Debug = new javax.swing.JCheckBox();
         _OPENMP_MODE = new javax.swing.JRadioButton();
+        jLabel3 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
 
         setTitle("ERSN-OpenMC_get_OpenMC");
@@ -380,6 +382,12 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         jPanel1.add(h5py1);
         h5py1.setBounds(590, 190, 581, 25);
 
+        jLabel2.setFont(new java.awt.Font("Ubuntu", 2, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(250, 255, 0));
+        jLabel2.setText("Check one package at a time !");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(20, 260, 250, 15);
+
         jTabbedPane1.addTab("Prerequisites", jPanel1);
 
         jPanel2.setBackground(java.awt.SystemColor.activeCaption);
@@ -457,7 +465,6 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         jLabel1.setForeground(java.awt.Color.white);
         jLabel1.setText("The OpenMC Monte Carlo code will be compiled with one of the following four mode :");
 
-        btn_close1.setBackground(new java.awt.Color(215, 208, 208));
         btn_close1.setForeground(java.awt.Color.black);
         btn_close1.setText("close");
         btn_close1.addActionListener(new java.awt.event.ActionListener() {
@@ -482,13 +489,16 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
 
         _OPENMP_MODE.setBackground(java.awt.SystemColor.activeCaption);
         _OPENMP_MODE.setForeground(java.awt.Color.yellow);
-        _OPENMP_MODE.setSelected(true);
         _OPENMP_MODE.setText("Enable shared-memory parallelism with OpenMP");
         _OPENMP_MODE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 _OPENMP_MODEActionPerformed(evt);
             }
         });
+
+        jLabel3.setFont(new java.awt.Font("Ubuntu", 2, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(254, 252, 1));
+        jLabel3.setText("Check one mode at least !");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -505,59 +515,59 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(351, 351, 351)
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel3)
+                        .addGap(260, 260, 260)
                         .addComponent(btn_get_openmc, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(316, 316, 316)
+                        .addGap(315, 315, 315)
                         .addComponent(btn_close1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jCheckBox_openmp)
-                        .addGap(191, 191, 191)
-                        .addComponent(jCheckBox_Debug))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(DISTRIB_MODE)
-                            .addComponent(DISTRIB_OpenMPI_MODE)))
+                            .addComponent(DISTRIB_OpenMPI_MODE)
+                            .addComponent(_OPENMP_MODE)
+                            .addComponent(_SEQ_MODE)
+                            .addComponent(jLabel1)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lbl_dir)
-                                .addGap(31, 31, 31)
-                                .addComponent(install_dir, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(btn_dir, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(_SEQ_MODE)
-                            .addComponent(_OPENMP_MODE)
-                            .addComponent(jLabel1))))
+                        .addComponent(lbl_dir)
+                        .addGap(31, 31, 31)
+                        .addComponent(install_dir, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(btn_dir, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jCheckBox_openmp)
+                        .addGap(191, 191, 191)
+                        .addComponent(jCheckBox_Debug)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(install_dir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_dir)
+                    .addComponent(btn_dir))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btn_dir)
-                        .addGap(31, 31, 31))
+                        .addGap(88, 88, 88)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(install_dir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_dir))
-                        .addGap(8, 8, 8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(_SEQ_MODE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(_OPENMP_MODE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(_SEQ_MODE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(_OPENMP_MODE)
-                .addGap(4, 4, 4)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
                 .addComponent(DISTRIB_OpenMPI_MODE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(DISTRIB_MODE)
-                .addGap(0, 0, 0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -565,10 +575,16 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
                     .addComponent(jCheckBox_Debug))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_get_openmc)
-                    .addComponent(btn_close1)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_get_openmc)
+                            .addComponent(btn_close1)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("OpenMC", jPanel2);
@@ -613,8 +629,8 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
 
             Process pb = Runtime.getRuntime().exec("xterm  -title ERSN-OpenMC_Console -e sudo apt-get install " 
              + str_cmake + str_gfortran + str_git + str_eog + str_mutt + str_gedit
-             + str_mpich2 + str_openmpi
-             + str_matplotlib + str_vtk + str_paraview + str_scipy + str_numpy + str_ipython + str_python_5py + str_python_pandas);
+             + str_matplotlib + str_vtk + str_paraview + str_scipy + str_numpy + str_ipython + str_python_5py + str_python_pandas
+             + str_mpich2 + str_openmpi);
             pb.waitFor();
             JOptionPane.showMessageDialog(this, "The checked packages have been installed successfully or already exist ! ");
 
@@ -788,7 +804,7 @@ str_ipython="  " ;    }//GEN-LAST:event__ipython_ActionPerformed
         if (jCheckBox_openmp.isSelected() == true) {
             str_openmp_status = "USED";
         }      
-        if (jCheckBox_openmp.isSelected() == false) {
+        else {
             str_openmp_status = "NOT-USED";
         }
         System.out.print("ERSN-OPENMC/CONSOLE " + str_openmp_status);
@@ -799,7 +815,7 @@ str_ipython="  " ;    }//GEN-LAST:event__ipython_ActionPerformed
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     private void jCheckBox_openmpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox_openmpMouseClicked
-     //   str_openmp_status = "USED";
+        str_openmp_status = "USED";
     }//GEN-LAST:event_jCheckBox_openmpMouseClicked
 
     private void btn_close1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_close1ActionPerformed
@@ -861,7 +877,8 @@ str_ipython="  " ;    }//GEN-LAST:event__ipython_ActionPerformed
     }//GEN-LAST:event__mutt1_ActionPerformed
 
     private void _OPENMP_MODEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__OPENMP_MODEActionPerformed
-        jCheckBox_openmp.setEnabled(false);
+//        jCheckBox_openmp.setEnabled(false);
+        str_openmp_status = "USED";
             try {
             bashdir_openmc = getJarContainingFolder(ERSNOpenMC_Main.class) + "/scripts/get_openmc-with-openmp.sh";  //load bash file for sequentiel application.
         } catch (Exception ex) {
@@ -939,6 +956,8 @@ str_ipython="  " ;    }//GEN-LAST:event__ipython_ActionPerformed
     private javax.swing.JCheckBox jCheckBox_Debug;
     private javax.swing.JCheckBox jCheckBox_openmp;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;

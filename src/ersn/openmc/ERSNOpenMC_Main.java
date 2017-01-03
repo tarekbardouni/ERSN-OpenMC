@@ -2677,6 +2677,7 @@ Process p_get_hdf5 = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC
 Process p_get_openmc = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC_Console -e chmod +x "+bashdir_files+"/get_openmc.sh");
 Process p_get_openmc_with_mpich2 = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC_Console -e chmod +x "+bashdir_files+"/get_openmc-with-mpich2.sh");
 Process pb_get_openmc_with_openmpi = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC_Console -e chmod +x "+bashdir_files+"/get_openmc-with-openmpi.sh");
+Process pb_get_openmc_with_openmp = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC_Console -e chmod +x "+bashdir_files+"/get_openmc-with-openmp.sh");
 Process pb_get_petsc = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC_Console -e chmod +x "+bashdir_files+"/get_petsc.sh");
 Process pb_start_openmc = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC_Console -e chmod +x "+bashdir_files+"/start_openmc.sh");
 Process p_get_nndc = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC_Console -e chmod +x "+bashdir_files+"/get_nndc.sh");
