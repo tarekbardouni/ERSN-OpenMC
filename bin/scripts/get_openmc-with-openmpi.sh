@@ -44,7 +44,7 @@ sudo make install
 #sudo make install -e prefix=$INSTALL_DIR/openmc
 
 echo "              *************************************************  "
-echo "                 OpenMC sequential version has been installed    "
+echo "                 OpenMC parallel version has been installed      "
 echo "              *************************************************  "
 
 echo " "

@@ -5,9 +5,9 @@ DEBUG_STATUS=$2
 OPENMP_STATUS=$3
 echo "            ****** Directory     : " $INSTALL_DIR
 echo "            ****** DEBUG_STATUS  : " $DEBUG_STATUS
-echo "            ****** OPENMP_STATUS : " $OPENMP_STATUS
+echo "            ****** openmp_STATUS : " $OPENMP_STATUS
 
-export FC=gfortran-4.9
+export FC=gfortran
 export HDF5_ROOT=/opt/hdf5
 
 if [ $DEBUG_STATUS=="USED" ]; then
@@ -41,7 +41,7 @@ sudo make install
 #make install -e prefix=$INSTALL_DIR/openmc
 
 echo "              *************************************************  "
-echo "                 OpenMC sequential version has been installed    "
+echo "                 OpenMC parallel version has been installed      "
 echo "              *************************************************  "
 
 echo " "
