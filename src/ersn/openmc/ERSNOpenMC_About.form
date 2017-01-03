@@ -73,13 +73,13 @@
           <Color blue="80" green="0" id="Active Caption" palette="2" red="0" type="palette"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Trebuchet MS" size="48" style="1"/>
+          <Font name="Trebuchet MS" size="36" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="c8" id="orange" palette="1" red="ff" type="palette"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="ERSN-OPENMC v1.3"/>
+        <Property name="text" type="java.lang.String" value="ERSN-OPENMC v1.5"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
       <Constraints>
@@ -175,7 +175,7 @@
           <Color blue="29" green="ff" red="f6" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="Download url:   https://github.com/EL-Bakkali-Jaafar/ERSN-OpenMC/releases"/>
+        <Property name="text" type="java.lang.String" value="Download url:   https://github.com/tarekbardouni/ERSN-OpenMC/releases"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
       <Constraints>
@@ -193,7 +193,7 @@
           <Color blue="0" green="e0" id="Info" palette="2" red="e0" type="palette"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Copyleft 2015 J.EL Bakkali MIT License"/>
+        <Property name="text" type="java.lang.String" value="Copyleft 2015-2017, J. El Bakkali &amp; T. El Bardouni,  MIT License"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
       <Constraints>
