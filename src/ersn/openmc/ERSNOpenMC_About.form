@@ -79,7 +79,7 @@
           <Color blue="0" green="c8" id="orange" palette="1" red="ff" type="palette"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="ERSN-OPENMC v1.5"/>
+        <Property name="text" type="java.lang.String" value="ERSN-OPENMC v1.6"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
       <Constraints>
@@ -154,7 +154,7 @@
           <Color blue="ff" green="ff" id="Button.highlight" palette="3" red="ff" type="palette"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="Contact us :    bahmedj@gmail.com  ;     tarekbardouni@uae.ma"/>
+        <Property name="text" type="java.lang.String" value="Contact us :    bahmedj@gmail.com  ;     telbardouni@uae.ac.ma"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
       <Constraints>

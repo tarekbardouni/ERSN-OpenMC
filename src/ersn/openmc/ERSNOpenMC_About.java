@@ -91,7 +91,7 @@ public class ERSNOpenMC_About extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
         jLabel2.setForeground(java.awt.Color.orange);
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("ERSN-OPENMC v1.5");
+        jLabel2.setText("ERSN-OPENMC v1.6");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -139,7 +139,7 @@ public class ERSNOpenMC_About extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Ubuntu Light", 0, 14)); // NOI18N
         jLabel5.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.highlight"));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setText("Contact us :    bahmedj@gmail.com  ;     tarekbardouni@uae.ma");
+        jLabel5.setText("Contact us :    bahmedj@gmail.com  ;     telbardouni@uae.ac.ma");
         jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
