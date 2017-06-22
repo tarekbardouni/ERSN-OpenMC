@@ -3066,9 +3066,9 @@ guidance (Guidecmfd,"The <display> element sets one additional CMFD output colum
     }//GEN-LAST:event_btn_no_reduceActionPerformed
 
     private void btn_fixed_sourceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_fixed_sourceActionPerformed
-        settingsTxt.replaceSelection("<fixed_source>\n" +
+        settingsTxt.replaceSelection("<run_mode>fixed_source</run_mode>\n" +
             "  <batches>    </batches>\n" +
-            "  <particles>   </particles>\n</fixed_source>\n");
+            "  <particles>   </particles>\n");
     }//GEN-LAST:event_btn_fixed_sourceActionPerformed
 
     private void btn_entropyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_entropyActionPerformed
@@ -3084,7 +3084,12 @@ guidance (Guidecmfd,"The <display> element sets one additional CMFD output colum
     }//GEN-LAST:event_btn_energy_gridActionPerformed
 
     private void btn_eignvalueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eignvalueActionPerformed
-        settingsTxt.replaceSelection("<eigenvalue> \n  <batches>  </batches>\n  <generations_per_batch>  </generations_per_batch>\n  <inactive>  </inactive> \n  <particles>  </particles> \n</eigenvalue>\n");
+        settingsTxt.replaceSelection("<run_mode>eigenvalue</run_mode>   <!-- avoid space around numbers -->\n" +
+                "   <batches> </batches>\n" +
+                "   <generations_per_batch>" +
+                "   </generations_per_batch>\n" +
+                "   <inactive> </inactive> \n" +
+                "   <particles> </particles> \n");
     }//GEN-LAST:event_btn_eignvalueActionPerformed
 
     private void btn_cutoffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cutoffActionPerformed
