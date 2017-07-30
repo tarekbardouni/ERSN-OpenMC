@@ -6,7 +6,7 @@ wget ftp://ftp.hdfgroup.org/HDF5/current/src/hdf5-*.tar.gz
 #
 tar -xzvf hdf5-*.tar.gz
 
-cd hdf5-*; ./configure --prefix=/opt/hdf5  --enable-fortran \
+cd hdf5-*/; ./configure --prefix=/opt/hdf5  --enable-fortran \
            --enable-fortran2003
 #
 make

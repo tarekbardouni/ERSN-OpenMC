@@ -258,7 +258,7 @@ Options_5=" empty ", Options_6=" empty ", Options_7=" empty ", Options_8=" empty
 
         notification.setBackground(java.awt.SystemColor.activeCaption);
         notification.setForeground(java.awt.Color.orange);
-        notification.setText("notify me by Gmail,  once the simulation ends");
+        notification.setText("notify me by Email,  once the simulation ends");
         notification.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 notificationActionPerformed(evt);

@@ -2276,7 +2276,7 @@ if (element_or_nuclide=="isotope")
 {                                                  
  if  (percent_value.isEnabled()==true)
  {  str_percent=" "+ weight+"=\""+percent_value.getText()+"\"";
-   Target.setText(Target.getText()+"<nuclide name=\""+lbl.getText()+"-"+X_A.getSelectedItem()+"\""+" xs=\""+str_xs+"\""+" " +str_percent+"/>\n");                                             
+   Target.setText(Target.getText()+"<nuclide name=\""+lbl.getText()+X_A.getSelectedItem()+"\""+" xs=\""+str_xs+"\""+" " +str_percent+"/>\n");                                             
         };
        }; 
   if (element_or_nuclide=="element") 

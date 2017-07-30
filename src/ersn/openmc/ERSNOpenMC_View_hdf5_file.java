@@ -26,16 +26,19 @@ package ersn.openmc;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
 
 /**
  *
  * @author elbakkali
  */
 public class ERSNOpenMC_View_hdf5_file extends javax.swing.JFrame {
-String project_full_path="",openmcdir="",cross_sectionsdir="";
+
+    String project_full_path = "", openmcdir = "", cross_sectionsdir = "";
+
     /**
      * Creates new form OpenMC_Options
      */
@@ -161,9 +164,6 @@ String project_full_path="",openmcdir="",cross_sectionsdir="";
     }// </editor-fold>//GEN-END:initComponents
 
 
-
-
-
     private void select_cmfd2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_select_cmfd2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_select_cmfd2ActionPerformed
@@ -174,33 +174,52 @@ String project_full_path="",openmcdir="",cross_sectionsdir="";
     }//GEN-LAST:event_btn_cancelActionPerformed
 
     private void btn_ok1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ok1ActionPerformed
-String p_file="";
-JFileChooser fc = new JFileChooser(); 
-FileNameExtensionFilter ppmfilter = new FileNameExtensionFilter("HDF5 files (*.h5)", "h5");
-fc.setFileFilter(ppmfilter);
-fc.setDialogTitle("Open an hdf5 file");
-ERSNOpenMC_Singleton tmp = ERSNOpenMC_Singleton.getInstance();
-project_full_path=tmp.getPath();
-java.io.File dir = new File(project_full_path);
-fc.setCurrentDirectory(dir);
-fc.setFileSelectionMode( JFileChooser.FILES_ONLY);
-int returnVal = fc.showOpenDialog(this);
-if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
-    java.io.File file = fc.getSelectedFile( );
-    p_file= file.toString( );
-    _file_rpr.setText(p_file);
+        String p_file = "";
+        JFileChooser fc = new JFileChooser();
+        FileNameExtensionFilter ppmfilter = new FileNameExtensionFilter("HDF5 files (*.h5)", "h5");
+        fc.setFileFilter(ppmfilter);
+        fc.setDialogTitle("Open an hdf5 file");
+        ERSNOpenMC_Singleton tmp = ERSNOpenMC_Singleton.getInstance();
+        project_full_path = tmp.getPath();
+        java.io.File dir = new File(project_full_path);
+        fc.setCurrentDirectory(dir);
+        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        int returnVal = fc.showOpenDialog(this);
+        if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
+            java.io.File file = fc.getSelectedFile();
+            p_file = file.toString();
+            _file_rpr.setText(p_file);
 
-}        
+        }
     }//GEN-LAST:event_btn_ok1ActionPerformed
 
     private void btn_ok2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ok2ActionPerformed
-try {            
-Process pb =Runtime.getRuntime().exec("xterm -j  -sb -title ERSN-OpenMC_Console  -sl 6000 -hold -e  /opt/hdf5/bin/h5dump "+_file_rpr.getText().toString());
- pb.waitFor();
-        } catch (IOException ex) {  
-            System.out.print(ex);  
-        } 
-         catch (InterruptedException  ex) {System.out.print(ex);}
+                File f = new File("/opt/hdf5");
+                if (f.exists() && f.isDirectory()) {
+                    String h5dump_command = f+"/bin/h5dump";
+                    try {
+                        Runtime.getRuntime().exec("xterm -j  -sb -title ERSN-OpenMC_Console  -sl 6000 -hold -e  " + h5dump_command + _file_rpr.getText().toString());
+                    } catch (IOException ex) {
+                        Logger.getLogger(ERSNOpenMC_View_hdf5_file.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } else {
+                    String h5dump_command = " /usr/bin/h5dump " ;
+                    try {
+                        Runtime.getRuntime().exec("xterm -j  -sb -title ERSN-OpenMC_Console  -sl 6000 -hold -e  " + h5dump_command + _file_rpr.getText().toString());
+                    } catch (IOException ex) {
+                        Logger.getLogger(ERSNOpenMC_View_hdf5_file.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+    /*            
+        try {
+            Process pb = Runtime.getRuntime().exec("xterm -j  -sb -title ERSN-OpenMC_Console  -sl 6000 -hold -e  " + h5dump_command + _file_rpr.getText().toString());
+            pb.waitFor();
+        } catch (IOException ex) {
+            System.out.print(ex);
+        } catch (InterruptedException ex) {
+            System.out.print(ex);
+        }
+        */
     }//GEN-LAST:event_btn_ok2ActionPerformed
 
     /**
