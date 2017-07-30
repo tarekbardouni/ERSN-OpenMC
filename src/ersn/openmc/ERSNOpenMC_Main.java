@@ -43,6 +43,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import jsyntaxpane.DefaultSyntaxKit;
 import jsyntaxpane.util.Configuration;
 import java.io.FilenameFilter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.filechooser.FileFilter;
 
 /**
@@ -330,8 +332,9 @@ plottingTxt.setContentType("text/xhtml");
         menu_save_project = new javax.swing.JMenuItem();
         menu_exit = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
-        jMenuItem_run_openmc = new javax.swing.JMenuItem();
         jMenu_get_openmc = new javax.swing.JMenuItem();
+        jMenu9 = new javax.swing.JMenu();
+        jMenuItem_run_openmc = new javax.swing.JMenuItem();
         Menu_tools = new javax.swing.JMenu();
         menu_item_show_results = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
@@ -343,6 +346,7 @@ plottingTxt.setContentType("text/xhtml");
         jMenuItem10 = new javax.swing.JMenuItem();
         _3d_mesh_plot = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
+        jMenuPPM2PNG = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem_binary_track_to_pvtp = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
@@ -353,7 +357,6 @@ plottingTxt.setContentType("text/xhtml");
         jMenuItem_openmc_xml_validation = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        menu_item_get_openmc = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         menu_item_about = new javax.swing.JMenuItem();
@@ -2349,10 +2352,12 @@ plottingTxt.setContentType("text/xhtml");
         lbl.setForeground(java.awt.Color.orange);
         lbl.setText("Project path");
 
-        jMenuBar1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jMenuBar1.setBackground(new java.awt.Color(26, 24, 17));
+        jMenuBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jMenuBar1.setForeground(new java.awt.Color(242, 240, 236));
 
-        jMenu3.setBackground(java.awt.Color.orange);
-        jMenu3.setForeground(java.awt.SystemColor.activeCaption);
+        jMenu3.setBackground(new java.awt.Color(102, 255, 102));
+        jMenu3.setForeground(new java.awt.Color(223, 219, 210));
         jMenu3.setText("File");
 
         menu_new_openmc_project.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
@@ -2393,18 +2398,9 @@ plottingTxt.setContentType("text/xhtml");
 
         jMenuBar1.add(jMenu3);
 
-        jMenu8.setBackground(java.awt.Color.orange);
-        jMenu8.setForeground(java.awt.SystemColor.activeCaptionText);
-        jMenu8.setText("OpenMC");
-
-        jMenuItem_run_openmc.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem_run_openmc.setText("Run OpenMC");
-        jMenuItem_run_openmc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem_run_openmcActionPerformed(evt);
-            }
-        });
-        jMenu8.add(jMenuItem_run_openmc);
+        jMenu8.setBackground(new java.awt.Color(102, 255, 102));
+        jMenu8.setForeground(new java.awt.Color(223, 219, 210));
+        jMenu8.setText("Get OpenMC");
 
         jMenu_get_openmc.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
         jMenu_get_openmc.setText("Get OpenMC");
@@ -2417,8 +2413,25 @@ plottingTxt.setContentType("text/xhtml");
 
         jMenuBar1.add(jMenu8);
 
+        jMenu9.setBackground(new java.awt.Color(102, 255, 102));
+        jMenu9.setForeground(new java.awt.Color(223, 219, 210));
+        jMenu9.setText("Run OpenMC");
+
+        jMenuItem_run_openmc.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem_run_openmc.setText("Run OpenMC");
+        jMenuItem_run_openmc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_run_openmcActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem_run_openmc);
+
+        jMenuBar1.add(jMenu9);
+
         Menu_tools.setBackground(new java.awt.Color(102, 255, 102));
+        Menu_tools.setForeground(new java.awt.Color(241, 235, 221));
         Menu_tools.setText("Tools");
+        Menu_tools.setPreferredSize(new java.awt.Dimension(73, 17));
 
         menu_item_show_results.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK));
         menu_item_show_results.setText("Show results");
@@ -2493,8 +2506,17 @@ plottingTxt.setContentType("text/xhtml");
 
         jMenu7.setText("File conversion");
 
+        jMenuPPM2PNG.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK));
+        jMenuPPM2PNG.setText("ppm image to png");
+        jMenuPPM2PNG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuPPM2PNGActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuPPM2PNG);
+
         jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK));
-        jMenuItem4.setText("binary VOXEL  to VTK");
+        jMenuItem4.setText("h5 VOXEL  to VTK");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem4ActionPerformed(evt);
@@ -2569,15 +2591,6 @@ plottingTxt.setContentType("text/xhtml");
         Menu_tools.add(jMenuItem11);
         Menu_tools.add(jSeparator1);
 
-        menu_item_get_openmc.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        menu_item_get_openmc.setText("Get NNDC data");
-        menu_item_get_openmc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menu_item_get_openmcActionPerformed(evt);
-            }
-        });
-        Menu_tools.add(menu_item_get_openmc);
-
         jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem3.setText("Project Tree");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -2589,10 +2602,11 @@ plottingTxt.setContentType("text/xhtml");
 
         jMenuBar1.add(Menu_tools);
 
+        jMenu5.setForeground(new java.awt.Color(241, 235, 221));
         jMenu5.setText("    ?");
 
         menu_item_about.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
-        menu_item_about.setText("About ERN-OpenMC");
+        menu_item_about.setText("About ERSN-OpenMC");
         menu_item_about.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menu_item_aboutActionPerformed(evt);
@@ -2670,7 +2684,7 @@ String
      bashdir_files=  getJarContainingFolder(ERSNOpenMC_Main.class)+"/scripts";  
 
  } catch (Exception  ex) {System.out.print(ex);}
-  
+ /* 
  try    {  
  
 Process p_get_hdf5 = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC_Console -e chmod +x "+bashdir_files+"/get_hdf5.sh");
@@ -2678,7 +2692,6 @@ Process p_get_openmc = Runtime.getRuntime().exec("xterm -iconic -title ERSN-Open
 Process p_get_openmc_with_mpich2 = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC_Console -e chmod +x "+bashdir_files+"/get_openmc-with-mpich2.sh");
 Process pb_get_openmc_with_openmpi = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC_Console -e chmod +x "+bashdir_files+"/get_openmc-with-openmpi.sh");
 Process pb_get_openmc_with_openmp = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC_Console -e chmod +x "+bashdir_files+"/get_openmc-with-openmp.sh");
-Process pb_get_petsc = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC_Console -e chmod +x "+bashdir_files+"/get_petsc.sh");
 Process pb_start_openmc = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC_Console -e chmod +x "+bashdir_files+"/start_openmc.sh");
 Process p_get_nndc = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC_Console -e chmod +x "+bashdir_files+"/get_nndc.sh");
 Process p_get_hdf5_parallel = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC_Console -e chmod +x "+bashdir_files+"/get_hdf5_parallel.sh");
@@ -2687,6 +2700,7 @@ Process p_openmc_xml_validation = Runtime.getRuntime().exec("xterm -iconic -titl
 
  } 
  catch (IOException  ex) { System.out.print(ex);  }
+ */
           }//GEN-LAST:event_formWindowOpened
 
     private void btn_cellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cellActionPerformed
@@ -2775,7 +2789,7 @@ System.out.print(project_full_path);
         
     private void btn_plot_sliceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_plot_sliceActionPerformed
         plottingTxt.replaceSelection(
-                "<plot id=\"\" color=\"\"  type=\"slice\" basis=\"\" background=\"\">\n" +
+                "<plot id=\"\" color_by=\"\"  type=\"slice\" basis=\"\" background=\"\">\n" +
                 "  <origin> </origin>\n" +
                 "  <pixels>  </pixels>\n" +
                 "  <width> </width>\n" +
@@ -2788,7 +2802,7 @@ System.out.print(project_full_path);
     private void btn_plot_voxelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_plot_voxelActionPerformed
         plottingTxt.replaceSelection(
                 "\n" +
-                "<plot id=\"\" color=\"\"  type=\"voxel\" background=\"\">\n" +
+                "<plot id=\"\" color_by=\"\"  type=\"voxel\" background=\"\">\n" +
                 "  <origin> </origin>\n" +
                 "  <pixels>  </pixels>\n" +
                 "  <width> </width>\n" +
@@ -3052,9 +3066,9 @@ guidance (Guidecmfd,"The <display> element sets one additional CMFD output colum
     }//GEN-LAST:event_btn_no_reduceActionPerformed
 
     private void btn_fixed_sourceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_fixed_sourceActionPerformed
-        settingsTxt.replaceSelection("<fixed_source>\n" +
+        settingsTxt.replaceSelection("<run_mode>fixed_source</run_mode>\n" +
             "  <batches>    </batches>\n" +
-            "  <particles>   </particles>\n</fixed_source>\n");
+            "  <particles>   </particles>\n");
     }//GEN-LAST:event_btn_fixed_sourceActionPerformed
 
     private void btn_entropyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_entropyActionPerformed
@@ -3070,7 +3084,12 @@ guidance (Guidecmfd,"The <display> element sets one additional CMFD output colum
     }//GEN-LAST:event_btn_energy_gridActionPerformed
 
     private void btn_eignvalueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eignvalueActionPerformed
-        settingsTxt.replaceSelection("<eigenvalue> \n  <batches>  </batches>\n  <generations_per_batch>  </generations_per_batch>\n  <inactive>  </inactive> \n  <particles>  </particles> \n</eigenvalue>\n");
+        settingsTxt.replaceSelection("<run_mode>eigenvalue</run_mode>   <!-- avoid space around numbers -->\n" +
+                "   <batches> </batches>\n" +
+                "   <generations_per_batch>" +
+                "   </generations_per_batch>\n" +
+                "   <inactive> </inactive> \n" +
+                "   <particles> </particles> \n");
     }//GEN-LAST:event_btn_eignvalueActionPerformed
 
     private void btn_cutoffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cutoffActionPerformed
@@ -3160,23 +3179,6 @@ guidance (guide_geometry,"The <lattice> can be used to represent repeating struc
 "   </lattice>"        
         );
     }//GEN-LAST:event_btn_latticeMouseEntered
-
-    private void menu_item_get_openmcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_get_openmcActionPerformed
-        ERSNOpenMC_Singleton  singleton = ERSNOpenMC_Singleton.getInstance();
-        String openmc_dir=singleton.getOpenMCPath();            
-        String bashdir_nndc=""; 
-    try    {  
-        bashdir_nndc=  getJarContainingFolder(ERSNOpenMC_Main.class)+"/scripts/get_nndc.sh";  
-    } catch (Exception  ex)
-    {System.out.print(ex); }  
- 
-    try  {  
-        Process pb = Runtime.getRuntime().exec("xterm -title ERSN-OpenMC_Console -e "+bashdir_nndc+" "+ openmc_dir);
-   }
-    catch (IOException  ex) {
-         System.out.print(ex);
-    }  
-    }//GEN-LAST:event_menu_item_get_openmcActionPerformed
 
     private void menu_item_table_of_nuclidesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_table_of_nuclidesActionPerformed
         ERSNOpenMC_Table_of_nuclides  dialgo  =new ERSNOpenMC_Table_of_nuclides();
@@ -3596,16 +3598,18 @@ public void track_py( String filename, String track_file){
 
     public void voxel_py( String filename){
         String d="";
-        try {
+        try { 
             File fileDir = new File(getJarContainingFolder(ERSNOpenMC_Main.class)+"/config/scripts.dir");
         try (BufferedReader in = new BufferedReader(
             new InputStreamReader( new FileInputStream(fileDir), "UTF8"))) {
-            String str;
-            while ((str = in.readLine()) != null) {
-                d=d+str;
-    }   }
-    } 
-    catch (UnsupportedEncodingException e) {
+                String str;
+                while ((str = in.readLine()) != null) {
+                    d=d+str;
+                }   
+            }
+        } 
+
+        catch (UnsupportedEncodingException e) {
         System.out.println(e.getMessage());
     } 
     catch (IOException e) {
@@ -3619,9 +3623,14 @@ public void track_py( String filename, String track_file){
     try {            
         String voxelpy_dir =scripts_dir+"/openmc-voxel-to-silovtk"; 
         System.out.print(voxelpy_dir);  
-        
-        Runtime.getRuntime().exec("xterm -hold -e  "+voxelpy_dir+" "+filename+" --vtk -o "+filename+".vti ");
-       
+        System.out.print(filename);
+ //       Runtime.getRuntime().exec("xterm -hold -e  "+voxelpy_dir+" "+filename+" --vtk -o "+filename+".vti ");
+        Process p2=Runtime.getRuntime().exec("xterm -hold -e "+voxelpy_dir+" -o "+filename.replaceFirst("[.][^.]+$", "")+".vti " +filename);
+            try {
+                p2.waitFor();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(ERSNOpenMC_Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } catch (IOException ex) {  
             System.out.print(ex);  
         }  
@@ -3695,7 +3704,7 @@ public void track_py( String filename, String track_file){
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         JFileChooser fc = new JFileChooser(); 
-        FileNameExtensionFilter ppmfilter = new FileNameExtensionFilter("binary voxel files (*.voxel)", "voxel");
+        FileNameExtensionFilter ppmfilter = new FileNameExtensionFilter("h5 voxel files (*.h5)", "h5");
         fc.setFileFilter(ppmfilter);
         fc.setDialogTitle("Open a binary Voxel file");
         java.io.File dir = new File(project_full_path);
@@ -3705,13 +3714,12 @@ public void track_py( String filename, String track_file){
         if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
             java.io.File file = fc.getSelectedFile( );
             file_name = file.toString( );
-            //voxel_file=file.getName();
             voxel_py(file_name);          
         }     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         JFileChooser fc = new JFileChooser(); 
-        FileNameExtensionFilter ppmfilter = new FileNameExtensionFilter("ppm files (*.ppm)", "ppm");
+        FileNameExtensionFilter ppmfilter = new FileNameExtensionFilter("2D image files (*.ppm; *.png)", "ppm", "png");
         fc.setFileFilter(ppmfilter);
         fc.setDialogTitle("Open a PPM file");
         java.io.File dir = new File(project_full_path);
@@ -4319,9 +4327,28 @@ guidance (Guidecmfd,"The <write_matrices> element is used to write the sparse ma
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem11ActionPerformed
-}
-*/
-    
+    */
+
+    private void jMenuPPM2PNGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPPM2PNGActionPerformed
+        JFileChooser fc = new JFileChooser(); 
+        FileNameExtensionFilter ppmfilter = new FileNameExtensionFilter("ppm files (*.ppm)", "ppm");
+        fc.setFileFilter(ppmfilter);
+        fc.setDialogTitle("Open a PPM file");
+        java.io.File dir = new File(project_full_path);
+        fc.setCurrentDirectory(dir);
+        fc.setFileSelectionMode( JFileChooser.FILES_ONLY);
+        int returnVal = fc.showOpenDialog(this);
+        if (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
+            java.io.File file = fc.getSelectedFile( );
+            file_name = file.toString( );
+            Process process = null;  
+            try {  
+            Runtime.getRuntime().exec("convert "+file_name+ " "+file_name.replaceFirst("[.][^.]+$", "") +".png");
+            } catch (IOException ex) {  
+            System.out.print(ex);  
+            }
+        }        
+    }//GEN-LAST:event_jMenuPPM2PNGActionPerformed
 
     public void get_openmcdir(){
         try {
@@ -4365,17 +4392,6 @@ guidance (Guidecmfd,"The <write_matrices> element is used to write the sparse ma
                 new ERSNOpenMC_Main().setVisible(true);            
             }
         });
-      // final Runtime runtime = Runtime.getRuntime();
-      // final  int mb = 1024*1024;
-       //  ActionListener actionListener = new ActionListener() {
-    //  public void actionPerformed(ActionEvent actionEvent) {
-       //
-         // memory.setText("Used Memory: "+(runtime.totalMemory() - runtime.freeMemory()) / mb+" MB"+"  free memory: "+ runtime.freeMemory() / mb+" MB"+"  total memory: "
-        //   +runtime.totalMemory()/mb+" MB");
-    //  }
-   // };
-       //  Timer timer = new Timer(500, actionListener);
-    //timer.start();
     }
     
 
@@ -4479,6 +4495,7 @@ guidance (Guidecmfd,"The <write_matrices> element is used to write the sparse ma
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
@@ -4494,6 +4511,7 @@ guidance (Guidecmfd,"The <write_matrices> element is used to write the sparse ma
     private javax.swing.JMenuItem jMenuItem_binary_track_to_pvtp;
     private javax.swing.JMenuItem jMenuItem_openmc_xml_validation;
     private javax.swing.JMenuItem jMenuItem_run_openmc;
+    private javax.swing.JMenuItem jMenuPPM2PNG;
     private javax.swing.JMenuItem jMenu_get_openmc;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane10;
@@ -4516,7 +4534,6 @@ guidance (Guidecmfd,"The <write_matrices> element is used to write the sparse ma
     private javax.swing.JMenuItem menu_existing_project;
     private javax.swing.JMenuItem menu_exit;
     private javax.swing.JMenuItem menu_item_about;
-    private javax.swing.JMenuItem menu_item_get_openmc;
     private javax.swing.JMenuItem menu_item_show_results;
     private javax.swing.JMenuItem menu_item_table_of_nuclides;
     private javax.swing.JMenuItem menu_new_openmc_project;

@@ -1,7 +1,10 @@
 #!/bin/bash 
 
 openmc_dir=$1
+
 null=""
+echo $openmc_dir " has been chosen !"
+
 if [[ $openmc_dir = $null ]]; then
 	DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 	cd $DIR
@@ -11,7 +14,9 @@ if [[ $openmc_dir = $null ]]; then
 	if [ -d "$datadir" ]; then
  		cd $datadir
 		openmc_dir=$(pwd)
+		echo $datadir
 	else
+		echo $datadir
 		echo " "
 		echo " "
 		echo "       Warning :    OpenMC must be installed first ! "
@@ -24,39 +29,31 @@ if [[ $openmc_dir = $null ]]; then
 		done		 
 	fi
 else
-	datadir="$openmc_dir/openmc/data"
+	datadir="$openmc_dir/data"
 	if [ -d "$datadir" ]; then
 		cd  $datadir
+		echo "/data exists"
+		pwd
 	else
-		echo " "
-		echo " "
-		echo "       Warning :    OpenMC must be installed first ! "
-		echo " "
-		printf "               Nothing done. Press 'CTRL+C' to exit : "
-		trap "exit" INT
-		while :
-		do
-    		    sleep 10000 
-		done		 
+		echo "/data doesn't exist"
+		mkdir $datadir
+		cd $datadir
+		pwd			 
 	fi
 fi
 echo " "
 echo "***********************************************************************"
 echo "************   Downloading nndc neutron cross sections   **************"
 echo "************          to the following path :            **************"
-echo "************               "openmc/data"                   **************"
+echo "************                  "/data"                    **************"
 echo "***********************************************************************"
 echo " "
 
-python get_nndc_data.py
+pwd
+python $openmc_dir/openmc/scripts/openmc-get-nndc-data
 
 
 
-
-echo "           *********************************************"
-echo "               download of nndc data has been finished"
-echo "           *********************************************"
-echo " "
 printf "Press 'CTRL+C' to exit : "
 trap "exit" INT
 while :

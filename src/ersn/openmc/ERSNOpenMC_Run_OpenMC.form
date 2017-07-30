@@ -237,7 +237,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="c8" id="orange" palette="1" red="ff" type="palette"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="notify me by Gmail,  once the simulation ends"/>
+        <Property name="text" type="java.lang.String" value="notify me by Email,  once the simulation ends"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="notificationActionPerformed"/>
