@@ -8,7 +8,7 @@
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ * furnished to do so, subject to the iltersollowing conditions:
  *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
@@ -45,6 +45,7 @@ import jsyntaxpane.util.Configuration;
 import java.io.FilenameFilter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTextArea;
 import javax.swing.filechooser.FileFilter;
 
 /**
@@ -76,6 +77,7 @@ ERSNOpenMC_Singleton tmp = ERSNOpenMC_Singleton.getInstance();
 
 // DEFINITION OF COLORS ASSIGNED TO THE BUTTON AT SELECTED AND UNSELECTED STATES.
 Color BUTTON_BACKGROUD_COLOR__SELECTED_STATE= new Color(255,0,54), BUTTON_BACKGROUD_COLOR__UNSELECTED_STATE= new Color(0,0,154);
+    private JTextArea guide_filter;
 
 
  
@@ -282,6 +284,7 @@ plottingTxt.setContentType("text/xhtml");
         btn_mesh = new javax.swing.JButton();
         btn_tally = new javax.swing.JButton();
         btn_assume_separate = new javax.swing.JButton();
+        btn_tally2 = new javax.swing.JButton();
         jInternalFrame8 = new javax.swing.JInternalFrame();
         jScrollPane8 = new javax.swing.JScrollPane();
         talliesTxt = new javax.swing.JEditorPane();
@@ -578,7 +581,6 @@ plottingTxt.setContentType("text/xhtml");
         jInternalFrame3.setToolTipText("");
         jInternalFrame3.setVisible(true);
 
-        guide_geometry.setBackground(java.awt.SystemColor.text);
         guide_geometry.setColumns(20);
         guide_geometry.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         guide_geometry.setLineWrap(true);
@@ -740,7 +742,6 @@ plottingTxt.setContentType("text/xhtml");
         jInternalFrame6.setTitle("OpenMC commands guidance");
         jInternalFrame6.setVisible(true);
 
-        guide_materials.setBackground(java.awt.SystemColor.text);
         guide_materials.setColumns(20);
         guide_materials.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         guide_materials.setLineWrap(true);
@@ -1463,7 +1464,6 @@ plottingTxt.setContentType("text/xhtml");
         jInternalFrame11.setTitle("OpenMC commands guidance");
         jInternalFrame11.setVisible(true);
 
-        Guide.setBackground(java.awt.SystemColor.text);
         Guide.setColumns(20);
         Guide.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         Guide.setLineWrap(true);
@@ -1512,6 +1512,7 @@ plottingTxt.setContentType("text/xhtml");
         container.addTab("Settings ", settings_pnl);
 
         tallies_pnl.setBackground(java.awt.SystemColor.activeCaption);
+        tallies_pnl.setPreferredSize(new java.awt.Dimension(1010, 668));
 
         jInternalFrame7.setTitle("OpenMC commands");
         jInternalFrame7.setVisible(true);
@@ -1599,6 +1600,26 @@ plottingTxt.setContentType("text/xhtml");
             }
         });
 
+        btn_tally2.setBackground(new java.awt.Color(0, 0, 154));
+        btn_tally2.setForeground(new java.awt.Color(255, 255, 204));
+        btn_tally2.setText("filter");
+        btn_tally2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_tally2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_tally2.setFocusPainted(false);
+        btn_tally2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_tally2MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_tally2MouseEntered(evt);
+            }
+        });
+        btn_tally2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_tally2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jInternalFrame7Layout = new javax.swing.GroupLayout(jInternalFrame7.getContentPane());
         jInternalFrame7.getContentPane().setLayout(jInternalFrame7Layout);
         jInternalFrame7Layout.setHorizontalGroup(
@@ -1606,10 +1627,11 @@ plottingTxt.setContentType("text/xhtml");
             .addGroup(jInternalFrame7Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(jInternalFrame7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btn_mesh, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_mesh, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_assume_separate, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_tally, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_comment_tallies, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_comment_tallies, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_tally2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0))
         );
         jInternalFrame7Layout.setVerticalGroup(
@@ -1618,12 +1640,13 @@ plottingTxt.setContentType("text/xhtml");
                 .addGap(0, 0, 0)
                 .addComponent(btn_tally, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
+                .addComponent(btn_tally2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btn_mesh, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btn_assume_separate, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(btn_comment_tallies, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addComponent(btn_comment_tallies, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jInternalFrame8.setTitle("OpenMC XML Editor");
@@ -1637,7 +1660,7 @@ plottingTxt.setContentType("text/xhtml");
             jInternalFrame8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame8Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 799, Short.MAX_VALUE)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 790, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         jInternalFrame8Layout.setVerticalGroup(
@@ -1651,7 +1674,6 @@ plottingTxt.setContentType("text/xhtml");
         jInternalFrame12.setTitle("OpenMC commands guidance");
         jInternalFrame12.setVisible(true);
 
-        guide_tallies.setBackground(java.awt.SystemColor.text);
         guide_tallies.setColumns(20);
         guide_tallies.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         guide_tallies.setLineWrap(true);
@@ -1665,7 +1687,7 @@ plottingTxt.setContentType("text/xhtml");
             jInternalFrame12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame12Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane20, javax.swing.GroupLayout.DEFAULT_SIZE, 1010, Short.MAX_VALUE)
+                .addComponent(jScrollPane20, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         jInternalFrame12Layout.setVerticalGroup(
@@ -1691,9 +1713,8 @@ plottingTxt.setContentType("text/xhtml");
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tallies_pnlLayout.createSequentialGroup()
                 .addGap(2, 2, 2)
                 .addGroup(tallies_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jInternalFrame7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jInternalFrame8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0)
+                    .addComponent(jInternalFrame8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jInternalFrame7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(jInternalFrame12))
         );
 
@@ -2138,7 +2159,6 @@ plottingTxt.setContentType("text/xhtml");
         jInternalFrame15.setTitle("OpenMC commands guidance");
         jInternalFrame15.setVisible(true);
 
-        Guidecmfd.setBackground(java.awt.SystemColor.text);
         Guidecmfd.setColumns(20);
         Guidecmfd.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         Guidecmfd.setLineWrap(true);
@@ -2300,7 +2320,6 @@ plottingTxt.setContentType("text/xhtml");
         jInternalFrame18.setTitle("OpenMC commands guidance");
         jInternalFrame18.setVisible(true);
 
-        GuidePlotting.setBackground(java.awt.SystemColor.text);
         GuidePlotting.setColumns(20);
         GuidePlotting.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         GuidePlotting.setLineWrap(true);
@@ -2719,7 +2738,7 @@ Process p_openmc_xml_validation = Runtime.getRuntime().exec("xterm -iconic -titl
 //int caretPosition = talliesTxt.getCaretPosition(); 
 talliesTxt.replaceSelection(
           "<tally id=\"\" >\n  <name >  </name>\n"
-        + "  <filter type=\"\" bins=\"\"/>\n"
+        + "  <filters>  </filters>\n"
         + "  <scores >  </scores>\n"
         + "  <nuclides> </nuclides>\n"
         + "  <trigger>\n"
@@ -2765,13 +2784,13 @@ System.out.print(project_full_path);
     private void btn_latticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_latticeActionPerformed
         geometryTxt.replaceSelection(
              "<lattice id=\" \" dimension=\" \" outer=\" \">\n" 
-            +"   <lower_left>   </lower_left> \n" 
+      
+      +"   <lower_left>   </lower_left> \n" 
             +"   <pitch>  </pitch> \n" 
             +"   <universes>  \n\n"
             +"   </universes> \n" 
             +"</lattice>\n"); 
     }//GEN-LAST:event_btn_latticeActionPerformed
-
     private void btn_meshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_meshActionPerformed
         talliesTxt.replaceSelection(
                 "<mesh id=\"\">\n" +
@@ -4350,6 +4369,32 @@ guidance (Guidecmfd,"The <write_matrices> element is used to write the sparse ma
         }        
     }//GEN-LAST:event_jMenuPPM2PNGActionPerformed
 
+    private void btn_tally2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tally2MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_tally2MouseExited
+
+    private void btn_tally2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tally2MouseEntered
+        guidance (guide_tallies,"The <filter> element accepts the following sub-elements:\n\n" 
+        +  "               type=``cell``; type=``energy`` and type=``energyout``"
+        +  "                bins\n\n"
+        +  "<filter id=''1'' type=''cell''> \n"
+        +  "     <bins>100</bins> \n"
+        +  "</filter> \n\n"
+        +  "<filter id=''2'' type=''energy''> \n"
+        +  "     <bins>0 20.0e6</bins> \n"
+        +  "</filter> \n\n"
+        +  "<filter id=''3'' type=''energyout''> \n"
+        +  "     <bins>0 20.0e6</bins> \n"
+        +  "</filter> "  );
+    }//GEN-LAST:event_btn_tally2MouseEntered
+
+    private void btn_tally2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tally2ActionPerformed
+talliesTxt.replaceSelection(
+          "<filter id=\"\" type=\"\" >\n  "
+        + "  <bins>  </bins>\n"
+         + "</filter>\n");         // TODO add your handling code here:
+    }//GEN-LAST:event_btn_tally2ActionPerformed
+
     public void get_openmcdir(){
         try {
             File fileDir = new File(getJarContainingFolder(ERSNOpenMC_Main.class)+"/config/openmc.dir");
@@ -4452,6 +4497,7 @@ guidance (Guidecmfd,"The <write_matrices> element is used to write the sparse ma
     private javax.swing.JButton btn_surface;
     private javax.swing.JButton btn_survival_biasing;
     private javax.swing.JButton btn_tally;
+    private javax.swing.JButton btn_tally2;
     private javax.swing.JButton btn_tally_reset;
     private javax.swing.JButton btn_threads;
     private javax.swing.JButton btn_trace;
