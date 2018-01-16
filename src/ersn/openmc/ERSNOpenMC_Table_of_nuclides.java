@@ -191,8 +191,6 @@ final static String Salmon="0xFA8072";
         btn_close = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         Target = new javax.swing.JEditorPane();
-        xs_value = new javax.swing.JTextField();
-        xs_option = new javax.swing.JCheckBox();
         percent_value = new javax.swing.JTextField();
         ao_option = new javax.swing.JCheckBox();
         btn_Uuo = new javax.swing.JButton();
@@ -1438,17 +1436,6 @@ final static String Salmon="0xFA8072";
 
         jScrollPane3.setViewportView(Target);
 
-        xs_value.setEnabled(false);
-
-        xs_option.setBackground(java.awt.SystemColor.activeCaption);
-        xs_option.setForeground(java.awt.Color.orange);
-        xs_option.setText("Cross sections identifer:  xs=");
-        xs_option.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                xs_optionActionPerformed(evt);
-            }
-        });
-
         percent_value.setEnabled(false);
 
         ao_option.setBackground(java.awt.SystemColor.activeCaption);
@@ -1533,21 +1520,15 @@ final static String Salmon="0xFA8072";
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(ao_option)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_ao)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(rb_wo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(percent_value, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(xs_option)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(xs_value, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(ao_option)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rb_ao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rb_wo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(percent_value, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(rb_isotope))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(93, 93, 93)
@@ -1975,20 +1956,16 @@ final static String Salmon="0xFA8072";
                             .addComponent(jLabel3)
                             .addComponent(rb_element)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGap(4, 4, 4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(xs_option)
-                                    .addComponent(xs_value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(rb_wo)
-                                    .addComponent(percent_value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ao_option)
                                     .addComponent(rb_ao)
-                                    .addComponent(ao_option)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(rb_wo)
+                                    .addComponent(percent_value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(27, 27, 27))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_insert)
@@ -2271,12 +2248,12 @@ if (rb_ao.isSelected()) weight="ao";
 if (rb_wo.isSelected()) weight="wo";
 
  String str_percent="", str_xs="";
- str_xs=xs_value.getText();
+// str_xs=xs_value.getText();
 if (element_or_nuclide=="isotope") 
 {                                                  
  if  (percent_value.isEnabled()==true)
  {  str_percent=" "+ weight+"=\""+percent_value.getText()+"\"";
-   Target.setText(Target.getText()+"<nuclide name=\""+lbl.getText()+X_A.getSelectedItem()+"\""+" xs=\""+str_xs+"\""+" " +str_percent+"/>\n");                                             
+   Target.setText(Target.getText()+"<nuclide name=\""+lbl.getText()+X_A.getSelectedItem()+"\""+" " +str_percent+"/>\n");                                             
         };
        }; 
   if (element_or_nuclide=="element") 
@@ -3218,10 +3195,6 @@ X_A.addItem(Integer.toString(100));
               setElement(btn_Pa,91, 234, 0,229);
     }//GEN-LAST:event_btn_PaActionPerformed
 
-    private void xs_optionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xs_optionActionPerformed
-       xs_value.enable(true);
-    }//GEN-LAST:event_xs_optionActionPerformed
-
     private void ao_optionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ao_optionActionPerformed
        percent_value.enable(true);
     }//GEN-LAST:event_ao_optionActionPerformed
@@ -3467,7 +3440,5 @@ X_A.addItem(Integer.toString(126));
     private javax.swing.JRadioButton rb_isotope;
     private javax.swing.JRadioButton rb_wo;
     private javax.swing.JEditorPane target;
-    private javax.swing.JCheckBox xs_option;
-    private javax.swing.JTextField xs_value;
     // End of variables declaration//GEN-END:variables
 }

@@ -79,7 +79,7 @@
           <Color blue="0" green="c8" id="orange" palette="1" red="ff" type="palette"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="ERSN-OPENMC v1.6"/>
+        <Property name="text" type="java.lang.String" value="ERSN-OPENMC v1.7"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
       <Constraints>
@@ -193,7 +193,7 @@
           <Color blue="0" green="e0" id="Info" palette="2" red="e0" type="palette"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Copyleft 2015-2017, J. El Bakkali &amp; T. El Bardouni,  MIT License"/>
+        <Property name="text" type="java.lang.String" value="Copyleft 2015-2018, J. El Bakkali &amp; T. El Bardouni,  MIT License"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
       <Constraints>

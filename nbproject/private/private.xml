@@ -3,11 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/tarek/OpenMC-2017/ERSN-OpenMC-v1.6/src/ersn/openmc/ERSNOpenMC_Singleton.java</file>
-            <file>file:/home/tarek/OpenMC-2017/ERSN-OpenMC-v1.6/src/ersn/openmc/ERSNOpenMC_Table_of_nuclides.java</file>
-            <file>file:/home/tarek/OpenMC-2017/ERSN-OpenMC-v1.6/src/ersn/openmc/ERSNOpenMC_View_hdf5_file.java</file>
-            <file>file:/home/tarek/OpenMC-2017/ERSN-OpenMC-v1.6/src/ersn/openmc/ERSNOpenMC_Get_OpenMC.java</file>
-            <file>file:/home/tarek/OpenMC-2017/ERSN-OpenMC-v1.6/src/ersn/openmc/ERSNOpenMC_Main.java</file>
+            <file>file:/home/tarek/Github/ERSN-OpenMC-v1.7/src/ersn/openmc/ERSNOpenMC_Main.java</file>
+            <file>file:/home/tarek/Github/ERSN-OpenMC-v1.7/src/ersn/openmc/ERSNOpenMC_Table_of_nuclides.java</file>
         </group>
     </open-files>
 </project-private>
