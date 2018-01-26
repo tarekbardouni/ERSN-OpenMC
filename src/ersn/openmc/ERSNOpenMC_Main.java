@@ -4375,7 +4375,7 @@ guidance (Guidecmfd,"The <write_matrices> element is used to write the sparse ma
 
     private void btn_tally2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tally2MouseEntered
         guidance (guide_tallies,"The <filter> element accepts the following sub-elements:\n\n" 
-        +  "               type=``cell``; type=``energy`` and type=``energyout``"
+        +  "                type=``cell`` for example"
         +  "                bins\n\n"
         +  "<filter id=''1'' type=''cell''> \n"
         +  "     <bins>100</bins> \n"
@@ -4385,7 +4385,9 @@ guidance (Guidecmfd,"The <write_matrices> element is used to write the sparse ma
         +  "</filter> \n\n"
         +  "<filter id=''3'' type=''energyout''> \n"
         +  "     <bins>0 20.0e6</bins> \n"
-        +  "</filter> "  );
+        +  "</filter> \n"  
+        +  "allowed types : “cell”, “cellborn”, “material”, “universe”, “energy”, “energyout” \n"
+        +  "“mesh”, “distribcell”, “mu”, “polar”, “azimutal”, and “delayedgroup”");
     }//GEN-LAST:event_btn_tally2MouseEntered
 
     private void btn_tally2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tally2ActionPerformed
