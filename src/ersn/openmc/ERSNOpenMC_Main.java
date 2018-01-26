@@ -42,11 +42,9 @@ import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import jsyntaxpane.DefaultSyntaxKit;
 import jsyntaxpane.util.Configuration;
-import java.io.FilenameFilter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTextArea;
-import javax.swing.filechooser.FileFilter;
 
 /**
  *
@@ -3208,20 +3206,8 @@ guidance (guide_geometry,"The <lattice> can be used to represent repeating struc
 
         guidance (guide_tallies,"The <tally> element accepts the following sub-elements:\n\n" 
 + "name:     This is an optional sub-element specifying the name of this tally to be used for output purposes. This string is limited to 52 characters for formatting purposes.\n" 
-+ "filter:   Specify a filter that restricts contributions to the tally to particles within certain regions of phase space.\n The filter element has the following attributes/sub-elements:\n"
-+ "        type:   The type of the filter. Accepted options are “cell”, “cellborn”, “material”, “universe”, “energy”, “energyout”, “mesh”, “distribcell”, “mu”, “polar”, “azimutal”, and “delayedgroup”. \n"
-+ "        bins:   For each filter type, the corresponding bins entry corresponds to identifiers and/or values of the above type entries.  \n\n"
-+ "                example: <filter type=\"energy\" bins=\"0.0 1.0 20.0\" />   \n"
-+ "                         <filter type=\"energy\" bins=\"0.0 1.0 20.0\" />   \n"
-+ "                         <filter type=\"energyout\" bins=\"0.0 1.0 20.0\" />   \n"
-+ "                         <filter type=\"mu\" bins=\"-1.0 -0.6 -0.2 0.2 0.6 1.0\" /> \n"
-+ "                      or <filter type=\"mu\" bins=\"5\" />\n" 
-+ "                         <filter type=\"polar\" bins=\"0.0 0.6283 1.2566 1.8850 2.5132 3.1416\"/> \n"
-+ "                      or <filter type=\"polar\" bins=\"5\" /> \n"
-+ "                         <filter type=\"azimuthal\" bins=\"0.0 3.1416 6.2832\" /> \n"
-+ "                      or <filter type=\"azimuthal\" bins=\"2\" />\n"
-+ "                         <filter type=\"delayedgroup\" bins=\"1 2 3 4 5 6\" /> to tally to all 6 delayed groups in the ENDF/B-VII.1 library  \n"
 + "   \n"
++ "filter:   Specify a filter that restricts contributions to the tally : <filters> 1 2 3 </filters> \n\n"
 + "nuclides: If specified, the scores listed will be for particular nuclides, not the summation of reactions from all nuclides. \n"
 + "          The format for nuclides should be [Atomic symbol]-[Mass number], e.g. “U-235”. The reaction rate for all nuclides can \n"
 + "          be obtained with “total”. Use: <nuclides>U-235 Pu-239 total</nuclides>  \n\n "
@@ -4374,20 +4360,38 @@ guidance (Guidecmfd,"The <write_matrices> element is used to write the sparse ma
     }//GEN-LAST:event_btn_tally2MouseExited
 
     private void btn_tally2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tally2MouseEntered
-        guidance (guide_tallies,"The <filter> element accepts the following sub-elements:\n\n" 
-        +  "                type=``cell`` for example"
-        +  "                bins\n\n"
-        +  "<filter id=''1'' type=''cell''> \n"
+        guidance (guide_tallies,"filter:   Specify a filter that restricts contributions to the tally to particles within certain regions of phase space.\n" 
+        +  "The filter element has the following attributes/sub-elements:\n"
+        + "        type:   The type of the filter. Accepted options are “cell”, “cellborn”, “material”, “universe”, “energy”, “energyout”, “mesh”, “distribcell”, “mu”, “polar”, “azimutal”, and “delayedgroup”. \n"
+        + "        bins:   For each filter type, the corresponding bins entry corresponds to identifiers and/or values of the above type entries.  \n\n"
+        +  "for example:\n"
+        +  "<filter id=\"1\" type='\"cell\"> \n"
         +  "     <bins>100</bins> \n"
         +  "</filter> \n\n"
-        +  "<filter id=''2'' type=''energy''> \n"
-        +  "     <bins>0 20.0e6</bins> \n"
+        +  "<filter id=\"2\" type=\"energy\"> \n"
+        +  "     <bins>0. 0.625 20.0e6</bins> \n"
         +  "</filter> \n\n"
-        +  "<filter id=''3'' type=''energyout''> \n"
-        +  "     <bins>0 20.0e6</bins> \n"
+        +  "<filter id=\"3\" type=\"energyout\"> \n"
+        +  "     <bins>0. 0.625 20.0e6</bins> \n"
         +  "</filter> \n"  
-        +  "allowed types : “cell”, “cellborn”, “material”, “universe”, “energy”, “energyout” \n"
-        +  "“mesh”, “distribcell”, “mu”, “polar”, “azimutal”, and “delayedgroup”");
+        +  "<filter id=\"4\" type=\"mu\"> \n"
+        +  "     <bins>-1.0 -0.6 -0.2 0.2 0.6 1.0</bins> \n"
+        +  "</filter> \n"  
+        +  "<filter id=\"5\" type=\"mu\"> \n"
+        +  "     <bins> 6 </bins> \n"
+        +  "</filter> \n"  
+        +  "<filter id=\"6\" type=\"azimutal\"> \n"
+        +  "     <bins>0.0 3.1416 6.2832</bins> \n"
+        +  "</filter> \n"  
+        +  "<filter id=\"7\" type=\"polar\"> \n"
+        +  "     <bins>0.0 0.6283 1.2566 1.8850 2.5132 3.1416</bins> \n"
+        +  "</filter> \n"  
+        +  "<filter id=\"8\" type=\"polar\"> \n"
+        +  "     <bins> 6 </bins> \n"
+        +  "</filter> \n"  
+        +  "<filter id=\"9\" type=\"delayedgroup\"> \n"
+        +  "     <bins>1 2 3 4 5 6</bins>    to tally to all 6 delayed groups in the ENDF/B-VII.1 library  \n"
+        +  "</filter> \n")  ;
     }//GEN-LAST:event_btn_tally2MouseEntered
 
     private void btn_tally2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tally2ActionPerformed

@@ -29,6 +29,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -485,14 +486,14 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
                         .addComponent(_openmpi_, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(_mpich2_, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(6, 6, 6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_get_prerequisites, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(btn_close2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 6, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
+                .addGap(24, 24, 24))
         );
 
         jTabbedPane2.addTab("Install Prerequisites", jPanel1);
@@ -659,7 +660,7 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                         .addComponent(_SEQ_MODE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(_OPENMP_MODE)
@@ -685,7 +686,7 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Install OpenMC", jPanel2);
@@ -792,7 +793,7 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_get_nndc)
                     .addComponent(btn_close3))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Download NNDC", jPanel3);
@@ -932,7 +933,7 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_convert_nndc)
                     .addComponent(btn_close4))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Convert NNDC", jPanel4);
@@ -966,7 +967,7 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
             Process pb = Runtime.getRuntime().exec("xterm -j  -sb -sl 2000 -title ERSN-OpenMC_Console -e sudo apt-get install "
                     + str_cmake + str_gfortran + str_git + str_eog + str_setuptools + str_hdf5_tools + str_hdf5_dev + str_hdf5_helpers + str_mutt
                     + str_matplotlib + str_vtk + str_paraview + str_scipy + str_numpy + str_ipython + str_python_5py + str_python_pandas
-                    + str_mpich2 + str_openmpi);
+                    + str_mpich2 + str_openmpi );
             pb.waitFor();
             JOptionPane.showMessageDialog(this, "The checked packages have been installed successfully or already exist ! ");
         } catch (IOException | InterruptedException ex) {
