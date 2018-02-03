@@ -170,7 +170,7 @@ if (project_full_path.isEmpty()==false)
   save_xml_file("geometry.xml",project_full_path,geometryTxt);
 }
 
-if (talliesTxt.getText().toString().isEmpty()==false) {save_xml_file("tallies.xml",project_full_path,talliesTxt);}
+if (talliesTxt.getText().isEmpty()==false) {save_xml_file("tallies.xml",project_full_path,talliesTxt);}
 if (plottingTxt.getText().isEmpty()==false) {save_xml_file("plots.xml",project_full_path,plottingTxt);}
 if (cmfdTxt.getText().isEmpty()==false) {save_xml_file("cmfd.xml",project_full_path,cmfdTxt);}
 }
@@ -2675,7 +2675,7 @@ target.setCaretPosition(Math.min(caretPosition, target.getText().length()));
     }//GEN-LAST:event_btn_surfaceActionPerformed
 
     private void btn_materialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_materialActionPerformed
-      materialsTxt.replaceSelection("<material id=\"\" >\n  <density value=\"\" units=\"\" />\n  <nuclide name=\"\" xs=\"\" ao=\"\" />\n  <element name=\"\" ao=\"\" />\n  <sab name=\"\" xs=\"\"  />\n</material>\n"); 
+      materialsTxt.replaceSelection("<material id=\"\" >\n  <density value=\"\" units=\"\" />\n  <nuclide name=\"\"  ao=\"\" />\n  <element name=\"\" ao=\"\" />\n  <sab name=\"\"  />\n</material>\n"); 
     }//GEN-LAST:event_btn_materialActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -2701,23 +2701,6 @@ String
      bashdir_files=  getJarContainingFolder(ERSNOpenMC_Main.class)+"/scripts";  
 
  } catch (Exception  ex) {System.out.print(ex);}
- /* 
- try    {  
- 
-Process p_get_hdf5 = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC_Console -e chmod +x "+bashdir_files+"/get_hdf5.sh");
-Process p_get_openmc = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC_Console -e chmod +x "+bashdir_files+"/get_openmc.sh");
-Process p_get_openmc_with_mpich2 = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC_Console -e chmod +x "+bashdir_files+"/get_openmc-with-mpich2.sh");
-Process pb_get_openmc_with_openmpi = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC_Console -e chmod +x "+bashdir_files+"/get_openmc-with-openmpi.sh");
-Process pb_get_openmc_with_openmp = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC_Console -e chmod +x "+bashdir_files+"/get_openmc-with-openmp.sh");
-Process pb_start_openmc = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC_Console -e chmod +x "+bashdir_files+"/start_openmc.sh");
-Process p_get_nndc = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC_Console -e chmod +x "+bashdir_files+"/get_nndc.sh");
-Process p_get_hdf5_parallel = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC_Console -e chmod +x "+bashdir_files+"/get_hdf5_parallel.sh");
-Process p_track = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC_Console -e chmod +x "+bashdir_files+"/track.sh");
-Process p_openmc_xml_validation = Runtime.getRuntime().exec("xterm -iconic -title ERSN-OpenMC_Console -e chmod +x "+bashdir_files+"/openmc-xml-validation.sh");
-
- } 
- catch (IOException  ex) { System.out.print(ex);  }
- */
           }//GEN-LAST:event_formWindowOpened
 
     private void btn_cellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cellActionPerformed
@@ -2742,7 +2725,7 @@ talliesTxt.replaceSelection(
         + "  <trigger>\n"
         + "      <type> </type>\n"
         + "      <threshold> </threshold>\n"  
-        + "      <scores> </scrores>\n" 
+        + "      <scores> </scores>\n" 
         + "  </trigger>\n"
         + "</tally>\n"); 
 //talliesTxt.setCaretPosition(Math.min(caretPosition, talliesTxt.getText().length()));             
@@ -2969,7 +2952,8 @@ guidance (Guidecmfd,"The <display> element sets one additional CMFD output colum
 "“balance” - prints the RMS [%] of the resdiual from the neutron balance equation on CMFD tallies.\n" +
 "“dominance” - prints the estimated dominance ratio from the CMFD iterations. This will only work for power iteration eigensolver.\n" +
 "“entropy” - prints the entropy of the CMFD predicted fission source. Can only be used if OpenMC entropy is active as well.\n" +
-" “source” - prints the RMS [%] between the OpenMC fission source and CMFD fission source. \nDefault: None");
+" “source” - prints the RMS [%] between the OpenMC fission source and CMFD fission source. \nDefault: None\n\n"+
+        "More information can be found in : https://openmc.readthedocs.io/en/stable/usersguide/index.html");  
     }//GEN-LAST:event_btn_displayMouseEntered
 
     private void btn_feedbackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_feedbackMouseEntered
@@ -3083,7 +3067,7 @@ guidance (Guidecmfd,"The <display> element sets one additional CMFD output colum
     }//GEN-LAST:event_btn_no_reduceActionPerformed
 
     private void btn_fixed_sourceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_fixed_sourceActionPerformed
-        settingsTxt.replaceSelection("<run_mode>fixed_source</run_mode>\n" +
+        settingsTxt.replaceSelection("<run_mode>fixed source</run_mode>\n" +
             "  <batches>    </batches>\n" +
             "  <particles>   </particles>\n");
     }//GEN-LAST:event_btn_fixed_sourceActionPerformed
@@ -3139,8 +3123,9 @@ if (cmfdTxt.getText().isEmpty()==false) {save_xml_file("cmfd.xml",project_full_p
 "id: A unique integer that can be used to identify the material.\n" +
 "density: An element with attributes/sub-elements called value and units. The value attribute is the numeric value of the density while the units can be “g/cm3”, “kg/m3”, “atom/b-cm”, “atom/cm3”, or “sum”. The “sum” unit indicates that the density should be calculated as the sum of the atom fractions for each nuclide in the material. This should not be used in conjunction with weight percents. Default: None\n" +
 "nuclide: An element with attributes/sub-elements called name, xs, and ao or wo. The name attribute is the name of the cross-section for a desired nuclide while the xs attribute is the cross-section identifier. Finally, the ao and wo attributes specify the atom or weight percent of that nuclide within the material, respectively element:	\n" +
-"Specifies that a natural element is present in the material. The natural element is split up into individual isotopes based on IUPAC Isotopic Compositions of the Elements 2009. This element has attributes/sub-elements called name, xs, and ao. The name attribute is the atomic symbol of the element while the xs attribute is the cross-section identifier. Finally, the ao attribute specifies the atom percent of the element within the material, respectively. In some cross section libraries, certain naturally occurring isotopes do not have cross sections. The <natural_elements> Element option determines how a natural element is split into isotopes in these cases. Default: None\n sab: Associates an S(a,b) table with the material. This element has attributes/sub-elements called name and xs. The name attribute is the name of the S(a,b) table that should be associated with the material, and xs is the cross-section identifier for the table. Default: None");
-
+"Specifies that a natural element is present in the material. The natural element is split up into individual isotopes based on IUPAC Isotopic Compositions of the Elements 2009. This element has attributes/sub-elements called name, xs, and ao. The name attribute is the atomic symbol of the element while the xs attribute is the cross-section identifier. Finally, the ao attribute specifies the atom percent of the element within the material, respectively. In some cross section libraries, certain naturally occurring isotopes do not have cross sections. The <natural_elements> Element option determines how a natural element is split into isotopes in these cases. Default: None\n sab: Associates an S(a,b) table with the material. This element has attributes/sub-elements called name. The name attribute is the name of the S(a,b) table that should be associated with the material\n\n"+
+                "For example: <sab name=''c_H_in_H2O'' />\n\n"+
+"More information can be found in : https://openmc.readthedocs.io/en/stable/usersguide/index.html");  
     }//GEN-LAST:event_btn_materialMouseEntered
 
     private void btn_defaults_xsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_defaults_xsMouseEntered
@@ -3157,8 +3142,9 @@ if (cmfdTxt.getText().isEmpty()==false) {save_xml_file("cmfd.xml",project_full_p
         guidance (guide_geometry,"Each <surface> element can have the following attributes or sub-elements:\n" +
 "id: A unique integer that can be used to identify the surface. Default: None \n" +
 "type: The type of the surfaces. This can be “x-plane”, “y-plane”, “z-plane”, “plane”, “x-cylinder”, “y-cylinder”, “z-cylinder”, “sphere”, “x-cone”, “y-cone”, “z-cone”, or “quadric”. Default: None\n" +
-"coeffs: The corresponding coefficients for the given type of surface. See below for a list a what coefficients to specify for a given surface. Default: None\n" +
-"boundary: The boundary condition for the surface. This can be “transmission”, “vacuum”, or “reflective. Default: “transmission”");             
+"coeffs: The corresponding coefficients for the given type of surface. See below for a list a what coefficients to specify for a given surface. Default: None\n\n" +
+"boundary: The boundary condition for the surface. This can be “transmission”, “vacuum”, or “reflective. Default: “transmission” \n\n"+
+"More information can be found in : https://openmc.readthedocs.io/en/stable/usersguide/index.html");             
     }//GEN-LAST:event_btn_surfaceMouseEntered
 
     private void btn_cellMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cellMouseEntered
@@ -3170,7 +3156,8 @@ if (cmfdTxt.getText().isEmpty()==false) {save_xml_file("cmfd.xml",project_full_p
 "fill: The id of the universe that fills this cell.\n material: The id of the material that this cell contains. If the cell should contain no material, this can also be set to “void”. Default: None\n" +
 "region: A list of the ids for surfaces that bound this cell, e.g. if the cell is on the negative side of surface 3 and the positive side of surface 5, the bounding surfaces would be given as “-3 5”. Note: surfaces have been replaced by region in openmc release 0.7.1.  Default: None\n" +
 "rotation: If the cell is filled with a universe, this element specifies the angles in degrees about the x, y, and z axes that the filled universe should be rotated. Should be given as three real numbers. Rotation can be omitted if no rotation is applyed. Default: None\n" +
-"translation: If the cell is filled with a universe, this element specifies a vector that is used to translate (shift) the universe. Should be given as three real numbers. Translation can be omitted if no translation is applyed. Default: None");  
+"translation: If the cell is filled with a universe, this element specifies a vector that is used to translate (shift) the universe. Should be given as three real numbers. Translation can be omitted if no translation is applyed. Default: None\n\n"+
+"More information can be found in : https://openmc.readthedocs.io/en/stable/usersguide/index.html");               
     }//GEN-LAST:event_btn_cellMouseEntered
 
     private void btn_latticeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_latticeMouseEntered
@@ -3193,8 +3180,9 @@ guidance (guide_geometry,"The <lattice> can be used to represent repeating struc
 "      2 1 2\n" +
 "      2 2 2\n" +
 "    </universes>\n" +
-"   </lattice>"        
-        );
+"   </lattice>\n\n" +       
+"More information can be found in : https://openmc.readthedocs.io/en/stable/usersguide/index.html");             
+
     }//GEN-LAST:event_btn_latticeMouseEntered
 
     private void menu_item_table_of_nuclidesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_table_of_nuclidesActionPerformed
@@ -3213,15 +3201,15 @@ guidance (guide_geometry,"The <lattice> can be used to represent repeating struc
 + "          be obtained with “total”. Use: <nuclides>U-235 Pu-239 total</nuclides>  \n\n "
 + "estimator: The estimator element is used to force the use of either analog or tracklength tally estimation.  \n\n"
 + "scores:   A space-separated list of the desired responses to be accumulated. \n"
-+ "          Accepted options are : “flux”, “total”, “scatter”, “absorption”, “fission”, “nu-fission”, “delayed-nu-fission”, “kappa-fission”, “nu-scatter”, \n"
-+ "          “scatter-N”, “scatter-PN”, “scatter-YN”, “nu-scatter-N”, “nu-scatter-PN”, “nu-scatter-YN”, “flux-YN”, “total-YN”, \n"
-+ "          “current”, “inverse-velocity” and “events”. \n\n "
++ "          Accepted options are : “flux”, “total”, “scatter”, “absorption”, “fission”, “nu-fission”, “delayed-nu-fission”, “prompt-nu-fission”, “kappa-fission”, “fission-q-prompt”, \n"
++ "          “fission-q-recoverable”, “decay-rate”, “nu-scatter”, “scatter-N”, “scatter-PN”, “scatter-YN”, “nu-scatter-N”, “nu-scatter-PN”, “nu-scatter-YN”, “flux-YN”,  \n"
++ "          “total-YN”, “(n,2n)”, “(n,3n)”, “(n,p)”, “(n,a)”, “(n,d)”, “(n,t)”, “(n,gamma)”, “current”, “inverse-velocity” and “events”. \n\n "
 + "trigger:  Precision trigger applied to all filter bins and nuclides for this tally. It must specify the trigger’s type, \n"
 + "          threshold and scores to which it will be applied. It has the following attributes/sub-elements:\n" 
 + "        type:      The type of the trigger. Accepted options are “variance”, “std_dev”, and “rel_err”.\n"
 + "        threshold: The precision trigger’s convergence criterion for tallied values.\n" 
-+ "        scores:    The score(s) in this tally to which the trigger should be applied.\n\n");
-       
++ "        scores:    The score(s) in this tally to which the trigger should be applied.\n\n"+
+"More information can be found in : https://openmc.readthedocs.io/en/stable/usersguide/index.html");                    
     }//GEN-LAST:event_btn_tallyMouseEntered
 
     private void btn_tally_resetMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tally_resetMouseEntered
@@ -3295,7 +3283,9 @@ btn_confidence_intervals.setBackground(BUTTON_BACKGROUD_COLOR__SELECTED_STATE);
 "    Default: 1\n" +
 "    inactive: The number of inactive batches. In general, the starting cycles in a criticality calculation can not be used to contribute to tallies since the fission source distribution and eigenvalue are generally not converged immediately.\n" +
 "    Default: None\n" +
-"    particles:The number of neutrons to simulate per fission source iteration. Default: None");
+"    particles:The number of neutrons to simulate per fission source iteration. Default: None\n\n" +
+                "More information can be found in : https://openmc.readthedocs.io/en/stable/usersguide/index.html");             
+
 
     }//GEN-LAST:event_btn_eignvalueMouseEntered
 
@@ -3317,18 +3307,19 @@ btn_confidence_intervals.setBackground(BUTTON_BACKGROUD_COLOR__SELECTED_STATE);
 
 "Default: If this tag is not present, the number of mesh cells is automatically determined by the code.\n" +
 "lower_left:The Cartesian coordinates of the lower-left corner of the mesh. Default: None\n" +
-"upper_right: The Cartesian coordinates of the upper-right corner of the mesh. Default: None");
+"upper_right: The Cartesian coordinates of the upper-right corner of the mesh. Default: None\n\n"+
+"More information can be found in : https://openmc.readthedocs.io/en/stable/usersguide/index.html");             
     }//GEN-LAST:event_btn_entropyMouseEntered
 
     private void btn_fixed_sourceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_fixed_sourceMouseEntered
                          btn_fixed_source.setBackground(BUTTON_BACKGROUD_COLOR__SELECTED_STATE);  
 
-        guidance (Guide,"The <fixed_source> element indicates that a fixed source calculation should be performed. It has the following attributes/sub-elements:\n" +
+        guidance (Guide,"The <fixed source> element indicates that a fixed source calculation should be performed. It has the following attributes/sub-elements:\n" +
 "    batches: " +
 "    The total number of batches. For fixed source calculations, each batch represents a realization of random variables for tallies. " +
 "   Default: None\n" +
-"    particles:	The number of particles to simulate per batch. Default: None");
- 
+"    particles:	The number of particles to simulate per batch. Default: None\n\n"+
+"More information can be found in : https://openmc.readthedocs.io/en/stable/usersguide/index.html");              
     }//GEN-LAST:event_btn_fixed_sourceMouseEntered
 
     private void btn_no_reduceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_no_reduceMouseClicked
@@ -3341,7 +3332,8 @@ btn_confidence_intervals.setBackground(BUTTON_BACKGROUD_COLOR__SELECTED_STATE);
         guidance (Guide,"The <output> element determines what output files should be written to disk during the run. The sub-elements are described below, where “true” will write out the file and “false” will not.\n" +
 "cross_sections : Writes out an ASCII summary file of the cross sections that were read in. Default: false\n" +
 "summary : Writes out an ASCII summary file describing all of the user input files that were read in. Default: false\n" +
-"tallies : Write out an ASCII file of tally results.  Default: true");
+"tallies : Write out an ASCII file of tally results.  Default: true\n\n"+
+                "More information can be found in : https://openmc.readthedocs.io/en/stable/usersguide/index.html");             
     }//GEN-LAST:event_btn_outputMouseEntered
 
     private void btn_output_pathMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_output_pathMouseEntered
