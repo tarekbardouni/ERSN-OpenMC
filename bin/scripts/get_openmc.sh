@@ -9,7 +9,7 @@ echo "            ****** openmp_STATUS : " $OPENMP_STATUS
 
 
 export FC=gfortran
-export HDF5_ROOT=/opt/hdf5
+if [ -d /opt/hdf5 ] && export HDF5_ROOT=/opt/hdf5
 
 if [ $DEBUG_STATUS=="USED" ]; then
 	DEBUG_OPTION='-Ddebug=on'
