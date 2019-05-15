@@ -77,13 +77,14 @@ ERSNOpenMC_Singleton tmp = ERSNOpenMC_Singleton.getInstance();
 Color BUTTON_BACKGROUD_COLOR__SELECTED_STATE= new Color(255,0,54), BUTTON_BACKGROUD_COLOR__UNSELECTED_STATE= new Color(0,0,154);
     private JTextArea guide_filter;
 
+
  
 public ERSNOpenMC_Main() {
     initComponents();  
 //    myInitComponents();
     getContentPane().setBackground(new Color(0, 0, 128));
     //setIconImage( new ImageIcon(getClass().getClassLoader().getResource("PATH/TO/YourImage.png")));
-    DefaultSyntaxKit.initKit(); 
+    DefaultSyntaxKit.initKit();  
 }
 /*
 public void myInitComponents() {
@@ -118,17 +119,6 @@ String jarFilePath = path.substring(path.indexOf(":") + 1, path.indexOf("!"));
 jarFilePath = URLDecoder.decode(jarFilePath, "UTF-8");
 jarFile = new File(jarFilePath);
 }
-try {
-        String scripts_dir = System.getProperty("user.dir") + "/scripts";
-        File folder = new File(scripts_dir);
-        File[] listOfFiles = folder.listFiles();
-        for (File listOfFile : listOfFiles) {
-            Runtime.getRuntime().exec("chmod +x " + listOfFile.getAbsolutePath());
-        }
-    } catch (IOException ex) {
-        Logger.getLogger(ERSNOpenMC_Main.class.getName()).log(Level.SEVERE, null, ex);
-    }
-
 return jarFile.getParentFile().getAbsolutePath();
 }
 
@@ -688,7 +678,7 @@ plottingTxt.setContentType("text/xhtml");
                 .addGap(0, 0, 0)
                 .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btn_material, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_comment_materials, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_comment_materials, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0))
         );
         jInternalFrame4Layout.setVerticalGroup(
@@ -2661,7 +2651,7 @@ target.setCaretPosition(Math.min(caretPosition, target.getText().length()));
     }//GEN-LAST:event_btn_surfaceActionPerformed
 
     private void btn_materialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_materialActionPerformed
-      materialsTxt.replaceSelection("<material id=\"\" >\n  <density value=\"\" units=\"\" />\n  <nuclide name=\"\"  wo=\"\" />\n   <sab name=\"\"  />\n</material>\n"); 
+      materialsTxt.replaceSelection("<material id=\"\" >\n  <density value=\"\" units=\"\" />\n  <nuclide name=\"\"  wo=\"\" />\n  <sab name=\"\"  />\n</material>\n"); 
     }//GEN-LAST:event_btn_materialActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -3067,7 +3057,7 @@ guidance (Guidecmfd,"The <display> element sets one additional CMFD output colum
     }//GEN-LAST:event_btn_energy_gridActionPerformed
 
     private void btn_eignvalueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eignvalueActionPerformed
-        settingsTxt.replaceSelection("<run_mode>eigenvalue</run_mode>   <!-- avoid space around numbers -->\n" +
+        settingsTxt.replaceSelection("<run_mode>eigenvalue</run_mode>   \n" +
                 "   <batches> </batches>\n" +
                 "   <generations_per_batch>" +
                 "   </generations_per_batch>\n" +
@@ -3118,7 +3108,7 @@ if (cmfdTxt.getText().isEmpty()==false) {save_xml_file("cmfd.xml",project_full_p
 "id: A unique integer that can be used to identify the surface. Default: None \n" +
 "type: The type of the surfaces. This can be “x-plane”, “y-plane”, “z-plane”, “plane”, “x-cylinder”, “y-cylinder”, “z-cylinder”, “sphere”, “x-cone”, “y-cone”, “z-cone”, or “quadric”. Default: None\n" +
 "coeffs: The corresponding coefficients for the given type of surface. See below for a list a what coefficients to specify for a given surface. Default: None\n\n" +
-"boundary: The boundary condition for the surface. This can be  “vacuum” or “reflective. Default: “transmission” \n\n"+
+"boundary: The boundary condition for the surface. This can be “transmission”, “vacuum”, or “reflective. Default: “transmission” \n\n"+
 "More information can be found in : https://openmc.readthedocs.io/en/stable/usersguide/index.html");             
     }//GEN-LAST:event_btn_surfaceMouseEntered
 
@@ -3359,7 +3349,7 @@ guidance (Guide,"The <state_point> element indicates at what batches a state poi
 
     private void btn_plot_sliceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_plot_sliceMouseEntered
         btn_plot_slice.setBackground(BUTTON_BACKGROUD_COLOR__SELECTED_STATE);
-guidance (GuidePlotting,"slice 2D pixel plot along one of the major axes. Produces a PPM image file. Color_by element can be : material or cell.");
+guidance (GuidePlotting,"slice 2D pixel plot along one of the major axes. Produces a PPM image file. Color_by element can be material or cell");
     }//GEN-LAST:event_btn_plot_sliceMouseEntered
 
     private void btn_plot_voxelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_plot_voxelMouseEntered
