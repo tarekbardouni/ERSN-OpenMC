@@ -77,37 +77,16 @@ ERSNOpenMC_Singleton tmp = ERSNOpenMC_Singleton.getInstance();
 Color BUTTON_BACKGROUD_COLOR__SELECTED_STATE= new Color(255,0,54), BUTTON_BACKGROUD_COLOR__UNSELECTED_STATE= new Color(0,0,154);
     private JTextArea guide_filter;
 
-
  
 public ERSNOpenMC_Main() {
     initComponents();  
 //    myInitComponents();
     getContentPane().setBackground(new Color(0, 0, 128));
-    //setIconImage( new ImageIcon(getClass().getClassLoader().getResource("PATH/TO/YourImage.png")));
-    DefaultSyntaxKit.initKit();  
+    DefaultSyntaxKit.initKit();    
 }
-/*
-public void myInitComponents() {
- //       java.awt.GridBagConstraints gridBagConstraints;
-        btn_cancel = new javax.swing.JButton();
-        btn_cancel.setBackground(new java.awt.Color(228, 223, 223));
-        btn_cancel.setForeground(java.awt.Color.darkGray);
-        btn_cancel.setText("Cancel");
-        btn_cancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_cancelActionPerformed(evt);
-            }
-        });
-//        getContentPane().add(btn_cancel, gridBagConstraints);
+    String version = " v-1.7.1";
+    String App_Title = "ERSN-OpenMC " + version  ;
 
-}
-
-    private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
-        this.show(false);
-    }                                          
-*/
-// getJarContainingFolder class
 public static String getJarContainingFolder(Class aclass) throws Exception {
 CodeSource codeSource = aclass.getProtectionDomain().getCodeSource();
 File jarFile;
@@ -119,6 +98,19 @@ String jarFilePath = path.substring(path.indexOf(":") + 1, path.indexOf("!"));
 jarFilePath = URLDecoder.decode(jarFilePath, "UTF-8");
 jarFile = new File(jarFilePath);
 }
+// change perùmission of scripts in bin/scripts
+try {
+        String bin_scripts_dir = System.getProperty("user.dir") + "/scripts";
+        File folder = new File(bin_scripts_dir);
+        File[] listOfFiles = folder.listFiles();
+        System.out.println(folder);
+        for (File listOfFile : listOfFiles) {
+            Runtime.getRuntime().exec("chmod +x " + listOfFile.getAbsolutePath());
+        }
+    } catch (IOException ex) {
+        Logger.getLogger(ERSNOpenMC_Main.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
 return jarFile.getParentFile().getAbsolutePath();
 }
 
@@ -379,19 +371,19 @@ plottingTxt.setContentType("text/xhtml");
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("ERSN-OpenMC developed by Jaafar EL Bakkali & Tarek EL Bardouni");
+        setTitle(App_Title+"   developped by J. El Bakkali & T. El Bardouni, Univ. Abdelmalek Essaadi");
         setBackground(new java.awt.Color(0, 51, 204));
-        setFont(new java.awt.Font("Ubuntu", 0, 5)); // NOI18N
+        setFont(new java.awt.Font("Ubuntu Light", 2, 5)); // NOI18N
         setLocationByPlatform(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
             public void windowDeactivated(java.awt.event.WindowEvent evt) {
                 formWindowDeactivated(evt);
-            }
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
             }
         });
 
@@ -678,13 +670,12 @@ plottingTxt.setContentType("text/xhtml");
                 .addGap(0, 0, 0)
                 .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btn_material, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_comment_materials, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_comment_materials, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0))
         );
         jInternalFrame4Layout.setVerticalGroup(
             jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame4Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
                 .addComponent(btn_material, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btn_comment_materials, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2651,7 +2642,7 @@ target.setCaretPosition(Math.min(caretPosition, target.getText().length()));
     }//GEN-LAST:event_btn_surfaceActionPerformed
 
     private void btn_materialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_materialActionPerformed
-      materialsTxt.replaceSelection("<material id=\"\" >\n  <density value=\"\" units=\"\" />\n  <nuclide name=\"\"  wo=\"\" />\n  <sab name=\"\"  />\n</material>\n"); 
+      materialsTxt.replaceSelection("<material id=\"\" >\n  <density value=\"\" units=\"\" />\n  <nuclide name=\"\"  wo=\"\" />      \n   <sab name=\"\"  />\n</material>\n"); 
     }//GEN-LAST:event_btn_materialActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -2761,7 +2752,7 @@ System.out.print(project_full_path);
         
     private void btn_plot_sliceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_plot_sliceActionPerformed
         plottingTxt.replaceSelection(
-                "<plot id=\"\" color_by=\"\"  type=\"slice\" basis=\"\" background=\"\">\n" +
+                "<plot id=\"\"  color_by=\"\" type=\"slice\" basis=\"\" background=\"\">\n" +
                 "  <origin> </origin>\n" +
                 "  <pixels>  </pixels>\n" +
                 "  <width> </width>\n" +
@@ -2774,12 +2765,13 @@ System.out.print(project_full_path);
     private void btn_plot_voxelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_plot_voxelActionPerformed
         plottingTxt.replaceSelection(
                 "\n" +
-                "<plot id=\"\" color_by=\"\"  type=\"voxel\" background=\"\">\n" +
-                "  <origin> </origin>\n" +
+                "<plot id=\"\"  type=\"voxel\" background=\"\">\n" +
+                "  <color_by> </color_by>\n" +
+                "  <origin>  </origin>\n" +
                 "  <pixels>  </pixels>\n" +
-                "  <width> </width>\n" +
+                "  <width>  </width>\n" +
                 "  <col_spec id=\"\" rgb=\"\"><col_spec>\n" +
-                "  <mask> </mask>\n" +
+                "  <mask>  </mask>\n" +
                 "</plot>\n"
 );            }//GEN-LAST:event_btn_plot_voxelActionPerformed
 
@@ -3108,7 +3100,7 @@ if (cmfdTxt.getText().isEmpty()==false) {save_xml_file("cmfd.xml",project_full_p
 "id: A unique integer that can be used to identify the surface. Default: None \n" +
 "type: The type of the surfaces. This can be “x-plane”, “y-plane”, “z-plane”, “plane”, “x-cylinder”, “y-cylinder”, “z-cylinder”, “sphere”, “x-cone”, “y-cone”, “z-cone”, or “quadric”. Default: None\n" +
 "coeffs: The corresponding coefficients for the given type of surface. See below for a list a what coefficients to specify for a given surface. Default: None\n\n" +
-"boundary: The boundary condition for the surface. This can be “transmission”, “vacuum”, or “reflective. Default: “transmission” \n\n"+
+"boundary: The boundary condition for the surface. This can be “periodic”, “vacuum”, or “reflective. Default: “transmissive” \n\n"+
 "More information can be found in : https://openmc.readthedocs.io/en/stable/usersguide/index.html");             
     }//GEN-LAST:event_btn_surfaceMouseEntered
 
@@ -3349,7 +3341,7 @@ guidance (Guide,"The <state_point> element indicates at what batches a state poi
 
     private void btn_plot_sliceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_plot_sliceMouseEntered
         btn_plot_slice.setBackground(BUTTON_BACKGROUD_COLOR__SELECTED_STATE);
-guidance (GuidePlotting,"slice 2D pixel plot along one of the major axes. Produces a PPM image file. Color_by element can be material or cell");
+guidance (GuidePlotting,"slice 2D pixel plot along one of the major axes. Produces a PPM image file.");
     }//GEN-LAST:event_btn_plot_sliceMouseEntered
 
     private void btn_plot_voxelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_plot_voxelMouseEntered

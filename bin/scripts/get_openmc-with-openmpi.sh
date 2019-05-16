@@ -7,9 +7,15 @@ echo "            ****** Directory     : " $INSTALL_DIR
 echo "            ****** DEBUG_STATUS  : " $DEBUG_STATUS
 echo "            ****** openmp_STATUS : " $OPENMP_STATUS
 
-export FC=mpif90.openmpi
-export CC=mpicc.openmpi
-export HDF5_ROOT=/opt/hdf5
+if [ -d /opt/openmpi ]; 
+then
+	export FC=mpif90.openmpi
+	export CC=mpicc.openmpi
+else
+	echo "OpenMPI not installed."
+fi
+
+if [ -d /opt/hdf5 ] && export HDF5_ROOT=/opt/hdf5
 
 if [ $DEBUG_STATUS=="USED" ]; then
 	DEBUG_OPTION='-Ddebug=on'

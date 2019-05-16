@@ -79,7 +79,7 @@
           <Color blue="0" green="c8" id="orange" palette="1" red="ff" type="palette"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="ERSN-OPENMC v1.7"/>
+        <Property name="text" type="java.lang.String" value="ERSN-OPENMC v1.7.1"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
       <Constraints>
