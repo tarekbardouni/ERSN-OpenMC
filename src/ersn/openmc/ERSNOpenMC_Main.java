@@ -98,7 +98,8 @@ String jarFilePath = path.substring(path.indexOf(":") + 1, path.indexOf("!"));
 jarFilePath = URLDecoder.decode(jarFilePath, "UTF-8");
 jarFile = new File(jarFilePath);
 }
-// change perùmission of scripts in bin/scripts
+// change permission of scripts in bin/scripts
+/*
 try {
         String bin_scripts_dir = System.getProperty("user.dir") + "/scripts";
         File folder = new File(bin_scripts_dir);
@@ -110,7 +111,7 @@ try {
     } catch (IOException ex) {
         Logger.getLogger(ERSNOpenMC_Main.class.getName()).log(Level.SEVERE, null, ex);
     }
-
+*/
 return jarFile.getParentFile().getAbsolutePath();
 }
 
