@@ -3,30 +3,47 @@
 INSTALL_DIR=$1
 DEBUG_STATUS=$2
 OPENMP_STATUS=$3
+OPENMC_VERSION=$4
+
 echo "            ****** Directory     : " $INSTALL_DIR
 echo "            ****** DEBUG_STATUS  : " $DEBUG_STATUS
 echo "            ****** openmp_STATUS : " $OPENMP_STATUS
+echo "            ****** OpenMC_Version : " $OPENMC_VERSION
 
 export FC=gfortran
-export HDF5_ROOT=/opt/hdf5
+if [ -d /opt/hdf5 ]
+then
+	export HDF5_ROOT=/opt/hdf5
+fi
 
-if [ $DEBUG_STATUS=="USED" ]; then
+if [ $DEBUG_STATUS == "USED" ]; then
 	export DEBUG_OPTION='-Ddebug=on'
 else
         export DEBUG_OPTION=' '
 fi
 
-if [ $OPENMP_STATUS=="USED" ]; then
+if [ $OPENMP_STATUS == "USED" ]; then
 	export OPENMP_OPTION='-Dopenmp=on'
 else
         export OPENMP_OPTION=' '
 fi
 #
 cd  $INSTALL_DIR
-#
-git clone https://github.com/mit-crpg/openmc.git
-#
-cd openmc
+
+if [ $OPENMC_VERSION == "develop" ]
+then
+        git clone https://github.com/openmc-dev/openmc.git
+        cd openmc
+elif  [ $OPENMC_VERSION == "stable" ]
+then
+        wget https://github.com/openmc-dev/openmc/archive/v0.10.0.tar.gz
+        tar zxvf v0.10.0.tar.gz
+    #    mv v0.10.0 openmc-0.10.0
+        cd openmc-0.10.0
+else
+	echo " ***********    Check OpenMC version ! ********** "
+fi
+
 #
 git checkout master
 #
