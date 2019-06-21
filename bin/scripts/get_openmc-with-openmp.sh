@@ -38,8 +38,8 @@ elif  [ $OPENMC_VERSION == "stable" ]
 then
         wget https://github.com/openmc-dev/openmc/archive/v0.10.0.tar.gz
         tar zxvf v0.10.0.tar.gz
-    #    mv v0.10.0 openmc-0.10.0
-        cd openmc-0.10.0
+        mv openmc-0.10.0 openmc
+        cd openmc
 else
 	echo " ***********    Check OpenMC version ! ********** "
 fi
@@ -53,7 +53,7 @@ make clean
 find -iname '*cmake*' -not -name CMakeLists.txt -exec rm -rf {} \+
 cmake $OPENMP_OPTION $DEBUG_OPTION ..
 #
-make 
+make -j4 
 sudo make install 
 #make install -e prefix=$INSTALL_DIR/openmc
 
