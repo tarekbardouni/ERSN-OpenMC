@@ -78,6 +78,8 @@ Color BUTTON_BACKGROUD_COLOR__SELECTED_STATE= new Color(255,0,54), BUTTON_BACKGR
     private JTextArea guide_filter;
 
  
+    
+    
 public ERSNOpenMC_Main() {
     initComponents();  
 //    myInitComponents();
@@ -124,7 +126,7 @@ try {
         fluxS.write(target.getText()); //Balancer dans le flux le contenu de la zone de texte
         fluxS.close(); // Fermer le flux (c’est toujours mieux de le fermer explicitement)
     } //Balancer dans le flux le contenu de la zone de texte
-     } catch (IOException er) {;}
+     } catch (IOException er) {}
 }
 
 // open_xml_file class
@@ -132,13 +134,13 @@ public void open_xml_file(String xml_file, javax.swing.JEditorPane target,String
 try {
 File fileDir = new File(path+"/"+xml_file);
 target.setText("");
-BufferedReader in = new BufferedReader(
-new InputStreamReader( new FileInputStream(fileDir), "UTF8"));
-String str;
-while ((str = in.readLine()) != null) {
-target.setText(target.getText().toString()+str+"\n");
+    try (BufferedReader in = new BufferedReader(
+            new InputStreamReader( new FileInputStream(fileDir), "UTF8"))) {
+        String str;
+        while ((str = in.readLine()) != null) {
+            target.setText(target.getText().toString()+str+"\n");
+        }
     }
-in.close();
     } 
     catch (UnsupportedEncodingException e) 
     {
