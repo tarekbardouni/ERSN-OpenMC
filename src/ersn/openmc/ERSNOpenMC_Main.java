@@ -86,7 +86,7 @@ public ERSNOpenMC_Main() {
     getContentPane().setBackground(new Color(0, 0, 128));
     DefaultSyntaxKit.initKit();    
 }
-    String version = " v-1.7.1";
+    String version = " v-1.7.2";
     String App_Title = "ERSN-OpenMC " + version  ;
 
 public static String getJarContainingFolder(Class aclass) throws Exception {
