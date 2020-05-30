@@ -2797,7 +2797,7 @@ System.out.print(project_full_path);
                 "  <pixels>  </pixels>\n" +
                 "  <width>  </width>\n" +
                 "  <color id=\"\" rgb=\"\"/>\n" +
-                "  <mask components=\"\" />\n" +
+                "  <mask components=\"\" background=\"\"/>\n" +
                 "  <meshlines meshtype=\"\" id=\"\" linewidth=\"\" /> \n" +        
                 "</plot>\n"
 );            }//GEN-LAST:event_btn_plot_voxelActionPerformed
