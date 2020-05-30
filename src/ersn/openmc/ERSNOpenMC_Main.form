@@ -465,7 +465,7 @@
                       <Component id="lbl" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
-                  <Component id="container" alignment="1" pref="1182" max="32767" attributes="0"/>
+                  <Component id="container" alignment="1" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -1082,16 +1082,13 @@
                               <Component id="btn_state_point" min="-2" pref="200" max="-2" attributes="0"/>
                               <Component id="btn_source" min="-2" pref="200" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="btn_run_cmfd" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                          <Component id="btn_seed" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                          <Component id="btn_threads" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                          <Component id="btn_trace" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                          <Component id="btn_survival_biasing" min="-2" pref="200" max="-2" attributes="0"/>
-                                          <Component id="btn_source_point" min="-2" pref="200" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                      <Component id="btn_run_cmfd" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <Component id="btn_seed" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <Component id="btn_threads" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <Component id="btn_trace" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <Component id="btn_survival_biasing" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <Component id="btn_source_point" min="-2" pref="200" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="btn_ptables" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                               </Group>
@@ -1157,6 +1154,7 @@
                           <Component id="btn_run_cmfd" min="-2" pref="18" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="btn_seed" min="-2" pref="18" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="btn_source" min="-2" pref="18" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="btn_source_point" min="-2" pref="18" max="-2" attributes="0"/>

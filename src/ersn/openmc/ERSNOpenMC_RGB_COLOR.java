@@ -259,7 +259,7 @@ final static String Salmon="0xFA8072";
 
     private void btn_insertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertActionPerformed
         // TODO add your handling code here:
-    Target.setText("<ccolor id=\"\" rgb=\""+r+" "+g+" "+b+" "+"\"/>  \n  ");
+    Target.setText("<color id=\"\" rgb=\""+r+" "+g+" "+b+" "+"\"/>  \n  ");
     }//GEN-LAST:event_btn_insertActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
