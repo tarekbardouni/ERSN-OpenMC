@@ -2777,12 +2777,12 @@ System.out.print(project_full_path);
         
     private void btn_plot_sliceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_plot_sliceActionPerformed
         plottingTxt.replaceSelection(
-                "<plot id=\"\"  color_by=\"\" type=\"slice\" basis=\"\" background=\"\">\n" +
+                "<plot id=\"\"  color_by=\"\" type=\"slice\" basis=\"\" >\n" +
                 "  <origin> </origin>\n" +
                 "  <pixels>  </pixels>\n" +
                 "  <width> </width>\n" +
                 "  <color id=\"\" rgb=\"\"/>\n" +
-                "  <mask components=\"\" />\n" +
+                "  <mask components=\"\" background=\"\"/>\n" +
                 "  <meshlines meshtype=\"\" id=\"\" linewidth=\"\" /> \n "+   
                 "</plot>\n" 
 );                                             
@@ -2890,25 +2890,25 @@ System.out.print(project_full_path);
 
     private void btn_comment_materialsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_comment_materialsActionPerformed
        
-        materialsTxt.replaceSelection(" <!--            -->  \n");
+        materialsTxt.replaceSelection(" <!--            -->  ");
         
     }//GEN-LAST:event_btn_comment_materialsActionPerformed
 
     private void btn_comment_talliesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_comment_talliesActionPerformed
-        talliesTxt.replaceSelection(" <!--            -->  \n"); 
+        talliesTxt.replaceSelection(" <!--            -->  "); 
     }//GEN-LAST:event_btn_comment_talliesActionPerformed
 
     private void btn_comment_plottingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_comment_plottingActionPerformed
-        plottingTxt.replaceSelection(" <!--            -->  \n");
+        plottingTxt.replaceSelection(" <!--            -->  ");
    
     }//GEN-LAST:event_btn_comment_plottingActionPerformed
 
     private void btn_comment_cmfdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_comment_cmfdActionPerformed
-        cmfdTxt.replaceSelection(" <!--            -->  \n");       
+        cmfdTxt.replaceSelection(" <!--            -->  ");       
     }//GEN-LAST:event_btn_comment_cmfdActionPerformed
 
     private void btn_comment_geometryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_comment_geometryActionPerformed
-        geometryTxt.replaceSelection(" <!--            -->  \n");   
+        geometryTxt.replaceSelection(" <!--            -->  ");   
     }//GEN-LAST:event_btn_comment_geometryActionPerformed
 
     private void menu_item_show_resultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_show_resultsActionPerformed
