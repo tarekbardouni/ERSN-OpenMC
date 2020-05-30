@@ -248,8 +248,7 @@ plottingTxt.setContentType("text/xhtml");
         btn_run_cmfd = new javax.swing.JButton();
         btn_output = new javax.swing.JButton();
         btn_track = new javax.swing.JButton();
-        btn_entropy = new javax.swing.JButton();
-        btn_source_point = new javax.swing.JButton();
+        btn_entropy_mesh = new javax.swing.JButton();
         btn_verbosity = new javax.swing.JButton();
         btn_uniform_fs = new javax.swing.JButton();
         btn_state_point = new javax.swing.JButton();
@@ -264,6 +263,8 @@ plottingTxt.setContentType("text/xhtml");
         btn_survival_biasing = new javax.swing.JButton();
         btn_eignvalue = new javax.swing.JButton();
         btn_natural_elements = new javax.swing.JButton();
+        btn_plot_mode = new javax.swing.JButton();
+        btn_source_point = new javax.swing.JButton();
         jInternalFrame10 = new javax.swing.JInternalFrame();
         jScrollPane5 = new javax.swing.JScrollPane();
         settingsTxt = new javax.swing.JEditorPane();
@@ -374,10 +375,11 @@ plottingTxt.setContentType("text/xhtml");
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle(App_Title+"   developped by J. El Bakkali & T. El Bardouni, Univ. Abdelmalek Essaadi");
-        setBackground(new java.awt.Color(0, 51, 204));
+        setTitle(App_Title+" developped by J. El Bakkali & T. El Bardouni, Univ. Abdelmalek Essaadi, Morocco");
+        setBackground(new java.awt.Color(51, 51, 255));
         setFont(new java.awt.Font("Ubuntu Light", 2, 5)); // NOI18N
         setLocationByPlatform(true);
+        setPreferredSize(new java.awt.Dimension(1080, 760));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -542,12 +544,12 @@ plottingTxt.setContentType("text/xhtml");
         jInternalFrame2.setVisible(true);
 
         geometryTxt.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 geometryTxtAncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
         });
         jScrollPane2.setViewportView(geometryTxt);
@@ -558,7 +560,7 @@ plottingTxt.setContentType("text/xhtml");
             jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame2Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 799, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 951, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         jInternalFrame2Layout.setVerticalGroup(
@@ -586,14 +588,14 @@ plottingTxt.setContentType("text/xhtml");
             jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame3Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane17, javax.swing.GroupLayout.DEFAULT_SIZE, 1010, Short.MAX_VALUE)
+                .addComponent(jScrollPane17, javax.swing.GroupLayout.DEFAULT_SIZE, 1161, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         jInternalFrame3Layout.setVerticalGroup(
             jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame3Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane17, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                .addComponent(jScrollPane17, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -696,7 +698,7 @@ plottingTxt.setContentType("text/xhtml");
             jInternalFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame5Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 799, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 951, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         jInternalFrame5Layout.setVerticalGroup(
@@ -723,14 +725,14 @@ plottingTxt.setContentType("text/xhtml");
             jInternalFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame6Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane19, javax.swing.GroupLayout.DEFAULT_SIZE, 1010, Short.MAX_VALUE)
+                .addComponent(jScrollPane19, javax.swing.GroupLayout.DEFAULT_SIZE, 1161, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         jInternalFrame6Layout.setVerticalGroup(
             jInternalFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame6Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane19, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                .addComponent(jScrollPane19, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -984,43 +986,23 @@ plottingTxt.setContentType("text/xhtml");
             }
         });
 
-        btn_entropy.setBackground(new java.awt.Color(0, 0, 154));
-        btn_entropy.setForeground(new java.awt.Color(255, 255, 204));
-        btn_entropy.setText("entropy");
-        btn_entropy.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn_entropy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_entropy.setFocusPainted(false);
-        btn_entropy.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_entropy_mesh.setBackground(new java.awt.Color(0, 0, 154));
+        btn_entropy_mesh.setForeground(new java.awt.Color(255, 255, 204));
+        btn_entropy_mesh.setText("entropy mesh");
+        btn_entropy_mesh.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_entropy_mesh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_entropy_mesh.setFocusPainted(false);
+        btn_entropy_mesh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_entropyMouseExited(evt);
+                btn_entropy_meshMouseExited(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_entropyMouseEntered(evt);
+                btn_entropy_meshMouseEntered(evt);
             }
         });
-        btn_entropy.addActionListener(new java.awt.event.ActionListener() {
+        btn_entropy_mesh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_entropyActionPerformed(evt);
-            }
-        });
-
-        btn_source_point.setBackground(new java.awt.Color(0, 0, 154));
-        btn_source_point.setForeground(new java.awt.Color(255, 255, 204));
-        btn_source_point.setText("source_point");
-        btn_source_point.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn_source_point.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_source_point.setFocusPainted(false);
-        btn_source_point.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_source_pointMouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_source_pointMouseEntered(evt);
-            }
-        });
-        btn_source_point.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_source_pointActionPerformed(evt);
+                btn_entropy_meshActionPerformed(evt);
             }
         });
 
@@ -1206,7 +1188,7 @@ plottingTxt.setContentType("text/xhtml");
 
         btn_fixed_source.setBackground(new java.awt.Color(0, 0, 154));
         btn_fixed_source.setForeground(new java.awt.Color(255, 255, 204));
-        btn_fixed_source.setText("fixed_source");
+        btn_fixed_source.setText("fixed_source mode");
         btn_fixed_source.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_fixed_source.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_fixed_source.setFocusPainted(false);
@@ -1269,7 +1251,7 @@ plottingTxt.setContentType("text/xhtml");
 
         btn_eignvalue.setBackground(new java.awt.Color(0, 0, 154));
         btn_eignvalue.setForeground(new java.awt.Color(255, 255, 204));
-        btn_eignvalue.setText("eigenvalue");
+        btn_eignvalue.setText("eigenvalue mode");
         btn_eignvalue.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_eignvalue.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_eignvalue.setFocusPainted(false);
@@ -1308,6 +1290,46 @@ plottingTxt.setContentType("text/xhtml");
             }
         });
 
+        btn_plot_mode.setBackground(new java.awt.Color(0, 0, 154));
+        btn_plot_mode.setForeground(new java.awt.Color(255, 255, 204));
+        btn_plot_mode.setText("plot mode");
+        btn_plot_mode.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_plot_mode.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_plot_mode.setFocusPainted(false);
+        btn_plot_mode.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_plot_modeMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_plot_modeMouseEntered(evt);
+            }
+        });
+        btn_plot_mode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_plot_modeActionPerformed(evt);
+            }
+        });
+
+        btn_source_point.setBackground(new java.awt.Color(0, 0, 154));
+        btn_source_point.setForeground(new java.awt.Color(255, 255, 204));
+        btn_source_point.setText("source_point");
+        btn_source_point.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_source_point.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_source_point.setFocusPainted(false);
+        btn_source_point.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_source_pointMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_source_pointMouseEntered(evt);
+            }
+        });
+        btn_source_point.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_source_pointActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jInternalFrame9Layout = new javax.swing.GroupLayout(jInternalFrame9.getContentPane());
         jInternalFrame9.getContentPane().setLayout(jInternalFrame9Layout);
         jInternalFrame9Layout.setHorizontalGroup(
@@ -1315,37 +1337,39 @@ plottingTxt.setContentType("text/xhtml");
             .addGroup(jInternalFrame9Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(jInternalFrame9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_state_point, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_source, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jInternalFrame9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_run_cmfd, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_seed, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_source, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_track, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_state_point, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_source_point, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_threads, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_trace, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_survival_biasing, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame9Layout.createSequentialGroup()
+                            .addGroup(jInternalFrame9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btn_run_cmfd, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_seed, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_threads, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_trace, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_survival_biasing, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_source_point, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(0, 0, 0))
+                        .addComponent(btn_ptables, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_resonance_scattering, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jInternalFrame9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btn_track, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_confidence_intervals, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_cross_sections, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_cutoff, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_eignvalue, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_entropy, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_entropy_mesh, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_fixed_source, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_output, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_no_reduce, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_output_path, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_ptables, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_energy_grid, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_natural_elements, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_log_grid_bins, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btn_resonance_scattering, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jInternalFrame9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btn_verbosity, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_uniform_fs, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_log_grid_bins, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_plot_mode, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_verbosity, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_uniform_fs, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_trigger, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_comment_settings, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0))
+                    .addComponent(btn_comment_settings, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jInternalFrame9Layout.setVerticalGroup(
             jInternalFrame9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1361,7 +1385,7 @@ plottingTxt.setContentType("text/xhtml");
                 .addGap(0, 0, 0)
                 .addComponent(btn_energy_grid, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(btn_entropy, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_entropy_mesh, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btn_fixed_source, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -1375,6 +1399,8 @@ plottingTxt.setContentType("text/xhtml");
                 .addGap(0, 0, 0)
                 .addComponent(btn_output_path, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
+                .addComponent(btn_plot_mode, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addComponent(btn_ptables, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btn_resonance_scattering, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1382,12 +1408,11 @@ plottingTxt.setContentType("text/xhtml");
                 .addComponent(btn_run_cmfd, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btn_seed, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
                 .addComponent(btn_source, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(btn_state_point, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
                 .addComponent(btn_source_point, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(btn_state_point, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btn_survival_biasing, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -1402,9 +1427,8 @@ plottingTxt.setContentType("text/xhtml");
                 .addComponent(btn_uniform_fs, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btn_verbosity, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(btn_comment_settings, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btn_comment_settings))
         );
 
         jInternalFrame10.setTitle("OpenMC XML Editor");
@@ -1418,15 +1442,15 @@ plottingTxt.setContentType("text/xhtml");
             jInternalFrame10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame10Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 799, Short.MAX_VALUE)
+                .addComponent(jScrollPane5)
                 .addGap(0, 0, 0))
         );
         jInternalFrame10Layout.setVerticalGroup(
             jInternalFrame10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame10Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jInternalFrame11.setTitle("OpenMC commands guidance");
@@ -1445,14 +1469,14 @@ plottingTxt.setContentType("text/xhtml");
             jInternalFrame11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame11Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 1010, Short.MAX_VALUE)
+                .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 1161, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         jInternalFrame11Layout.setVerticalGroup(
             jInternalFrame11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame11Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -1462,7 +1486,7 @@ plottingTxt.setContentType("text/xhtml");
             settings_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(settings_pnlLayout.createSequentialGroup()
                 .addComponent(jInternalFrame9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jInternalFrame10))
             .addComponent(jInternalFrame11)
         );
@@ -1471,9 +1495,8 @@ plottingTxt.setContentType("text/xhtml");
             .addGroup(settings_pnlLayout.createSequentialGroup()
                 .addGap(2, 2, 2)
                 .addGroup(settings_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jInternalFrame9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jInternalFrame10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0)
+                    .addComponent(jInternalFrame10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jInternalFrame9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(jInternalFrame11))
         );
 
@@ -1628,7 +1651,7 @@ plottingTxt.setContentType("text/xhtml");
             jInternalFrame8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame8Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 790, Short.MAX_VALUE)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 951, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         jInternalFrame8Layout.setVerticalGroup(
@@ -1655,14 +1678,14 @@ plottingTxt.setContentType("text/xhtml");
             jInternalFrame12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame12Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane20, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+                .addComponent(jScrollPane20, javax.swing.GroupLayout.DEFAULT_SIZE, 1161, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         jInternalFrame12Layout.setVerticalGroup(
             jInternalFrame12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame12Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane20, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                .addComponent(jScrollPane20, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -2113,7 +2136,7 @@ plottingTxt.setContentType("text/xhtml");
             jInternalFrame14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame14Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 799, Short.MAX_VALUE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 951, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         jInternalFrame14Layout.setVerticalGroup(
@@ -2140,14 +2163,14 @@ plottingTxt.setContentType("text/xhtml");
             jInternalFrame15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame15Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane21, javax.swing.GroupLayout.DEFAULT_SIZE, 1010, Short.MAX_VALUE)
+                .addComponent(jScrollPane21, javax.swing.GroupLayout.DEFAULT_SIZE, 1161, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         jInternalFrame15Layout.setVerticalGroup(
             jInternalFrame15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame15Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane21, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                .addComponent(jScrollPane21, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -2274,7 +2297,7 @@ plottingTxt.setContentType("text/xhtml");
             jInternalFrame17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame17Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 799, Short.MAX_VALUE)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 951, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         jInternalFrame17Layout.setVerticalGroup(
@@ -2301,14 +2324,14 @@ plottingTxt.setContentType("text/xhtml");
             jInternalFrame18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame18Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane22, javax.swing.GroupLayout.DEFAULT_SIZE, 1010, Short.MAX_VALUE)
+                .addComponent(jScrollPane22, javax.swing.GroupLayout.DEFAULT_SIZE, 1161, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         jInternalFrame18Layout.setVerticalGroup(
             jInternalFrame18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame18Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane22, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                .addComponent(jScrollPane22, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -2615,7 +2638,7 @@ plottingTxt.setContentType("text/xhtml");
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbl)
                         .addContainerGap())
-                    .addComponent(container, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(container, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1182, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2759,8 +2782,9 @@ System.out.print(project_full_path);
                 "  <origin> </origin>\n" +
                 "  <pixels>  </pixels>\n" +
                 "  <width> </width>\n" +
-                "  <col_spec id=\"\" rgb=\"\"><col_spec>\n" +
-                "  <mask> </mask>\n" +
+                "  <color id=\"\" rgb=\"\"/>\n" +
+                "  <mask components=\"\" />\n" +
+                "  <meshlines meshtype=\"\" id=\"\" linewidth=\"\" /> \n "+   
                 "</plot>\n" 
 );                                             
     }//GEN-LAST:event_btn_plot_sliceActionPerformed
@@ -2773,8 +2797,9 @@ System.out.print(project_full_path);
                 "  <origin>  </origin>\n" +
                 "  <pixels>  </pixels>\n" +
                 "  <width>  </width>\n" +
-                "  <col_spec id=\"\" rgb=\"\"><col_spec>\n" +
-                "  <mask>  </mask>\n" +
+                "  <color id=\"\" rgb=\"\"/>\n" +
+                "  <mask components=\"\" />\n" +
+                "  <meshlines meshtype=\"\" id=\"\" linewidth=\"\" /> \n" +        
                 "</plot>\n"
 );            }//GEN-LAST:event_btn_plot_voxelActionPerformed
 
@@ -3039,13 +3064,14 @@ guidance (Guidecmfd,"The <display> element sets one additional CMFD output colum
             "  <particles>   </particles>\n");
     }//GEN-LAST:event_btn_fixed_sourceActionPerformed
 
-    private void btn_entropyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_entropyActionPerformed
-        settingsTxt.replaceSelection("<entropy>\n" +
-            "  <lower_left>   </lower_left>\n" +
-            "  <upper_right>   </upper_right>\n" +
-            "  <dimension>   </dimension>\n" +
-            "</entropy>\n");
-    }//GEN-LAST:event_btn_entropyActionPerformed
+    private void btn_entropy_meshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_entropy_meshActionPerformed
+        settingsTxt.replaceSelection("<mesh id=\"\">\n" +
+            "    <dimension>   </dimension>\n" +
+            "    <lower_left>   </lower_left>\n" +
+            "    <upper_right>   </upper_right>\n" +
+            "</mesh> \n" +
+            "<entropy_mesh>  </entropy_mesh>\n");
+    }//GEN-LAST:event_btn_entropy_meshActionPerformed
 
     private void btn_energy_gridActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_energy_gridActionPerformed
         settingsTxt.replaceSelection("<energy_grid> union </energy_grid>\n");
@@ -3103,7 +3129,7 @@ if (cmfdTxt.getText().isEmpty()==false) {save_xml_file("cmfd.xml",project_full_p
 "id: A unique integer that can be used to identify the surface. Default: None \n" +
 "type: The type of the surfaces. This can be “x-plane”, “y-plane”, “z-plane”, “plane”, “x-cylinder”, “y-cylinder”, “z-cylinder”, “sphere”, “x-cone”, “y-cone”, “z-cone”, or “quadric”. Default: None\n" +
 "coeffs: The corresponding coefficients for the given type of surface. See below for a list a what coefficients to specify for a given surface. Default: None\n\n" +
-"boundary: The boundary condition for the surface. This can be “periodic”, “vacuum”, or “reflective. Default: “transmissive” \n\n"+
+"boundary: The boundary condition for the surface. This can be “periodic”, “vacuum”, “reflective” or “white”. Default: “transmissive” \n\n"+
 "More information can be found in : https://openmc.readthedocs.io/en/stable/usersguide/index.html");             
     }//GEN-LAST:event_btn_surfaceMouseEntered
 
@@ -3259,9 +3285,9 @@ btn_confidence_intervals.setBackground(BUTTON_BACKGROUD_COLOR__SELECTED_STATE);
 
     }//GEN-LAST:event_btn_energy_gridMouseEntered
 
-    private void btn_entropyMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_entropyMouseEntered
+    private void btn_entropy_meshMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_entropy_meshMouseEntered
 
-                         btn_entropy.setBackground(BUTTON_BACKGROUD_COLOR__SELECTED_STATE);  
+                         btn_entropy_mesh.setBackground(BUTTON_BACKGROUD_COLOR__SELECTED_STATE);  
    
         guidance (Guide,"TThe <entropy> element describes a mesh that is used for calculating Shannon entropy. This mesh should cover all possible fissionable materials in the problem. It has the following attributes/sub-elements:\n" +
 "dimension: The number of mesh cells in the x, y, and z directions, respectively.\n" +
@@ -3270,7 +3296,7 @@ btn_confidence_intervals.setBackground(BUTTON_BACKGROUD_COLOR__SELECTED_STATE);
 "lower_left:The Cartesian coordinates of the lower-left corner of the mesh. Default: None\n" +
 "upper_right: The Cartesian coordinates of the upper-right corner of the mesh. Default: None\n\n"+
 "More information can be found in : https://openmc.readthedocs.io/en/stable/usersguide/index.html");             
-    }//GEN-LAST:event_btn_entropyMouseEntered
+    }//GEN-LAST:event_btn_entropy_meshMouseEntered
 
     private void btn_fixed_sourceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_fixed_sourceMouseEntered
                          btn_fixed_source.setBackground(BUTTON_BACKGROUD_COLOR__SELECTED_STATE);  
@@ -3345,12 +3371,13 @@ guidance (Guide,"The <state_point> element indicates at what batches a state poi
 
     private void btn_plot_sliceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_plot_sliceMouseEntered
         btn_plot_slice.setBackground(BUTTON_BACKGROUD_COLOR__SELECTED_STATE);
-guidance (GuidePlotting,"slice 2D pixel plot along one of the major axes. Produces a PPM image file.");
+guidance (GuidePlotting,"slice 2D pixel plot along one of the major axes. Produces a PPM image file. Color element could be \"material\" or \"cell\" id, components could be material id or cell id. Meshtype element could be “entropy“ or “tally“ ");
     }//GEN-LAST:event_btn_plot_sliceMouseEntered
 
     private void btn_plot_voxelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_plot_voxelMouseEntered
         btn_plot_voxel.setBackground(BUTTON_BACKGROUD_COLOR__SELECTED_STATE);
-guidance (GuidePlotting,"voxel 3D voxel data dump. Produces a binary file containing voxel xyz position and cell or material id.");
+guidance (GuidePlotting,"voxel 3D voxel data dump. Produces a binary file containing voxel xyz position and cell or material id. Color element could be \\\"material\\\" or \\\"cell\\\"  element, components could be material id or cell id. Meshtype element could be “entropy“ or “tally“ \";\n" +
+" ");
     }//GEN-LAST:event_btn_plot_voxelMouseEntered
 
     private void btn_comment_plottingMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_comment_plottingMouseEntered
@@ -3850,9 +3877,9 @@ public void track_py( String filename, String track_file){
         btn_no_reduce.setBackground(BUTTON_BACKGROUD_COLOR__UNSELECTED_STATE);  
     }//GEN-LAST:event_btn_no_reduceMouseExited
 
-    private void btn_entropyMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_entropyMouseExited
-        btn_entropy.setBackground(BUTTON_BACKGROUD_COLOR__UNSELECTED_STATE);  
-    }//GEN-LAST:event_btn_entropyMouseExited
+    private void btn_entropy_meshMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_entropy_meshMouseExited
+        btn_entropy_mesh.setBackground(BUTTON_BACKGROUD_COLOR__UNSELECTED_STATE);  
+    }//GEN-LAST:event_btn_entropy_meshMouseExited
 
     private void btn_energy_gridMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_energy_gridMouseExited
         btn_energy_grid.setBackground(BUTTON_BACKGROUD_COLOR__UNSELECTED_STATE);  
@@ -4350,6 +4377,19 @@ talliesTxt.replaceSelection(
          + "</filter>\n");         // TODO add your handling code here:
     }//GEN-LAST:event_btn_tally2ActionPerformed
 
+    private void btn_plot_modeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_plot_modeMouseExited
+                
+    }//GEN-LAST:event_btn_plot_modeMouseExited
+
+    private void btn_plot_modeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_plot_modeMouseEntered
+    JTextArea Guide_plot = null;
+          guidance (Guide," Plot mode only \n");
+    }//GEN-LAST:event_btn_plot_modeMouseEntered
+
+    private void btn_plot_modeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_plot_modeActionPerformed
+        settingsTxt.replaceSelection("<run_mode>plot</run_mode>   \n" );
+    }//GEN-LAST:event_btn_plot_modeActionPerformed
+
     public void get_openmcdir(){
         try {
             File fileDir = new File(getJarContainingFolder(ERSNOpenMC_Main.class)+"/config/openmc.dir");
@@ -4419,7 +4459,7 @@ talliesTxt.replaceSelection(
     private javax.swing.JButton btn_downscatter;
     private javax.swing.JButton btn_eignvalue;
     private javax.swing.JButton btn_energy_grid;
-    private javax.swing.JButton btn_entropy;
+    private javax.swing.JButton btn_entropy_mesh;
     private javax.swing.JButton btn_feedback;
     private javax.swing.JButton btn_fixed_source;
     private javax.swing.JButton btn_gauss_seidel_tolerance;
@@ -4435,6 +4475,7 @@ talliesTxt.replaceSelection(
     private javax.swing.JButton btn_norm;
     private javax.swing.JButton btn_output;
     private javax.swing.JButton btn_output_path;
+    private javax.swing.JButton btn_plot_mode;
     private javax.swing.JButton btn_plot_slice;
     private javax.swing.JButton btn_plot_voxel;
     private javax.swing.JButton btn_power_monitor;
