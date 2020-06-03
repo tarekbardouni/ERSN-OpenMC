@@ -544,12 +544,12 @@ plottingTxt.setContentType("text/xhtml");
         jInternalFrame2.setVisible(true);
 
         geometryTxt.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 geometryTxtAncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
         });
         jScrollPane2.setViewportView(geometryTxt);
@@ -2698,12 +2698,12 @@ String
     private void btn_cellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cellActionPerformed
       geometryTxt.replaceSelection(
           "<cell id=\"\" >\n"
-        + "   <material>  </material>        \n"
-        + "   <region>  </region>            \n"
-        + "   <universe>  </universe>        \n"
-        + "   <fill>  </fill>                \n"
-        + "   <rotation>  </rotation>        \n"
-        + "   <translation>  </translation>  \n"
+        + "     <material>  </material>        \n"
+        + "     <region>  </region>            \n"
+        + "     <universe>  </universe>        \n"
+        + "     <fill>  </fill>                \n"
+        + "     <rotation>  </rotation>        \n"
+        + "     <translation>  </translation>  \n"
         + "</cell>\n"); 
     }//GEN-LAST:event_btn_cellActionPerformed
 
@@ -2711,14 +2711,14 @@ String
 //int caretPosition = talliesTxt.getCaretPosition(); 
 talliesTxt.replaceSelection(
           "<tally id=\"\" >\n  <name >  </name>\n"
-        + "  <filters>  </filters>\n"
-        + "  <scores >  </scores>\n"
-        + "  <nuclides> </nuclides>\n"
-        + "  <trigger>\n"
-        + "      <type> </type>\n"
-        + "      <threshold> </threshold>\n"  
-        + "      <scores> </scores>\n" 
-        + "  </trigger>\n"
+        + "    <filters>  </filters>\n"
+        + "    <scores >  </scores>\n"
+        + "    <nuclides> </nuclides>\n"
+        + "    <trigger>\n"
+        + "        <type> </type>\n"
+        + "        <threshold> </threshold>\n"  
+        + "        <scores> </scores>\n" 
+        + "    </trigger>\n"
         + "</tally>\n"); 
 //talliesTxt.setCaretPosition(Math.min(caretPosition, talliesTxt.getText().length()));             
     }//GEN-LAST:event_btn_tallyActionPerformed
@@ -2753,21 +2753,20 @@ System.out.print(project_full_path);
     private void btn_latticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_latticeActionPerformed
         geometryTxt.replaceSelection(
              "<lattice id=\" \" dimension=\" \" outer=\" \">\n" 
-      
-      +"   <lower_left>   </lower_left> \n" 
-            +"   <pitch>  </pitch> \n" 
-            +"   <universes>  \n\n"
-            +"   </universes> \n" 
+            +"    <lower_left>   </lower_left> \n" 
+            +"    <pitch>  </pitch> \n" 
+            +"    <universes>  \n\n"
+            +"    </universes> \n" 
             +"</lattice>\n"); 
     }//GEN-LAST:event_btn_latticeActionPerformed
     private void btn_meshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_meshActionPerformed
         talliesTxt.replaceSelection(
                 "<mesh id=\"\">\n" +
-                "  <type>   </type> \n" +
-                "  <dimension>  </dimension> \n" +
-                "  <upper_right>   </upper_right> \n" +
-                "  <lower_left>   </lower_left> \n" +
-                "  <width>  </width> \n" +
+                "    <type>   </type> \n" +
+                "    <dimension>  </dimension> \n" +
+                "    <upper_right>   </upper_right> \n" +
+                "    <lower_left>   </lower_left> \n" +
+                "    <width>  </width> \n" +
                 "</mesh>\n");    
     }//GEN-LAST:event_btn_meshActionPerformed
 
@@ -2777,13 +2776,13 @@ System.out.print(project_full_path);
         
     private void btn_plot_sliceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_plot_sliceActionPerformed
         plottingTxt.replaceSelection(
-                "<plot id=\"\"  color_by=\"\" type=\"slice\" basis=\"\" >\n" +
-                "  <origin> </origin>\n" +
-                "  <pixels>  </pixels>\n" +
-                "  <width> </width>\n" +
-                "  <color id=\"\" rgb=\"\"/>\n" +
-                "  <mask components=\"\" background=\"\"/>\n" +
-                "  <meshlines meshtype=\"\" id=\"\" linewidth=\"\" /> \n "+   
+                "<plot id=\"\"  color_by=\"\"  type=\"slice\"  basis=\"\"   background=\"\">\n" +
+                "     <origin>  </origin>\n" +
+                "     <pixels>  </pixels>\n" +
+                "     <width>   </width>\n" +
+                "     <color  id=\"\"   rgb=\"\"/>\n" +
+                "     <mask   components=\"\"   background=\"\"/>\n" +
+                "     <meshlines   meshtype=\"\"  id=\"\"   linewidth=\"\" /> \n "+   
                 "</plot>\n" 
 );                                             
     }//GEN-LAST:event_btn_plot_sliceActionPerformed
@@ -2791,14 +2790,14 @@ System.out.print(project_full_path);
     private void btn_plot_voxelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_plot_voxelActionPerformed
         plottingTxt.replaceSelection(
                 "\n" +
-                "<plot id=\"\"  type=\"voxel\" background=\"\">\n" +
-                "  <color_by> </color_by>\n" +
-                "  <origin>  </origin>\n" +
-                "  <pixels>  </pixels>\n" +
-                "  <width>  </width>\n" +
-                "  <color id=\"\" rgb=\"\"/>\n" +
-                "  <mask components=\"\" background=\"\"/>\n" +
-                "  <meshlines meshtype=\"\" id=\"\" linewidth=\"\" /> \n" +        
+                "<plot id=\"\"  type=\"voxel\"   background=\"\">\n" +
+                "    <color_by> </color_by>\n" +
+                "    <origin>   </origin>\n" +
+                "    <pixels>   </pixels>\n" +
+                "    <width>    </width>\n" +
+                "    <color  id=\"\"   rgb=\"\"/>\n" +
+                "    <mask components=\"\" background=\"\"/>\n" +
+                "    <meshlines  meshtype=\"\"   id=\"\"   linewidth=\"\" /> \n" +        
                 "</plot>\n"
 );            }//GEN-LAST:event_btn_plot_voxelActionPerformed
 
@@ -2829,15 +2828,15 @@ System.out.print(project_full_path);
     private void btn_mesh_cmfdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mesh_cmfdActionPerformed
         cmfdTxt.replaceSelection(
                 "<mesh>\n" +
-                "  <dimension>  </dimension>\n" +
-                "  <upper_right>   </upper_right>\n" +
-                "  <lower_left>   </lower_left>\n" +
-                "  <energy>   </energy>\n" +
-                "  <albedo>   </albedo>\n" +
-                "  <width>  </width>\n" +       
-                "  <map>  </map>\n" +
-                "  <universes>\n\n" +
-                "  </universes>\n" +
+                "    <dimension>  </dimension>\n" +
+                "    <upper_right>   </upper_right>\n" +
+                "    <lower_left>   </lower_left>\n" +
+                "    <energy>   </energy>\n" +
+                "    <albedo>   </albedo>\n" +
+                "    <width>  </width>\n" +       
+                "    <map>  </map>\n" +
+                "    <universes>\n\n" +
+                "    </universes>\n" +
                 "</mesh>\n");                                            
     }//GEN-LAST:event_btn_mesh_cmfdActionPerformed
 
@@ -2975,19 +2974,19 @@ guidance (Guidecmfd,"The <display> element sets one additional CMFD output colum
 
     private void btn_sourceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sourceActionPerformed
         settingsTxt.replaceSelection("<source>\n" +
-            "  <file>  </file>\n" +
-            "  <space>  \n" +
-            "    <type> </type> \n" +
-            "    <parameters> </parameters>  \n" +
-            "  </space>\n" +
-            "  <angle>  \n" +
-            "    <type> </type> \n" +
-            "    <parameters> </parameters>  \n" +
-            "  </angle>\n" +
-            "  <energy>  \n" +
-            "    <type> </type> \n" +
-            "    <parameters> </parameters>  \n" +
-            "  </energy>\n" +
+            "    <file>  </file>\n" +
+            "    <space>  \n" +
+            "        <type> </type> \n" +
+            "        <parameters> </parameters>  \n" +
+            "    </space>\n" +
+            "    <angle>  \n" +
+            "        <type> </type> \n" +
+            "        <parameters> </parameters>  \n" +
+            "    </angle>\n" +
+            "    <energy>  \n" +
+            "        <type> </type> \n" +
+            "        <parameters> </parameters>  \n" +
+            "    </energy>\n" +
             "</source>\n");
     }//GEN-LAST:event_btn_sourceActionPerformed
 
@@ -2997,9 +2996,9 @@ guidance (Guidecmfd,"The <display> element sets one additional CMFD output colum
 
     private void btn_uniform_fsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_uniform_fsActionPerformed
         settingsTxt.replaceSelection("<uniform_fs>\n" +
-            "  <lower_left>   </lower_left>\n" +
-            "  <upper_right>   </upper_right>\n" +
-            "  <dimension>   </dimension>\n" +
+            "     <lower_left>   </lower_left>\n" +
+            "     <upper_right>   </upper_right>\n" +
+            "     <dimension>   </dimension>\n" +
             "</uniform_fs>\n");
     }//GEN-LAST:event_btn_uniform_fsActionPerformed
 
@@ -3023,8 +3022,8 @@ guidance (Guidecmfd,"The <display> element sets one additional CMFD output colum
 
     private void btn_state_pointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_state_pointActionPerformed
         settingsTxt.replaceSelection("<state_point>\n" +
-            "  <batches>  </batches>\n" +
-            "  <interval>  </interval>\n" +
+            "    <batches>  </batches>\n" +
+            "    <interval>  </interval>\n" +
             "</state_point>\n");
        
     }//GEN-LAST:event_btn_state_pointActionPerformed
@@ -3047,9 +3046,9 @@ guidance (Guidecmfd,"The <display> element sets one additional CMFD output colum
 
     private void btn_outputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_outputActionPerformed
         settingsTxt.replaceSelection("<output>\n" +
-            "  <cross_sections> false  </cross_sections>\n" +
-            "  <summary> false  </summary> \n" +
-            "  <tallies> false </tallies>  \n" +
+            "    <cross_sections> false  </cross_sections>\n" +
+            "    <summary> false  </summary> \n" +
+            "    <tallies> false </tallies>  \n" +
             "</output>\n");
     }//GEN-LAST:event_btn_outputActionPerformed
 
@@ -3059,8 +3058,8 @@ guidance (Guidecmfd,"The <display> element sets one additional CMFD output colum
 
     private void btn_fixed_sourceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_fixed_sourceActionPerformed
         settingsTxt.replaceSelection("<run_mode>fixed source</run_mode>\n" +
-            "  <batches>    </batches>\n" +
-            "  <particles>   </particles>\n");
+            "    <batches>    </batches>\n" +
+            "    <particles>   </particles>\n");
     }//GEN-LAST:event_btn_fixed_sourceActionPerformed
 
     private void btn_entropy_meshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_entropy_meshActionPerformed
@@ -3078,11 +3077,11 @@ guidance (Guidecmfd,"The <display> element sets one additional CMFD output colum
 
     private void btn_eignvalueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eignvalueActionPerformed
         settingsTxt.replaceSelection("<run_mode>eigenvalue</run_mode>   \n" +
-                "   <batches> </batches>\n" +
-                "   <generations_per_batch>" +
-                "   </generations_per_batch>\n" +
-                "   <inactive> </inactive> \n" +
-                "   <particles> </particles> \n");
+                "    <batches> </batches>\n" +
+                "    <generations_per_batch>" +
+                "    </generations_per_batch>\n" +
+                "    <inactive> </inactive> \n" +
+                "    <particles> </particles> \n");
     }//GEN-LAST:event_btn_eignvalueActionPerformed
 
     private void btn_cutoffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cutoffActionPerformed
