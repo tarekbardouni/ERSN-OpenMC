@@ -49,7 +49,8 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
             str_git = " git ",
             str_eog = " eog ",
             str_setuptools = "python-setuptools",
-            str_pip = " python-pip ",
+            str_six = "python-six",
+            str_pip = " python3-pip ",
             str_mutt = " ",
             str_mpich2 = " ",
             str_openmpi = " ",
@@ -441,6 +442,7 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         });
 
         _UBUNTU_REPO_.setForeground(new java.awt.Color(255, 255, 0));
+        _UBUNTU_REPO_.setSelected(true);
         _UBUNTU_REPO_.setText("install packages from ubuntu repo.");
         _UBUNTU_REPO_.setOpaque(false);
         _UBUNTU_REPO_.addActionListener(new java.awt.event.ActionListener() {
@@ -711,6 +713,7 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
 
         _OPENMP_MODE.setBackground(java.awt.SystemColor.activeCaption);
         _OPENMP_MODE.setForeground(java.awt.Color.yellow);
+        _OPENMP_MODE.setSelected(true);
         _OPENMP_MODE.setText("Enable shared-memory parallelism with OpenMP");
         _OPENMP_MODE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -735,6 +738,7 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         _DEVELOP_VERSION.setBackground(java.awt.SystemColor.activeCaption);
         _DEVELOP_VERSION.setForeground(java.awt.Color.yellow);
         _DEVELOP_VERSION.setText("Develop Version");
+        _DEVELOP_VERSION.setEnabled(false);
         _DEVELOP_VERSION.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 _DEVELOP_VERSIONMouseClicked(evt);
@@ -748,6 +752,7 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
 
         _STABLE_VERSION.setBackground(java.awt.SystemColor.activeCaption);
         _STABLE_VERSION.setForeground(java.awt.Color.yellow);
+        _STABLE_VERSION.setSelected(true);
         _STABLE_VERSION.setText("Stable Version 0.10.0 ");
         _STABLE_VERSION.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1126,7 +1131,8 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
 
     public void get_prerequisites() throws IOException, InterruptedException {
         try {
-            String command_apt = "xterm -c -j  -sb -sl 2000 -title ERSN-OpenMC_Default -e sudo apt-get install -y " + str_cmake + str_gfortran + str_git + str_eog + str_setuptools + str_hdf5_tools + str_hdf5_dev + str_hdf5_helpers 
+            _PIP_REPO_.setEnabled(false);
+            String command_apt = "xterm -c -j  -sb -sl 2000 -title ERSN-OpenMC_Default -e sudo apt-get install -y " + str_cmake + str_gfortran + str_git + str_eog + str_six + str_setuptools + str_hdf5_tools + str_hdf5_dev + str_hdf5_helpers 
                     + str_pip + str_mutt + str_mpich2 + str_openmpi + str_paraview; 
             Process pb1 = Runtime.getRuntime().exec(command_apt);
             pb1.waitFor();
