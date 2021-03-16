@@ -57,7 +57,8 @@ if [[ -f "/usr/bin/python3" ]]; then
     echo "************   copying /usr/bin/python3 to /usr/bin/python   **************"
     sudo cp /usr/bin/python3 /usr/bin/python
 else 
-    echo "************   copying /usr/bin/python2 to /usr/bin/python   **************"sudo cp /usr/bin/python2 /usr/bin/python
+    echo "************   copying /usr/bin/python2 to /usr/bin/python   **************"
+    sudo cp /usr/bin/python2 /usr/bin/python
 fi
 python $openmc_dir/openmc/scripts/openmc-get-nndc-data
 
