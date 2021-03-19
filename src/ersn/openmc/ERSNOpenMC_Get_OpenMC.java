@@ -56,7 +56,7 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
             str_openmpi = " ",
             str_openmp_status = "NOT_USED",
             str_debug_status = "NOT_USED",
-            str_openmc_version = "develop",            
+            str_openmc_version = "0.10.0",            
             str_vtk = " ",
             str_paraview = " ",            
             str_gedit = " ",
@@ -149,8 +149,8 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         _OPENMP_MODE = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        _DEVELOP_VERSION = new javax.swing.JCheckBox();
-        _STABLE_VERSION = new javax.swing.JCheckBox();
+        _DEVELOP_VERSION_ = new javax.swing.JCheckBox();
+        _VERSION_10_ = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         btn_get_nndc = new javax.swing.JButton();
         lbl_dir1 = new javax.swing.JLabel();
@@ -162,6 +162,8 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         jSeparator9 = new javax.swing.JSeparator();
         jSeparator10 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         btn_convert_nndc = new javax.swing.JButton();
         lbl_dir2 = new javax.swing.JLabel();
@@ -687,7 +689,7 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         jLabel1.setBackground(java.awt.SystemColor.info);
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
         jLabel1.setForeground(java.awt.Color.white);
-        jLabel1.setText("The OpenMC Monte Carlo code will be compiled with one of the following four modes :");
+        jLabel1.setText("The OpenMC Monte Carlo code will be compiled with one of the following four modes. Choose the mode :");
 
         btn_close1.setForeground(java.awt.Color.black);
         btn_close1.setText("close");
@@ -713,7 +715,6 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
 
         _OPENMP_MODE.setBackground(java.awt.SystemColor.activeCaption);
         _OPENMP_MODE.setForeground(java.awt.Color.yellow);
-        _OPENMP_MODE.setSelected(true);
         _OPENMP_MODE.setText("Enable shared-memory parallelism with OpenMP");
         _OPENMP_MODE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -733,35 +734,39 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         jLabel5.setBackground(java.awt.SystemColor.info);
         jLabel5.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
         jLabel5.setForeground(java.awt.Color.white);
-        jLabel5.setText("Choose the desired version of OpenMC (Default = Develop) :");
+        jLabel5.setText("Choose the desired version of OpenMC (Default = 0.10) :");
 
-        _DEVELOP_VERSION.setBackground(java.awt.SystemColor.activeCaption);
-        _DEVELOP_VERSION.setForeground(java.awt.Color.yellow);
-        _DEVELOP_VERSION.setText("Develop Version");
-        _DEVELOP_VERSION.setEnabled(false);
-        _DEVELOP_VERSION.addMouseListener(new java.awt.event.MouseAdapter() {
+        _DEVELOP_VERSION_.setBackground(java.awt.SystemColor.activeCaption);
+        _DEVELOP_VERSION_.setForeground(java.awt.Color.yellow);
+        _DEVELOP_VERSION_.setText("develop version");
+        _DEVELOP_VERSION_.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                _DEVELOP_VERSIONMouseClicked(evt);
+                _DEVELOP_VERSION_MouseClicked(evt);
             }
         });
-        _DEVELOP_VERSION.addActionListener(new java.awt.event.ActionListener() {
+        _DEVELOP_VERSION_.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                _DEVELOP_VERSION_ComponentHidden(evt);
+            }
+        });
+        _DEVELOP_VERSION_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                _DEVELOP_VERSIONActionPerformed(evt);
+                _DEVELOP_VERSION_ActionPerformed(evt);
             }
         });
 
-        _STABLE_VERSION.setBackground(java.awt.SystemColor.activeCaption);
-        _STABLE_VERSION.setForeground(java.awt.Color.yellow);
-        _STABLE_VERSION.setSelected(true);
-        _STABLE_VERSION.setText("Stable Version 0.10.0 ");
-        _STABLE_VERSION.addMouseListener(new java.awt.event.MouseAdapter() {
+        _VERSION_10_.setBackground(java.awt.SystemColor.activeCaption);
+        _VERSION_10_.setForeground(java.awt.Color.yellow);
+        _VERSION_10_.setSelected(true);
+        _VERSION_10_.setText("Version 0.10");
+        _VERSION_10_.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                _STABLE_VERSIONMouseClicked(evt);
+                _VERSION_10_MouseClicked(evt);
             }
         });
-        _STABLE_VERSION.addActionListener(new java.awt.event.ActionListener() {
+        _VERSION_10_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                _STABLE_VERSIONActionPerformed(evt);
+                _VERSION_10_ActionPerformed(evt);
             }
         });
 
@@ -801,9 +806,9 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(114, 114, 114)
-                                .addComponent(_DEVELOP_VERSION)
+                                .addComponent(_DEVELOP_VERSION_)
                                 .addGap(73, 73, 73)
-                                .addComponent(_STABLE_VERSION)))))
+                                .addComponent(_VERSION_10_)))))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(48, 48, 48)
@@ -827,8 +832,8 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(_DEVELOP_VERSION)
-                            .addComponent(_STABLE_VERSION))
+                            .addComponent(_DEVELOP_VERSION_)
+                            .addComponent(_VERSION_10_))
                         .addGap(45, 45, 45)
                         .addComponent(jLabel1)
                         .addGap(16, 16, 16)
@@ -905,7 +910,17 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         jLabel6.setBackground(java.awt.SystemColor.info);
         jLabel6.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
         jLabel6.setForeground(java.awt.Color.white);
-        jLabel6.setText("Data  are converted from ACE to H5 format to fit the requirements of OpenMC release 0.9 and directory ./nndc_hdf5 will be created");
+        jLabel6.setText("Data  are converted from ACE to H5 format to fit the requirements of OpenMC release 0.10 and directory ./nndc_hdf5 will be created");
+
+        jLabel7.setBackground(java.awt.SystemColor.info);
+        jLabel7.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
+        jLabel7.setForeground(java.awt.Color.yellow);
+        jLabel7.setText("If OpenMC develop version was installed download data manually in ACE format and convert them to h5 format with the pytthon script.");
+
+        jLabel8.setBackground(java.awt.SystemColor.info);
+        jLabel8.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
+        jLabel8.setForeground(java.awt.Color.yellow);
+        jLabel8.setText("openmc-ace-to-hdf5 provided in openmc package. Then the /config/cross_sections.dir file must be modified to point new data. ");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -914,11 +929,6 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(682, 682, 682)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 1192, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel4)))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(201, 201, 201)
                 .addComponent(btn_get_nndc, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -937,6 +947,13 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
                 .addComponent(XS_install_dir, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(btn_xs_dir, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel4)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -953,7 +970,11 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(28, 28, 28)
                 .addComponent(jLabel6)
-                .addGap(85, 85, 85)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel8)
+                .addGap(21, 21, 21)
                 .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1192,11 +1213,19 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
     }
 
     public void save_openmcdir_file(String openmc_path) {
-        get_ERSMOpenMC_Config(openmc_path, "/openmc/build/bin/openmc", "/config/openmc.dir");
+        if (_DEVELOP_VERSION_.isSelected() == true) {
+            get_ERSMOpenMC_Config(openmc_path, "/openmc/build/bin/openmc", "/config/openmc.dir");
+        } else {
+            get_ERSMOpenMC_Config(openmc_path, "/openmc-" + str_openmc_version + "/build/bin/openmc", "/config/openmc.dir");
+        }
     }
 
     public void save_scriptsdir_file(String openmc_path) {
+        if (_DEVELOP_VERSION_.isSelected() == true) {
         get_ERSMOpenMC_Config(openmc_path, "/openmc/scripts", "/config/scripts.dir");
+        } else {
+            get_ERSMOpenMC_Config(openmc_path, "/openmc-" + str_openmc_version + "/scripts", "/config/scripts.dir");
+        }
     }
 
     public void save_cross_sectiondir_file(String openmc_path) {
@@ -1402,36 +1431,36 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event__OPENMP_MODEPropertyChange
 
-    private void _DEVELOP_VERSIONMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__DEVELOP_VERSIONMouseClicked
+    private void _DEVELOP_VERSION_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__DEVELOP_VERSION_MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event__DEVELOP_VERSIONMouseClicked
+    }//GEN-LAST:event__DEVELOP_VERSION_MouseClicked
 
-    private void _DEVELOP_VERSIONActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__DEVELOP_VERSIONActionPerformed
-        if (_DEVELOP_VERSION.isSelected() == true) {
+    private void _DEVELOP_VERSION_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__DEVELOP_VERSION_ActionPerformed
+        if (_DEVELOP_VERSION_.isSelected() == true) {
             str_openmc_version = "develop";
-            _STABLE_VERSION.setEnabled(false);
+            _VERSION_10_.setEnabled(false);
             System.out.println("\ndevelop version selected\n");
         } else {
-            str_openmc_version = "stable";
-            _STABLE_VERSION.setEnabled(true);
+            str_openmc_version = "0.10.0";
+            _VERSION_10_.setEnabled(true);
         }
-    }//GEN-LAST:event__DEVELOP_VERSIONActionPerformed
+    }//GEN-LAST:event__DEVELOP_VERSION_ActionPerformed
 
-    private void _STABLE_VERSIONMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__STABLE_VERSIONMouseClicked
-        if (_STABLE_VERSION.isSelected() == true) {
-            str_openmc_version = "stable";
-            _DEVELOP_VERSION.setEnabled(false);
-            System.out.println("\n stable version selected\n");
+    private void _VERSION_10_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__VERSION_10_MouseClicked
+        if (_VERSION_10_.isSelected() == true) {
+            str_openmc_version = "0.10.0";
+            _DEVELOP_VERSION_.setEnabled(false);
+            System.out.println("\n version 0.10.0 selected\n");
 
         } else {
             str_openmc_version = "develop";
-            _DEVELOP_VERSION.setEnabled(true);
+            _DEVELOP_VERSION_.setEnabled(true);
         }
-    }//GEN-LAST:event__STABLE_VERSIONMouseClicked
+    }//GEN-LAST:event__VERSION_10_MouseClicked
 
-    private void _STABLE_VERSIONActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__STABLE_VERSIONActionPerformed
+    private void _VERSION_10_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__VERSION_10_ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event__STABLE_VERSIONActionPerformed
+    }//GEN-LAST:event__VERSION_10_ActionPerformed
 
     private void _lxml_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__lxml_ActionPerformed
         if (_lxml_.isSelected() == true) {
@@ -1645,6 +1674,10 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_pip_commandActionPerformed
 
+    private void _DEVELOP_VERSION_ComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event__DEVELOP_VERSION_ComponentHidden
+        // TODO add your handling code here:
+    }//GEN-LAST:event__DEVELOP_VERSION_ComponentHidden
+
     /**
      * @param args the command line arguments
      */
@@ -1679,12 +1712,12 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
     private javax.swing.JRadioButton DISTRIB_MODE;
     private javax.swing.JRadioButton DISTRIB_OpenMPI_MODE;
     private javax.swing.JTextField XS_install_dir;
-    private javax.swing.JCheckBox _DEVELOP_VERSION;
+    private javax.swing.JCheckBox _DEVELOP_VERSION_;
     private javax.swing.JRadioButton _OPENMP_MODE;
     private javax.swing.JRadioButton _PIP_REPO_;
     private javax.swing.JRadioButton _SEQ_MODE;
-    private javax.swing.JCheckBox _STABLE_VERSION;
     private javax.swing.JRadioButton _UBUNTU_REPO_;
+    private javax.swing.JCheckBox _VERSION_10_;
     private javax.swing.JCheckBox _cmake_;
     private javax.swing.JCheckBox _eog_;
     private javax.swing.JCheckBox _gfortran_;
@@ -1732,6 +1765,8 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

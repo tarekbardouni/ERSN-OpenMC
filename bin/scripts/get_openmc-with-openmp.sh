@@ -34,12 +34,12 @@ if [ $OPENMC_VERSION == "develop" ]
 then
         git clone https://github.com/openmc-dev/openmc.git
         cd openmc
-elif  [ $OPENMC_VERSION == "stable" ]
+elif  [ $OPENMC_VERSION == "0.10.0" ]
 then
         wget https://github.com/openmc-dev/openmc/archive/v0.10.0.tar.gz
         tar zxvf v0.10.0.tar.gz
-        mv openmc-0.10.0 openmc
-        cd openmc
+#        mv openmc-0.10.0 openmc
+        cd openmc-0.10.0
 else
 	echo " ***********    Check OpenMC version ! ********** "
 fi

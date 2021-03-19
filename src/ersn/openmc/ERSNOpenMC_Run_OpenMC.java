@@ -345,6 +345,7 @@ CROSS_SECTIONS_DIR=("");
             new InputStreamReader( new FileInputStream(fileDir), "UTF8"))) {
         String str;
         while ((str = in.readLine()) != null) { CROSS_SECTIONS_DIR=CROSS_SECTIONS_DIR+str; }
+        System.out.print(CROSS_SECTIONS_DIR);
     }
     } 
     catch (UnsupportedEncodingException e)  { System.out.println(e.getMessage());} 

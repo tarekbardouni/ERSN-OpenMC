@@ -2,7 +2,7 @@
 #!/bin/bash
 #------------------------------------------------------------------------------
 export HDF5_ROOT=/opt/hdf5
-export CROSS_SECTIONS=$1
+export OPENMC_CROSS_SECTIONS=$1
 #------------------------------------------------------------------------------
 openmcexecutable=$2
 openmcproject_dir=$3
