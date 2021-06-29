@@ -715,6 +715,7 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
 
         _OPENMP_MODE.setBackground(java.awt.SystemColor.activeCaption);
         _OPENMP_MODE.setForeground(java.awt.Color.yellow);
+        _OPENMP_MODE.setSelected(true);
         _OPENMP_MODE.setText("Enable shared-memory parallelism with OpenMP");
         _OPENMP_MODE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -739,6 +740,7 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         _DEVELOP_VERSION_.setBackground(java.awt.SystemColor.activeCaption);
         _DEVELOP_VERSION_.setForeground(java.awt.Color.yellow);
         _DEVELOP_VERSION_.setText("develop version");
+        _DEVELOP_VERSION_.setEnabled(false);
         _DEVELOP_VERSION_.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 _DEVELOP_VERSION_MouseClicked(evt);
