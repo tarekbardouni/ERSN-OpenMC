@@ -1336,7 +1336,7 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         System.out.print("ERSN-OPENMC/CONSOLE:-------INSTALLING NNDC DATA LIBRARY.");
         try {
             Process pb = Runtime.getRuntime().exec("xterm  -j  -sb -sl 2000 -title ERSN-OpenMC_Console -e "
-                    + bashdir_nndc + " " + XS_install_dir.getText() + "/openmc-" + str_openmc_version);
+                    + bashdir_nndc + " " + XS_install_dir.getText() + " " + XS_install_dir.getText() + "/openmc-" + str_openmc_version + "/scripts");
             pb.waitFor();
 
         } catch (IOException | InterruptedException ex) {

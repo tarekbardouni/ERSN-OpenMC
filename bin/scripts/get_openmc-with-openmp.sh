@@ -1,72 +1,76 @@
-#!/bin/bash
+#!/bin/bash 
 
-INSTALL_DIR=$1
-DEBUG_STATUS=$2
-OPENMP_STATUS=$3
-OPENMC_VERSION=$4
+openmc_dir=$1
 
-echo "            ****** Directory     : " $INSTALL_DIR
-echo "            ****** DEBUG_STATUS  : " $DEBUG_STATUS
-echo "            ****** openmp_STATUS : " $OPENMP_STATUS
-echo "            ****** OpenMC_Version : " $OPENMC_VERSION
+null=""
+echo $openmc_dir " has been chosen !"
+pwd
+myscripts_dir="$(pwd)"
+echo $myscripts_dir
 
-export FC=gfortran
-if [ -d /opt/hdf5 ]
-then
-	export HDF5_ROOT=/opt/hdf5
-fi
-
-if [ $DEBUG_STATUS == "USED" ]; then
-	export DEBUG_OPTION='-Ddebug=on'
+if [[ $openmc_dir = $null ]]; then
+	DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+	cd $DIR
+   	tmp=$(cat ../config/cross_sections.dir)
+   	xsfolder=${tmp%/*} 
+	datadir="$(dirname "$xsfolder")"
+	if [ -d "$datadir" ]; then
+ 		cd $datadir
+		openmc_dir=$(pwd)
+		echo $datadir
+	else
+		echo $datadir
+		echo " "
+		echo " "
+		echo "       Warning :    OpenMC must be installed first ! "
+		echo " "
+		printf "                Nothing done. Press 'CTRL+C' to exit  "
+		trap "exit" INT
+		while :
+		do
+    		    sleep 10000 
+		done		 
+	fi
 else
-        export DEBUG_OPTION=' '
+	datadir="$openmc_dir/data"
+	if [ -d "$datadir" ]; then
+		cd  $datadir
+		echo "/data exists"
+		pwd
+	else
+		echo "/data doesn't exist"
+		mkdir $datadir
+		cd $datadir
+		pwd			 
+	fi
 fi
-
-if [ $OPENMP_STATUS == "USED" ]; then
-	export OPENMP_OPTION='-Dopenmp=on'
-else
-        export OPENMP_OPTION=' '
-fi
-#
-cd  $INSTALL_DIR
-
-if [ $OPENMC_VERSION == "develop" ]
-then
-        git clone https://github.com/openmc-dev/openmc.git
-        cd openmc
-elif  [ $OPENMC_VERSION == "0.10.0" ]
-then
-        wget https://github.com/openmc-dev/openmc/archive/v0.10.0.tar.gz
-        tar zxvf v0.10.0.tar.gz
-#        mv openmc-0.10.0 openmc
-        cd openmc-0.10.0
-else
-	echo " ***********    Check OpenMC version ! ********** "
-fi
-
-#
-git checkout master
-#
-mkdir build && cd build
-make clean
-#
-find -iname '*cmake*' -not -name CMakeLists.txt -exec rm -rf {} \+
-cmake $OPENMP_OPTION $DEBUG_OPTION ..
-#
-make -j4 
-sudo make install 
-#make install -e prefix=$INSTALL_DIR/openmc
-
-echo "              *************************************************  "
-echo "                 OpenMC parallel version has been installed      "
-echo "              *************************************************  "
-
 echo " "
+echo "***********************************************************************"
+echo "************   Downloading nndc neutron cross sections   **************"
+echo "************          to the following path :            **************"
+echo "************                  "/data"                    **************"
+echo "***********************************************************************"
+echo " "
+
+pwd
+if [[ -f "/usr/bin/python3.9" ]]; then
+	python3.9 $openmc_dir/scripts/openmc-get-nndc-data
+elif [[ -f "/usr/bin/python3.8" ]]; then
+	python3.8 $openmc_dir/scripts/openmc-get-nndc-data
+elif [[ -f "/usr/bin/python3" ]]; then
+	python3 $openmc_dir/scripts/openmc-get-nndc-data
+elif [[ -f "/usr/bin/python2" ]]; then
+	python2 $openmc_dir/scripts/openmc-get-nndc-data
+
+fi
+
+
+
+
 printf "Press 'CTRL+C' to exit : "
 trap "exit" INT
 while :
 do
     sleep 10000 
 done
-
 

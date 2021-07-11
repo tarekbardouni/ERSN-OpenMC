@@ -1,6 +1,7 @@
 #!/bin/bash 
-
+echo $1 $2
 openmc_dir=$1
+openmc_scripts=$2
 
 null=""
 echo $openmc_dir " has been chosen !"
@@ -52,25 +53,22 @@ echo "************                  "/data"                    **************"
 echo "***********************************************************************"
 echo " "
 
-pwd
-if [[ -f "/usr/bin/python3.9" ]]; then
-	python3.9 $openmc_dir/scripts/openmc-get-nndc-data
+
+if [[ -f "/usr/bin/python3" ]]; then
+	python3 $openmc_scripts/openmc-get-nndc-data
 elif [[ -f "/usr/bin/python3.8" ]]; then
-	python3.8 $openmc_dir/scripts/openmc-get-nndc-data
-elif [[ -f "/usr/bin/python3" ]]; then
-	python3 $openmc_dir/scripts/openmc-get-nndc-data
+	python3.8 $openmc_scripts/openmc-get-nndc-data
+elif [[ -f "/usr/bin/python3.9" ]]; then
+	python3.9 $openmc_scripts/openmc-get-nndc-data
 elif [[ -f "/usr/bin/python2" ]]; then
-	python2 $openmc_dir/scripts/openmc-get-nndc-data
-
+	python2 $openmc_scripts/openmc-get-nndc-data
+else
+	echo " Python version problem !" 
 fi
-
-
-
 
 printf "Press 'CTRL+C' to exit : "
 trap "exit" INT
 while :
 do
     sleep 10000 
-done
-
+done	
