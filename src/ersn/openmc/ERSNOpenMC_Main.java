@@ -547,9 +547,9 @@ plottingTxt.setContentType("text/xhtml");
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 geometryTxtAncestorAdded(evt);
             }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
         });
         jScrollPane2.setViewportView(geometryTxt);

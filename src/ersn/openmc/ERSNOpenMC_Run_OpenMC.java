@@ -451,6 +451,12 @@ restart_a_previous_run_box.setText(p_file);
     
     try {            
         System.out.print("OPENMC DIR :"+OPENMC_DIR);  
+        System.out.print(BASH_DIR+" " +
+            CROSS_SECTIONS_DIR+" " + 
+            OPENMC_DIR+" "+
+            project_full_path+" "+
+            Options_1+" "+
+            Options_2);
         Process START_OPENMC_PROCESS =Runtime.getRuntime().exec( 
                 "xterm -j  -sb -title ERSN-OpenMC_Console -sl 2000  -e "+
             BASH_DIR+" " +
@@ -462,11 +468,11 @@ restart_a_previous_run_box.setText(p_file);
             Options_3+               // number of particles per generation flag
             Options_4+               // number of particles per generation
             Options_5+               // threads flag
-            Options_6+               // threads number
-            Options_7+               // all particles track
-            Options_8+               // retart flag
-            Options_9+               // state_point file for retart
-            str_user_gmail_account);
+            Options_6);               // threads number
+            //Options_7+               // all particles track
+            //Options_8+               // restart flag
+            //Options_9+               // state_point file for restart
+            //str_user_gmail_account);
         
         START_OPENMC_PROCESS.waitFor();
         
