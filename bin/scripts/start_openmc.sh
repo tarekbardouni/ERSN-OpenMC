@@ -1,7 +1,7 @@
 
 #!/bin/bash
 #------------------------------------------------------------------------------
-export HDF5_ROOT=/opt/hdf5
+#export HDF5_ROOT=/opt/hdf5
 export OPENMC_CROSS_SECTIONS=$1
 #------------------------------------------------------------------------------
 openmcexecutable=$2
@@ -17,19 +17,24 @@ options_8=$11
 options_9=$12
 usergmail=$13
 #
+echo $10 $11 $12 " +++"
 options=$(echo $options_1 $options_2 $options_3 $options_4 $options_5 $options_6 $options_7 $options_8 $options_9)
+echo $options_7 $options_8 $options_9
 
 OPT=$(echo $options | sed -e "s/empty/""/g")
 echo "*************************************************************************"
 echo "*****                  choosen options to run OpenMC                *****"
 echo "*************************************************************************"
-echo "  " $OPT
+echo "  " $options
 echo "*************************************************************************"
 #
 #------------------------------------------------------------------------------
 #
 cd  $openmcproject_dir 
 #
+pwd
+ls
+# openmc 
 $openmcexecutable   $OPT
 #------------------------------------------------------------------------------
 
