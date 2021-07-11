@@ -53,14 +53,17 @@ echo "***********************************************************************"
 echo " "
 
 pwd
-if [[ -f "/usr/bin/python3" ]]; then
-    echo "************   copying /usr/bin/python3 to /usr/bin/python   **************"
-    sudo cp /usr/bin/python3 /usr/bin/python
-else 
-    echo "************   copying /usr/bin/python2 to /usr/bin/python   **************"
-    sudo cp /usr/bin/python2 /usr/bin/python
+if [[ -f "/usr/bin/python3.9" ]]; then
+	python3.9 $openmc_dir/scripts/openmc-get-nndc-data
+elif [[ -f "/usr/bin/python3.8" ]]; then
+	python3.8 $openmc_dir/scripts/openmc-get-nndc-data
+elif [[ -f "/usr/bin/python3" ]]; then
+	python3 $openmc_dir/scripts/openmc-get-nndc-data
+elif [[ -f "/usr/bin/python2" ]]; then
+	python2 $openmc_dir/scripts/openmc-get-nndc-data
+
 fi
-python $openmc_dir/openmc/scripts/openmc-get-nndc-data
+
 
 
 

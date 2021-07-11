@@ -715,7 +715,6 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
 
         _OPENMP_MODE.setBackground(java.awt.SystemColor.activeCaption);
         _OPENMP_MODE.setForeground(java.awt.Color.yellow);
-        _OPENMP_MODE.setSelected(true);
         _OPENMP_MODE.setText("Enable shared-memory parallelism with OpenMP");
         _OPENMP_MODE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1155,6 +1154,7 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
     public void get_prerequisites() throws IOException, InterruptedException {
         try {
             _PIP_REPO_.setEnabled(false);
+             System.out.println("\n ******  software : " +  str_paraview + " choosen\n");
             String command_apt = "xterm -c -j  -sb -sl 2000 -title ERSN-OpenMC_Default -e sudo apt-get install -y " + str_cmake + str_gfortran + str_git + str_eog + str_six + str_setuptools + str_hdf5_tools + str_hdf5_dev + str_hdf5_helpers 
                     + str_pip + str_mutt + str_mpich2 + str_openmpi + str_paraview; 
             Process pb1 = Runtime.getRuntime().exec(command_apt);
@@ -1169,7 +1169,7 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "The checked packages have been installed successfully from " + str_repository + " repository ");
                 } else if ( _UBUNTU_REPO_.isSelected() == true ) {
                     String command = "xterm -c -j  -sb -sl 2000 -title ERSN-OpenMC_Python -e sudo apt install " 
-                            + str_python_h5py + str_numpy + str_scipy + str_matplotlib + str_ipython + str_lxml + str_vtk;
+                            + str_python_h5py + str_numpy + str_scipy + str_matplotlib + str_ipython + str_lxml + str_vtk + str_paraview;
                     Process pb2 = Runtime.getRuntime().exec(command);
                     pb2.waitFor();
                     System.out.print(command);
@@ -1336,7 +1336,7 @@ public class ERSNOpenMC_Get_OpenMC extends javax.swing.JFrame {
         System.out.print("ERSN-OPENMC/CONSOLE:-------INSTALLING NNDC DATA LIBRARY.");
         try {
             Process pb = Runtime.getRuntime().exec("xterm  -j  -sb -sl 2000 -title ERSN-OpenMC_Console -e "
-                    + bashdir_nndc + " " + XS_install_dir.getText());
+                    + bashdir_nndc + " " + XS_install_dir.getText() + "/openmc-" + str_openmc_version);
             pb.waitFor();
 
         } catch (IOException | InterruptedException ex) {
